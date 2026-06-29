@@ -1,0 +1,80 @@
+---
+import type { FoundationTopic } from '../content/schema';
+
+interface Props {
+  topic: FoundationTopic;
+  href: string;
+}
+const { topic, href } = Astro.props;
+---
+<a href={href} class="f-card">
+  {topic.category && (
+    <div class="f-card__category eyebrow">{topic.category}</div>
+  )}
+  <div class="f-card__title">{topic.title}</div>
+  {topic.teaser && (
+    <p class="f-card__teaser">{topic.teaser}</p>
+  )}
+  <span class="f-card__cta">Explore <span aria-hidden="true">→</span></span>
+</a>
+
+<style>
+  .f-card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1.375rem 1.5rem 1.25rem;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    transition: box-shadow .15s, border-color .15s, transform .15s;
+    position: relative;
+  }
+  .f-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-tint);
+    transform: translateY(-1px);
+  }
+
+  /* accent rule across the top */
+  .f-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 1.5rem; right: 1.5rem;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 0 0 var(--r-sm) var(--r-sm);
+    opacity: 0;
+    transition: opacity .15s;
+  }
+  .f-card:hover::before { opacity: 1; }
+
+  .f-card__category { color: var(--ink-faint); margin-bottom: .1rem; }
+
+  .f-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .f-card__teaser {
+    font-family: var(--font-serif);
+    font-size: .9rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: .125rem 0 0;
+    flex: 1;
+  }
+
+  .f-card__cta {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    margin-top: .375rem;
+  }
+</style>

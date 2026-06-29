@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FoundationCard from '../../components/FoundationCard.astro';
+import { foundationTopics, getFoundationByCategory } from '../../data/foundation';
+
+const byCategory = getFoundationByCategory();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<BaseLayout title="Foundation · German Reference System">
+  <div class="foundation-hub">
+
+    <header class="hub__hero">
+      <a href={`${base}/`} class="hub__back eyebrow">← All topics</a>
+      <div class="eyebrow hub__eyebrow">Reference</div>
+      <h1 class="hub__title">Grammar Foundation</h1>
+      <p class="hub__sub">
+        The core systems of German — each one a map, not a list.
+        Learn the pattern once; recognise it everywhere.
+      </p>
+    </header>
+
+    <main class="hub__main">
+      {Object.entries(byCategory).map(([category, topics]) => (
+        <section class="hub__category">
+          <h2 class="hub__category-heading eyebrow">{category}</h2>
+          <div class="hub__grid">
+            {topics.map((topic) => (
+              <FoundationCard
+                topic={topic}
+                href={`${base}/foundation/${topic.slug}/`}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+    </main>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .foundation-hub {
+    max-width: var(--max-content);
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .hub__hero {
+    padding: 2.5rem 0 2rem;
+    max-width: 640px;
+  }
+
+  .hub__back {
+    display: inline-block;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+    transition: color .1s;
+  }
+  .hub__back:hover { color: var(--accent-deep); }
+
+  .hub__eyebrow { margin-bottom: .5rem; }
+
+  .hub__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 .75rem;
+    line-height: 1.15;
+  }
+
+  .hub__sub {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .hub__main { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .hub__category-heading { margin-bottom: 1rem; }
+
+  .hub__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+</style>

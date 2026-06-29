@@ -149,6 +149,8 @@ export interface FoundationTopic {
   slug: string;          // "satzbau" | "cases" | "tense-stack" | "verbklammer"
   title: string;         // "Sentence Architecture"
   intro: string;
+  category?: string;     // "Structure" | "Grammar" | "Verbs"
+  teaser?: string;       // one-line description shown on the hub card
   // Foundation pages are visual: they lean on these reusable blocks.
   sentenceFrames?: SentenceFrame[];
   progression?: ProgressionRow[];  // CEFR expansion of this concept
