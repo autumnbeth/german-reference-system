@@ -1,0 +1,92 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const path = Astro.url.pathname.replace(/\/$/, '');
+
+const links = [
+  { label: 'Home',        href: `${base}/` },
+  { label: 'Foundation',  href: `${base}/foundation/` },
+  { label: 'Situations',  href: `${base}/situations/` },
+];
+
+function isActive(href: string): boolean {
+  const h = href.replace(/\/$/, '');
+  if (h === base) return path === base || path === '';
+  return path.startsWith(h);
+}
+---
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="site-nav__inner">
+    <a href={`${base}/`} class="site-nav__wordmark">German Reference</a>
+    <ul class="site-nav__links" role="list">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`site-nav__link${isActive(link.href) ? ' site-nav__link--active' : ''}`}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .site-nav {
+    border-bottom: 1px solid var(--border);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .site-nav__inner {
+    max-width: var(--max-content);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .site-nav__wordmark {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: .9375rem;
+    color: var(--ink);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .site-nav__wordmark:hover { color: var(--accent-deep); }
+
+  .site-nav__links {
+    display: flex;
+    gap: .25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: .375rem .625rem;
+    border-radius: var(--r-sm);
+    transition: color .1s, background .1s;
+  }
+  .site-nav__link:hover {
+    color: var(--ink);
+    background: var(--surface);
+  }
+  .site-nav__link--active {
+    color: var(--accent-deep);
+    background: var(--accent-bg);
+    font-weight: 600;
+  }
+</style>

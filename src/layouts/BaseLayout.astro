@@ -1,4 +1,6 @@
 ---
+import SiteNav from '../components/SiteNav.astro';
+
 interface Props {
   title?: string;
 }
@@ -19,6 +21,7 @@ const { title = 'German Reference System' } = Astro.props;
     />
   </head>
   <body>
+    <SiteNav />
     <slot />
   </body>
 </html>

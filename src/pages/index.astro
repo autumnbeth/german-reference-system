@@ -1,159 +1,132 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FoundationCard from '../components/FoundationCard.astro';
-import { situations, getThemes, getSituationsByTheme } from '../data/index';
-import { foundationTopics } from '../data/foundation';
 
-const themes = getThemes();
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <BaseLayout title="German Reference System">
   <div class="home">
+
     <header class="home__hero">
       <div class="eyebrow home__eyebrow">German Reference System</div>
-      <h1 class="home__title">Learn German by situation</h1>
-      <p class="home__sub">
-        Real-life pages — vocabulary, sentence structure, dialogue, and writing —
-        organised by theme and levelled from A1 to C1.
-      </p>
+      <h1 class="home__title">Learn German through real life.</h1>
+      <p class="home__lede">A reference-first system for adult learners — see how German works, then put it to use in real situations until it becomes usable.</p>
     </header>
 
-    <main class="home__main">
-      {themes.map((theme) => {
-        const sits = getSituationsByTheme(theme);
-        return (
-          <section class="home__theme">
-            <h2 class="home__theme-heading eyebrow">{theme}</h2>
-            <div class="home__cards">
-              {sits.map((s) => (
-                <a href={`${base}/situations/${s.slug}/`} class="sit-card">
-                  <div class="sit-card__sub eyebrow">{s.category}</div>
-                  <div class="sit-card__title">{s.subtheme ?? s.title}</div>
-                  <div class="sit-card__levels">
-                    {s.levels.map((l) => (
-                      <span class={`cefr cefr--${l[0].toLowerCase()}`}>{l}</span>
-                    ))}
-                  </div>
-                  <p class="sit-card__intro">{s.intro}</p>
-                </a>
-              ))}
-            </div>
-          </section>
-        );
-      })}
+    <main class="home__entries">
 
-      <!-- Foundation section -->
-      <section class="home__theme">
-        <div class="home__foundation-header">
-          <h2 class="home__theme-heading eyebrow">Grammar Foundation</h2>
-          <a href={`${base}/foundation/`} class="home__foundation-all eyebrow">View all →</a>
-        </div>
-        <div class="home__cards">
-          {foundationTopics.map((topic) => (
-            <FoundationCard
-              topic={topic}
-              href={`${base}/foundation/${topic.slug}/`}
-            />
-          ))}
-        </div>
-      </section>
+      <a href={`${base}/foundation/`} class="entry-card">
+        <div class="eyebrow entry-card__eyebrow">How German works</div>
+        <h2 class="entry-card__title">Grammar Foundations</h2>
+        <p class="entry-card__body">
+          The architecture of German as one connected system — sentence structure,
+          verbs and tenses, the gender-colored case system, and how clauses connect.
+          See the map; dive in where you need it.
+        </p>
+        <span class="entry-card__cta">Explore the foundation →</span>
+      </a>
+
+      <a href={`${base}/situations/`} class="entry-card">
+        <div class="eyebrow entry-card__eyebrow">Where German is used</div>
+        <h2 class="entry-card__title">Real-Life Situations</h2>
+        <p class="entry-card__body">
+          Themed real-world pages — from the Apotheke to a doctor's visit — each
+          with key vocabulary, dialogue, and writing, growing with you from A1 to C1.
+        </p>
+        <span class="entry-card__cta">Browse situations →</span>
+      </a>
 
     </main>
+
   </div>
 </BaseLayout>
 
 <style>
   .home {
-    max-width: var(--max-content);
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0 2rem 4rem;
+    padding: 0 2rem 5rem;
   }
 
+  /* ── Hero ── */
   .home__hero {
-    padding: 4rem 0 2.5rem;
-    max-width: 640px;
+    padding: 5rem 0 3.5rem;
+    max-width: 600px;
   }
 
-  .home__eyebrow { margin-bottom: .75rem; }
+  .home__eyebrow { margin-bottom: .875rem; }
 
   .home__title {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
     font-weight: 600;
     color: var(--ink);
-    margin: 0 0 .75rem;
-    line-height: 1.15;
+    margin: 0 0 1rem;
+    line-height: 1.1;
   }
 
-  .home__sub {
+  .home__lede {
     font-family: var(--font-serif);
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     color: var(--ink-body);
-    line-height: 1.7;
+    line-height: 1.65;
     margin: 0;
   }
 
-  .home__main { display: flex; flex-direction: column; gap: 2.5rem; }
-
-  .home__foundation-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-  .home__foundation-header .home__theme-heading { margin-bottom: 0; }
-  .home__foundation-all {
-    color: var(--accent-deep);
-    text-decoration: none;
-    font-size: 11px;
-  }
-  .home__foundation-all:hover { text-decoration: underline; }
-
-  .home__theme-heading { margin-bottom: 1rem; }
-
-  .home__cards {
+  /* ── Entry cards ── */
+  .home__entries {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
-  .sit-card {
+  @media (max-width: 640px) {
+    .home__entries { grid-template-columns: 1fr; }
+  }
+
+  .entry-card {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
-    padding: 1.25rem 1.5rem;
+    gap: .875rem;
+    padding: 2rem 2rem 1.75rem;
+    background: var(--paper);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
-    background: var(--paper);
-    box-shadow: var(--shadow-sm);
-    text-decoration: none;
-    transition: box-shadow .15s, border-color .15s;
-  }
-  .sit-card:hover {
     box-shadow: var(--shadow-md);
+    text-decoration: none;
+    transition: box-shadow .2s, border-color .2s, transform .2s;
+  }
+
+  .entry-card:hover {
+    box-shadow: var(--shadow-lg);
     border-color: var(--accent-tint);
+    transform: translateY(-2px);
   }
 
-  .sit-card__sub { color: var(--ink-faint); }
+  .entry-card__eyebrow { color: var(--ink-faint); }
 
-  .sit-card__title {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .sit-card__levels {
-    display: flex;
-    gap: .375rem;
-    flex-wrap: wrap;
-  }
-
-  .sit-card__intro {
+  .entry-card__title {
     font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .entry-card__body {
+    font-family: var(--font-serif);
+    font-size: .9375rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+
+  .entry-card__cta {
+    font-family: var(--font-sans);
     font-size: .875rem;
-    color: var(--ink-soft);
-    line-height: 1.55;
-    margin: .25rem 0 0;
+    font-weight: 600;
+    color: var(--accent-deep);
+    margin-top: .25rem;
   }
 </style>
