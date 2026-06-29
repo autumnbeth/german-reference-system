@@ -1,0 +1,77 @@
+---
+import type { ProgressionRow } from '../content/schema';
+import CefrBadge from './CefrBadge.astro';
+
+interface Props {
+  rows: ProgressionRow[];
+  title?: string;
+}
+const { rows, title = 'Progression · A1 → C1' } = Astro.props;
+---
+<div class="prog">
+  <div class="eyebrow prog__title">{title}</div>
+  <table class="prog__table">
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>I can…</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td class="prog__level"><CefrBadge level={row.level} /></td>
+          <td class="prog__can-do">{row.canDo}</td>
+          <td class="prog__example"><span class="prog__de">{row.example}</span></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .prog { font-family: var(--font-sans); }
+  .prog__title { margin-bottom: .75rem; }
+
+  .prog__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+
+  .prog__table thead {
+    background: var(--surface);
+  }
+
+  .prog__table th {
+    text-align: left;
+    padding: .625rem 1rem;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prog__table td {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--border-2);
+    vertical-align: top;
+    color: var(--ink-body);
+    line-height: 1.5;
+  }
+
+  .prog__table tr:last-child td { border-bottom: none; }
+
+  .prog__table tr:hover td { background: var(--surface); }
+
+  .prog__level { white-space: nowrap; }
+
+  .prog__de {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+</style>

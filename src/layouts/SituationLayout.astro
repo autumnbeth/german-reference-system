@@ -1,0 +1,415 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import CefrBadge from '../components/CefrBadge.astro';
+import Callout from '../components/Callout.astro';
+import VocabCard from '../components/VocabCard.astro';
+import SentenceFrameComponent from '../components/SentenceFrame.astro';
+import DialogueComponent from '../components/Dialogue.astro';
+import WritingSampleComponent from '../components/WritingSample.astro';
+import ProgressionTable from '../components/ProgressionTable.astro';
+import Milestones from '../components/Milestones.astro';
+import type { Situation } from '../content/schema';
+import { situations } from '../data/index';
+
+interface Props {
+  situation: Situation;
+}
+const { situation: s } = Astro.props;
+
+// Group nav items by theme for the sidebar
+const navGroups: Record<string, Situation[]> = {};
+for (const sit of situations) {
+  if (!navGroups[sit.theme]) navGroups[sit.theme] = [];
+  navGroups[sit.theme].push(sit);
+}
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const activeSlug = s.slug;
+---
+<BaseLayout title={`${s.title} · German Reference System`}>
+  <div class="site-shell">
+
+    <!-- ── Sidebar ── -->
+    <nav class="sidebar" aria-label="Situations">
+      <div class="sidebar__brand">
+        <a href={`${base}/`} class="sidebar__home">German Reference</a>
+      </div>
+
+      {Object.entries(navGroups).map(([theme, sits]) => (
+        <div class="sidebar__group">
+          <div class="sidebar__theme eyebrow">{theme}</div>
+          <ul class="sidebar__list">
+            {sits.map((sit) => (
+              <li>
+                <a
+                  href={`${base}/situations/${sit.slug}/`}
+                  class={`sidebar__link${sit.slug === activeSlug ? ' sidebar__link--active' : ''}`}
+                >
+                  {sit.subtheme ?? sit.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+    <!-- ── Main ── -->
+    <main class="situation">
+
+      <!-- Eyebrow + title -->
+      <div class="situation__header">
+        <div class="situation__breadcrumb eyebrow">
+          {s.theme}{s.subtheme ? ` · ${s.subtheme}` : ''}
+        </div>
+        <h1 class="situation__title">{s.title}</h1>
+        {s.category && (
+          <span class="situation__category eyebrow">{s.category}</span>
+        )}
+        <p class="situation__intro">{s.intro}</p>
+        <Callout kind="confidence" label="After this page…">
+          {s.confidenceOutcome}
+        </Callout>
+      </div>
+
+      <!-- Vocabulary (shared across all levels) -->
+      {s.vocab.length > 0 && (
+        <section class="situation__section">
+          <h2 class="section-heading">Vocabulary</h2>
+          {s.vocab.map((group) => <VocabCard group={group} />)}
+        </section>
+      )}
+
+      <!-- CEFR level tabs -->
+      <section class="situation__section">
+        <div class="tabs" id="level-tabs">
+          <div class="tabs__bar" role="tablist" aria-label="CEFR levels">
+            {s.levels.map((level, i) => (
+              <button
+                class={`tabs__tab${i === 0 ? ' tabs__tab--active' : ''}`}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-controls={`panel-${level}`}
+                data-level={level}
+              >
+                <CefrBadge level={level} />
+              </button>
+            ))}
+          </div>
+
+          {s.levels.map((level, i) => {
+            const content = s.byLevel[level];
+            return (
+              <div
+                id={`panel-${level}`}
+                class={`tabs__panel${i === 0 ? ' tabs__panel--active' : ''}`}
+                role="tabpanel"
+              >
+                {!content ? (
+                  <p class="tabs__empty">Content coming soon.</p>
+                ) : (
+                  <div class="level-content">
+
+                    {content.sentenceFrames && content.sentenceFrames.length > 0 && (
+                      <div class="level-content__block">
+                        <h3 class="level-content__heading eyebrow">Sentence Structure</h3>
+                        {content.sentenceFrames.map((frame) => (
+                          <SentenceFrameComponent frame={frame} />
+                        ))}
+                      </div>
+                    )}
+
+                    {content.phrases && content.phrases.length > 0 && (
+                      <div class="level-content__block">
+                        <h3 class="level-content__heading eyebrow">Useful Phrases</h3>
+                        {content.phrases.map((layer) => (
+                          <div class="phrase-layer">
+                            <div class="phrase-layer__funktion">{layer.funktion}</div>
+                            <ul class="phrase-layer__list">
+                              {layer.phrases.map((p) => <li>{p}</li>)}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {content.dialogue && (
+                      <div class="level-content__block">
+                        <DialogueComponent dialogue={content.dialogue} />
+                      </div>
+                    )}
+
+                    {content.writing && (
+                      <div class="level-content__block">
+                        <WritingSampleComponent sample={content.writing} />
+                      </div>
+                    )}
+
+                    {content.challenge && (
+                      <div class="level-content__block">
+                        <Callout kind="challenge" label="Real-world challenge">
+                          {content.challenge}
+                        </Callout>
+                      </div>
+                    )}
+
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- Progression table -->
+      {s.progression.length > 0 && (
+        <section class="situation__section">
+          <h2 class="section-heading">Progression</h2>
+          <ProgressionTable rows={s.progression} />
+        </section>
+      )}
+
+      <!-- Milestones -->
+      {s.milestones && s.milestones.length > 0 && (
+        <section class="situation__section">
+          <h2 class="section-heading">Your milestones</h2>
+          <Milestones milestones={s.milestones} />
+        </section>
+      )}
+
+      <!-- Foundation links -->
+      {s.foundationLinks && s.foundationLinks.length > 0 && (
+        <section class="situation__section">
+          <h2 class="section-heading">Foundation topics</h2>
+          <ul class="foundation-links">
+            {s.foundationLinks.map((link) => (
+              <li>
+                <a href={`${base}/foundation/${link.foundationSlug}/`} class="foundation-links__link">
+                  {link.label} →
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+    </main>
+  </div>
+</BaseLayout>
+
+<!-- Tab switching -->
+<script>
+  const bar = document.querySelector('.tabs__bar');
+  if (bar) {
+    bar.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest<HTMLButtonElement>('.tabs__tab');
+      if (!btn) return;
+      const level = btn.dataset.level!;
+
+      document.querySelectorAll('.tabs__tab').forEach((t) => {
+        t.classList.remove('tabs__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tabs__panel').forEach((p) => {
+        p.classList.remove('tabs__panel--active');
+      });
+
+      btn.classList.add('tabs__tab--active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(`panel-${level}`)?.classList.add('tabs__panel--active');
+    });
+  }
+</script>
+
+<style>
+  /* ── Shell ── */
+  .site-shell {
+    display: flex;
+    min-height: 100vh;
+    max-width: var(--max-content);
+    margin: 0 auto;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem 2rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--surface);
+  }
+
+  .sidebar__brand { margin-bottom: 1.5rem; }
+
+  .sidebar__home {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: .9375rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .sidebar__home:hover { color: var(--accent-deep); }
+
+  .sidebar__group { margin-bottom: 1.25rem; }
+
+  .sidebar__theme {
+    padding: 0 .5rem .375rem;
+    color: var(--ink-faint);
+    margin-bottom: .25rem;
+  }
+
+  .sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar__link {
+    display: block;
+    padding: .375rem .5rem;
+    border-radius: var(--r-sm);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    color: var(--ink-body);
+    text-decoration: none;
+    transition: background .1s, color .1s;
+  }
+  .sidebar__link:hover { background: var(--accent-bg); color: var(--accent-deep); }
+  .sidebar__link--active {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  /* ── Main ── */
+  .situation {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    max-width: 860px;
+  }
+
+  .situation__header { margin-bottom: 2rem; }
+
+  .situation__breadcrumb { margin-bottom: .5rem; }
+
+  .situation__title {
+    font-family: var(--font-serif);
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 .25rem;
+    line-height: 1.2;
+  }
+
+  .situation__category { margin-bottom: .75rem; display: block; }
+
+  .situation__intro {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: .75rem 0 1rem;
+  }
+
+  /* ── Sections ── */
+  .situation__section { margin-bottom: 2.5rem; }
+
+  .section-heading {
+    font-family: var(--font-sans);
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 .875rem;
+  }
+
+  /* ── Tabs ── */
+  .tabs__bar {
+    display: flex;
+    gap: .375rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: .75rem;
+  }
+
+  .tabs__tab {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .25rem .125rem;
+    opacity: .45;
+    transition: opacity .15s;
+  }
+  .tabs__tab:hover { opacity: .75; }
+  .tabs__tab--active { opacity: 1; }
+
+  .tabs__panel { display: none; }
+  .tabs__panel--active { display: block; }
+
+  .tabs__empty {
+    color: var(--ink-mute);
+    font-style: italic;
+    font-family: var(--font-serif);
+  }
+
+  /* ── Level content ── */
+  .level-content { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .level-content__block { display: flex; flex-direction: column; gap: .75rem; }
+
+  .level-content__heading { color: var(--ink-faint); }
+
+  /* ── Phrase layers ── */
+  .phrase-layer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .875rem 1rem;
+  }
+
+  .phrase-layer__funktion {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: .5rem;
+  }
+
+  .phrase-layer__list {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+
+  .phrase-layer__list li {
+    font-family: var(--font-sans);
+    font-size: .9375rem;
+    color: var(--ink-body);
+  }
+
+  /* ── Foundation links ── */
+  .foundation-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .375rem;
+  }
+
+  .foundation-links__link {
+    font-family: var(--font-sans);
+    font-size: .9375rem;
+    color: var(--accent-deep);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .foundation-links__link:hover { text-decoration: underline; }
+</style>

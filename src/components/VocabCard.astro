@@ -1,0 +1,76 @@
+---
+import type { VocabGroup } from '../content/schema';
+
+interface Props {
+  group: VocabGroup;
+}
+const { group } = Astro.props;
+
+const articleMap = { der: 'der', die: 'die', das: 'das', pl: 'die' };
+---
+<div class="vocab-group">
+  <div class="eyebrow vocab-group__label">{group.label}</div>
+  <div class="vocab-grid">
+    {group.items.map((item) => (
+      <div class="vocab-card">
+        <div class="vocab-card__art-word">
+          <span class={`art art--${item.gender}`}>{articleMap[item.gender]}</span>
+          <span class="vocab-card__word">{item.word}</span>
+        </div>
+        <span class="gloss vocab-card__meaning">{item.meaning}</span>
+        {item.plural && (
+          <span class="vocab-card__plural">Pl. {item.plural}</span>
+        )}
+        {item.note && (
+          <span class="vocab-card__note">{item.note}</span>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .vocab-group { margin-bottom: 1.5rem; }
+  .vocab-group__label { margin-bottom: .75rem; }
+
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: .625rem;
+  }
+
+  .vocab-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: .75rem .875rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+  }
+
+  .vocab-card__art-word {
+    display: flex;
+    align-items: baseline;
+    gap: .35rem;
+    font-family: var(--font-sans);
+  }
+
+  .vocab-card__word {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .vocab-card__meaning {
+    font-size: .875rem;
+  }
+
+  .vocab-card__plural,
+  .vocab-card__note {
+    font-size: .75rem;
+    color: var(--ink-soft);
+    font-family: var(--font-sans);
+  }
+</style>

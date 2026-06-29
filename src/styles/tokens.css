@@ -1,0 +1,117 @@
+/* ============================================================
+   German Learning System — Design Tokens
+   Single source of truth, extracted from the Claude Design system.
+   Import this once globally (Astro: in your base layout).
+   ============================================================ */
+
+/* ---- Fonts (Google Fonts) ----
+   Add this <link> to your <head>, OR @import at the very top of this file.
+   Using <link> in the layout is faster. Reference:
+   https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap
+*/
+
+:root {
+  /* ---------- Typeface roles ---------- */
+  --font-serif: 'Newsreader', Georgia, serif;        /* headings + reading body */
+  --font-sans:  'Hanken Grotesk', system-ui, sans-serif; /* UI, labels, nav, chips */
+  --font-mono:  'JetBrains Mono', ui-monospace, monospace; /* sentence structure — alignment carries meaning */
+
+  /* ---------- Grammatical gender (the core teaching cue) ---------- */
+  --gender-der: #2563EB;  /* masculine — blue   */
+  --gender-die: #DB2777;  /* feminine  — pink   */
+  --gender-das: #16A34A;  /* neuter    — green  */
+  --gender-pl:  #EA580C;  /* plural    — orange */
+
+  /* ---------- Accent (theme-switchable: Teal default, Indigo, Coral) ---------- */
+  --accent:      #11B5A4; /* teal */
+  --accent-deep: #0E9486; /* darker teal for text-on-light */
+  --accent-tint: #E3F7F4; /* fill behind highlighted verb slots */
+  --accent-bg:   #F1FBF9; /* very soft accent surface (active nav, highlights) */
+  /* alternates: Indigo #4F46E5  ·  Coral #F0584F */
+
+  /* ---------- Surfaces & ink ---------- */
+  --paper:     #FFFFFF;  /* card / page background */
+  --surface:   #FAFAFB;  /* subtle raised panels, table headers */
+  --slot:      #F4F5F7;  /* sentence-diagram neutral slot fill */
+  --ink:       #18181B;  /* primary text */
+  --ink-body:  #3F3F46;  /* body copy */
+  --ink-soft:  #71717A;  /* secondary text, captions */
+  --ink-mute:  #A1A1AA;  /* glosses, tertiary */
+  --ink-faint: #B4B4BC;  /* labels, eyebrows */
+  --border:    #EEEEF1;  /* card borders */
+  --border-2:  #F4F4F6;  /* inner dividers */
+
+  /* ---------- CEFR level palette (badge text + background) ---------- */
+  --cefr-a-text: #15803D;  --cefr-a-bg: #DCFCE7;  /* A1, A2 — green  */
+  --cefr-b-text: #2563EB;  --cefr-b-bg: #DBEAFE;  /* B1, B2 — blue   */
+  --cefr-c-text: #7C3AED;  --cefr-c-bg: #EDE9FE;  /* C1     — purple */
+
+  /* ---------- Callouts ---------- */
+  --tip-bg: #FFFBEB;  --tip-border: #FDE8B0;  --tip-text: #D97706; /* amber tip / challenge */
+
+  /* ---------- Radius ---------- */
+  --r-pill: 999px;
+  --r-lg:   22px;   /* large cards */
+  --r-md:   16px;   /* figures, panels */
+  --r-sm:   11px;   /* slots, small chips */
+  --r-hero: 28px;   /* full page container */
+
+  /* ---------- Shadow ---------- */
+  --shadow-sm: 0 1px 2px rgba(24,24,27,.04);
+  --shadow-md: 0 4px 24px rgba(24,24,27,.05);
+  --shadow-lg: 0 8px 40px rgba(24,24,27,.07);
+
+  /* ---------- Media slot aspect ratios ---------- */
+  --ratio-hero: 3 / 1;   /* situation hero photo  */
+  --ratio-fig:  4 / 3;   /* inline figure/diagram */
+  --ratio-thumb: 1 / 1;  /* vocabulary illustration */
+
+  /* ---------- Layout ---------- */
+  --max-content: 1340px;
+  --sidebar-w: 270px;
+}
+
+/* ---- Global resets the design system relied on ---- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent-tint); }
+
+/* ============================================================
+   Helper classes (optional — components can also use vars directly)
+   ============================================================ */
+
+/* Gender-colored article. Usage: <span class="art art--der">der</span> Husten */
+.art        { font-weight: 800; }
+.art--der   { color: var(--gender-der); }
+.art--die   { color: var(--gender-die); }
+.art--das   { color: var(--gender-das); }
+.art--pl    { color: var(--gender-pl);  }
+
+/* CEFR badge. Usage: <span class="cefr cefr--a">A1</span> */
+.cefr { font-size: 12px; font-weight: 700; border-radius: 8px; padding: 5px 11px; display: inline-block; }
+.cefr--a { color: var(--cefr-a-text); background: var(--cefr-a-bg); }
+.cefr--b { color: var(--cefr-b-text); background: var(--cefr-b-bg); }
+.cefr--c { color: var(--cefr-c-text); background: var(--cefr-c-bg); }
+
+/* Eyebrow label. Usage: <div class="eyebrow">Component</div> */
+.eyebrow {
+  font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700;
+}
+
+/* English gloss — hidden when the showTranslations setting is off */
+.gloss {
+  font-family: var(--font-serif); font-style: italic;
+  color: var(--ink-mute);
+}
+:root[data-translations="off"] .gloss { display: none; }
+
+/* Gender-color toggle off → all articles become ink */
+:root[data-gender-colors="off"] .art { color: var(--ink) !important; }

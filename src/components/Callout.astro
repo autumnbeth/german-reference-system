@@ -1,0 +1,42 @@
+---
+interface Props {
+  kind?: 'tip' | 'confidence' | 'challenge';
+  label?: string;
+}
+const { kind = 'tip', label } = Astro.props;
+---
+<div class={`callout callout--${kind}`}>
+  {label && <div class="callout__label">{label}</div>}
+  <div class="callout__body"><slot /></div>
+</div>
+
+<style>
+  .callout {
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+  }
+  .callout--tip,
+  .callout--challenge {
+    background: var(--tip-bg);
+    border: 1px solid var(--tip-border);
+    color: var(--tip-text);
+  }
+  .callout--confidence {
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-tint);
+    color: var(--accent-deep);
+  }
+  .callout__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    margin-bottom: .4rem;
+    opacity: .75;
+  }
+  .callout__body {
+    line-height: 1.6;
+  }
+</style>

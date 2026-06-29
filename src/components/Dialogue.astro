@@ -1,0 +1,90 @@
+---
+import type { Dialogue } from '../content/schema';
+import CefrBadge from './CefrBadge.astro';
+
+interface Props {
+  dialogue: Dialogue;
+}
+const { dialogue } = Astro.props;
+
+const borderColor: Record<string, string> = {
+  der: 'var(--gender-der)',
+  die: 'var(--gender-die)',
+  das: 'var(--gender-das)',
+  pl:  'var(--gender-pl)',
+};
+const labelColor: Record<string, string> = borderColor;
+---
+<div class="dialogue">
+  <div class="dialogue__header">
+    <span class="dialogue__title eyebrow">{dialogue.title}</span>
+    <CefrBadge level={dialogue.level} />
+  </div>
+  <div class="dialogue__lines">
+    {dialogue.lines.map((line) => {
+      const color = line.speakerGender ? borderColor[line.speakerGender] : 'var(--border)';
+      const nameColor = line.speakerGender ? labelColor[line.speakerGender] : 'var(--ink-soft)';
+      return (
+        <div class="dialogue__line" style={`border-left-color: ${color}`}>
+          <span class="dialogue__speaker" style={`color: ${nameColor}`}>{line.speaker}</span>
+          <p class="dialogue__de">{line.de}</p>
+          {line.en && <p class="gloss dialogue__en">{line.en}</p>}
+        </div>
+      );
+    })}
+  </div>
+</div>
+
+<style>
+  .dialogue {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+
+  .dialogue__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dialogue__title {
+    color: var(--ink-faint);
+  }
+
+  .dialogue__lines {
+    padding: .5rem 0;
+  }
+
+  .dialogue__line {
+    padding: .625rem 1.25rem .625rem 1rem;
+    border-left: 3px solid var(--border);
+    margin: .25rem .75rem;
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  }
+
+  .dialogue__speaker {
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: .2rem;
+  }
+
+  .dialogue__de {
+    margin: 0;
+    color: var(--ink);
+    font-size: .9375rem;
+    line-height: 1.5;
+  }
+
+  .dialogue__en {
+    margin: .15rem 0 0;
+    font-size: .8125rem;
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import type { Milestone } from '../content/schema';
+import CefrBadge from './CefrBadge.astro';
+
+interface Props {
+  milestones: Milestone[];
+  title?: string;
+}
+const { milestones, title = 'Milestones' } = Astro.props;
+---
+<div class="milestones">
+  <div class="eyebrow milestones__title">{title}</div>
+  <ul class="milestones__list">
+    {milestones.map((m) => (
+      <li class={`milestones__item${m.achieved ? ' milestones__item--done' : ''}`}>
+        <span class="milestones__icon" aria-hidden="true">
+          {m.achieved ? '✓' : '○'}
+        </span>
+        <span class="milestones__content">
+          <CefrBadge level={m.level} />
+          <span class="milestones__text">{m.text}</span>
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .milestones { font-family: var(--font-sans); }
+  .milestones__title { margin-bottom: .75rem; }
+
+  .milestones__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+
+  .milestones__item {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .625rem .875rem;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink-soft);
+  }
+
+  .milestones__item--done {
+    background: var(--accent-bg);
+    border-color: var(--accent-tint);
+    color: var(--ink-body);
+  }
+
+  .milestones__icon {
+    font-size: .875rem;
+    width: 1.25rem;
+    text-align: center;
+    flex-shrink: 0;
+    padding-top: .1rem;
+    color: var(--ink-mute);
+  }
+
+  .milestones__item--done .milestones__icon {
+    color: var(--accent-deep);
+    font-weight: 700;
+  }
+
+  .milestones__content {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-wrap: wrap;
+  }
+
+  .milestones__text {
+    font-size: .875rem;
+    line-height: 1.4;
+  }
+</style>

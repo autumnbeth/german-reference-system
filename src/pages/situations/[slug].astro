@@ -1,0 +1,13 @@
+---
+import SituationLayout from '../../layouts/SituationLayout.astro';
+import { situations, getSituation } from '../../data/index';
+
+export function getStaticPaths() {
+  return situations.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const situation = getSituation(slug);
+if (!situation) throw new Error(`No situation found for slug: ${slug}`);
+---
+<SituationLayout situation={situation} />

@@ -1,0 +1,153 @@
+---
+import type { WritingSample } from '../content/schema';
+import CefrBadge from './CefrBadge.astro';
+
+interface Props {
+  sample: WritingSample;
+}
+const { sample } = Astro.props;
+
+const isEmail = sample.kind === 'email-formal';
+const isInformal = sample.kind === 'message-informal';
+
+function highlightText(text: string, highlight?: string): string {
+  if (!highlight) return escHtml(text);
+  const safe = escHtml(text);
+  const safeHL = escHtml(highlight);
+  return safe.replace(safeHL, `<mark class="writing__highlight">${safeHL}</mark>`);
+}
+
+function escHtml(s: string) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+---
+<div class={`writing writing--${sample.kind}`}>
+  <div class="writing__header">
+    <span class="writing__title eyebrow">{sample.title}</span>
+    <CefrBadge level={sample.level} />
+  </div>
+
+  {isEmail && (
+    <div class="writing__meta">
+      {sample.to      && <div><span class="writing__meta-label">An</span> {sample.to}</div>}
+      {sample.subject && <div><span class="writing__meta-label">Betreff</span> {sample.subject}</div>}
+    </div>
+  )}
+
+  <div class="writing__body">
+    {sample.parts.map((part) => (
+      <div class={`writing__part${isEmail ? ' writing__part--email' : ''}`}>
+        <span class="writing__part-label eyebrow">{part.label}</span>
+        <p class="writing__de" set:html={highlightText(part.de, part.highlight)} />
+        {part.en && <p class="gloss writing__en">{part.en}</p>}
+      </div>
+    ))}
+  </div>
+
+  {sample.checklist && sample.checklist.length > 0 && (
+    <div class="writing__checklist">
+      <div class="eyebrow writing__checklist-label">Checklist</div>
+      <ul>
+        {sample.checklist.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  )}
+</div>
+
+<style>
+  .writing {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+
+  .writing__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .writing__title { color: var(--ink-faint); }
+
+  .writing__meta {
+    padding: .6rem 1.25rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-2);
+    font-size: .875rem;
+    color: var(--ink-body);
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+  }
+
+  .writing__meta-label {
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-right: .4rem;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .writing__body {
+    padding: .75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .875rem;
+  }
+
+  .writing__part { display: flex; flex-direction: column; gap: .2rem; }
+
+  .writing__part--email {
+    padding-left: .75rem;
+    border-left: 2px solid var(--border-2);
+  }
+
+  .writing__part-label { color: var(--ink-faint); margin-bottom: .1rem; }
+
+  .writing__de {
+    margin: 0;
+    color: var(--ink);
+    font-size: .9375rem;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .writing__en { margin: .1rem 0 0; font-size: .8125rem; }
+
+  :global(.writing__highlight) {
+    background: var(--accent-tint);
+    color: var(--accent-deep);
+    border-radius: 3px;
+    padding: 0 2px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+  }
+
+  .writing__checklist {
+    padding: .75rem 1.25rem;
+    background: var(--surface);
+    border-top: 1px solid var(--border-2);
+  }
+
+  .writing__checklist-label { margin-bottom: .5rem; }
+
+  .writing__checklist ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+  }
+
+  .writing__checklist li {
+    font-size: .875rem;
+    color: var(--ink-body);
+    line-height: 1.4;
+  }
+</style>

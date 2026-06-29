@@ -1,0 +1,10 @@
+---
+import type { CEFR } from '../content/schema';
+
+interface Props {
+  level: CEFR;
+}
+const { level } = Astro.props;
+const tier = level[0].toLowerCase(); // 'a' | 'b' | 'c'
+---
+<span class={`cefr cefr--${tier}`}>{level}</span>

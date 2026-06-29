@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { situations, getThemes, getSituationsByTheme } from '../data/index';
+
+const themes = getThemes();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<BaseLayout title="German Reference System">
+  <div class="home">
+    <header class="home__hero">
+      <div class="eyebrow home__eyebrow">German Reference System</div>
+      <h1 class="home__title">Learn German by situation</h1>
+      <p class="home__sub">
+        Real-life pages — vocabulary, sentence structure, dialogue, and writing —
+        organised by theme and levelled from A1 to C1.
+      </p>
+    </header>
+
+    <main class="home__main">
+      {themes.map((theme) => {
+        const sits = getSituationsByTheme(theme);
+        return (
+          <section class="home__theme">
+            <h2 class="home__theme-heading eyebrow">{theme}</h2>
+            <div class="home__cards">
+              {sits.map((s) => (
+                <a href={`${base}/situations/${s.slug}/`} class="sit-card">
+                  <div class="sit-card__sub eyebrow">{s.category}</div>
+                  <div class="sit-card__title">{s.subtheme ?? s.title}</div>
+                  <div class="sit-card__levels">
+                    {s.levels.map((l) => (
+                      <span class={`cefr cefr--${l[0].toLowerCase()}`}>{l}</span>
+                    ))}
+                  </div>
+                  <p class="sit-card__intro">{s.intro}</p>
+                </a>
+              ))}
+            </div>
+          </section>
+        );
+      })}
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .home {
+    max-width: var(--max-content);
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .home__hero {
+    padding: 4rem 0 2.5rem;
+    max-width: 640px;
+  }
+
+  .home__eyebrow { margin-bottom: .75rem; }
+
+  .home__title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 .75rem;
+    line-height: 1.15;
+  }
+
+  .home__sub {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .home__main { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .home__theme-heading { margin-bottom: 1rem; }
+
+  .home__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .sit-card {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  .sit-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-tint);
+  }
+
+  .sit-card__sub { color: var(--ink-faint); }
+
+  .sit-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .sit-card__levels {
+    display: flex;
+    gap: .375rem;
+    flex-wrap: wrap;
+  }
+
+  .sit-card__intro {
+    font-family: var(--font-serif);
+    font-size: .875rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: .25rem 0 0;
+  }
+</style>
