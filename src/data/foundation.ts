@@ -193,17 +193,251 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'verbklammer',
     title: 'Verb Bracket',
-    intro: 'Placeholder — real content coming soon.',
     category: 'Structure',
     teaser: 'The bracket that opens at verb position 2 and closes at the end of the clause.',
     relatedSituations: ['apotheke'],
+    intro:
+      'The Verbklammer (verb bracket) is the defining structure of German sentences. ' +
+      'The conjugated verb always occupies position 2. Any additional verb parts — ' +
+      'a separable prefix, an infinitive, or a Partizip II — lock to the very end of the clause. ' +
+      'Everything else fills the space in between. One rule, five different bracket types.',
+
+    sections: [
+      {
+        title: 'The Five Bracket Types',
+        body:
+          'Every multi-verb construction creates a bracket. ' +
+          'The conjugated part sits in position 2; the second part anchors the end of the clause.',
+        exampleTable: [
+          { label: 'Modal verb',     de: 'Ich kann heute kommen.',          en: 'I can come today.' },
+          { label: 'Separable verb', de: 'Ich rufe morgen an.',             en: 'I\'ll call tomorrow.' },
+          { label: 'Perfekt',        de: 'Ich habe das Buch gelesen.',      en: 'I have read the book.' },
+          { label: 'Futur I',        de: 'Ich werde das morgen machen.',    en: 'I will do that tomorrow.' },
+          { label: 'Passive',        de: 'Das Haus wird gerade gebaut.',    en: 'The house is being built.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'The rule in one sentence',
+          text: 'Conjugated verb → Position 2. Second verb part → END. Everything else → middle.',
+        },
+      },
+      {
+        title: 'Separable Verbs · The Prefix Detaches',
+        body:
+          'Separable verbs split when conjugated in a main clause: the verb stem goes to position 2 ' +
+          'and the prefix travels to the very end of the sentence. ' +
+          'In the infinitive or Partizip II form they stay together.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich',       role: 'pos1' },
+              { text: 'rufe',      role: 'verb', highlight: true },
+              { text: 'dich morgen', role: 'mittelfeld' },
+              { text: 'an.',       role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'anrufen splits: rufe (P2) · an (END). The prefix an anchors the end.',
+          },
+          {
+            slots: [
+              { text: 'Er',        role: 'pos1' },
+              { text: 'macht',     role: 'verb', highlight: true },
+              { text: 'die Tür',   role: 'mittelfeld' },
+              { text: 'auf.',      role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'aufmachen: macht (P2) · auf (END).',
+          },
+          {
+            slots: [
+              { text: 'Sie',       role: 'pos1' },
+              { text: 'fängt',     role: 'verb', highlight: true },
+              { text: 'um acht Uhr', role: 'mittelfeld' },
+              { text: 'an.',       role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'anfangen: fängt (P2) · an (END).',
+          },
+        ],
+      },
+      {
+        title: 'In the Nebensatz · The Bracket Collapses',
+        body:
+          'In a subordinate clause the whole verb cluster — all parts — moves to the end of the clause. ' +
+          'The conjugated verb comes last, after any infinitives or participles. ' +
+          'This is the mirror image of the main clause bracket.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: '… weil',    role: 'pos1' },
+              { text: 'ich',       role: 'mittelfeld' },
+              { text: 'das Buch',  role: 'mittelfeld' },
+              { text: 'gelesen habe.', role: 'verb-end', highlight: true },
+            ],
+            caption: 'Perfekt in Nebensatz: Partizip II first, conjugated haben last.',
+          },
+          {
+            slots: [
+              { text: '… dass',    role: 'pos1' },
+              { text: 'er',        role: 'mittelfeld' },
+              { text: 'morgen',    role: 'mittelfeld' },
+              { text: 'kommen kann.', role: 'verb-end', highlight: true },
+            ],
+            caption: 'Modal in Nebensatz: infinitive kommen before conjugated kann.',
+          },
+          {
+            slots: [
+              { text: '… obwohl',  role: 'pos1' },
+              { text: 'sie',       role: 'mittelfeld' },
+              { text: 'schon',     role: 'mittelfeld' },
+              { text: 'angerufen hat.', role: 'verb-end', highlight: true },
+            ],
+            caption: 'Separable verb in Nebensatz: prefix re-attaches — angerufen — then hat.',
+          },
+        ],
+      },
+      {
+        title: 'TeKaMoLo · What Goes in the Middle Field',
+        body:
+          'The middle field — the space between P2 and END — follows a default order: ' +
+          'Time before Manner before Local (place). ' +
+          'You can move elements to position 1 for emphasis, but the middle field default rarely changes.',
+        exampleTable: [
+          { label: 'Zeit (Time)',    de: 'Ich fahre morgen mit dem Zug nach Berlin.',    en: 'I\'m travelling to Berlin by train tomorrow.' },
+          { label: 'Art (Manner)',   de: 'Ich fahre gern mit dem Zug.',                  en: 'I like travelling by train.' },
+          { label: 'Ort (Local)',    de: 'Ich warte hier.',                              en: 'I\'m waiting here.' },
+          { label: 'Full order',     de: 'Ich fahre morgen gern mit dem Zug nach Berlin.', en: 'Time → Manner → Place.' },
+        ],
+      },
+    ],
   },
+
   {
     slug: 'cases',
     title: 'The Case System',
-    intro: 'Placeholder — real content coming soon.',
     category: 'Grammar',
     teaser: 'Nominative, accusative, dative, genitive — what changes and why it matters.',
+    intro:
+      'German uses four cases to show what role a noun plays in a sentence. ' +
+      'The case changes the article and adjective ending — the noun itself usually stays the same. ' +
+      'Nominativ is the subject (who acts). Akkusativ is the direct object (what is affected). ' +
+      'Dativ is the indirect object or the object of certain prepositions. ' +
+      'Genitiv shows possession.',
+
+    sections: [
+      {
+        title: 'The Four Cases · What They Signal',
+        exampleTable: [
+          { label: 'Nominativ · Subject',          de: 'Der Mann schläft.',               en: 'The man is sleeping.' },
+          { label: 'Akkusativ · Direct object',    de: 'Ich sehe den Mann.',              en: 'I see the man.' },
+          { label: 'Dativ · Indirect object',      de: 'Ich gebe dem Mann ein Buch.',     en: 'I give the man a book.' },
+          { label: 'Genitiv · Possession',         de: 'Das ist das Buch des Mannes.',    en: 'That is the man\'s book.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'What actually changes',
+          text: 'The noun itself rarely changes (except Genitiv -s on maskulin/neutrum). It\'s the article and adjective endings that carry the case signal.',
+        },
+      },
+      {
+        title: 'Definite Articles · der, die, das',
+        body: 'The definite article changes in four of the sixteen slots. Learn the patterns, not each cell individually.',
+        declensionTables: [
+          {
+            title: 'Bestimmter Artikel',
+            note: 'Changed forms highlighted. Nominativ is the dictionary form.',
+            headers: ['', 'maskulin (der)', 'feminin (die)', 'neutrum (das)', 'Plural (die)'],
+            rows: [
+              { label: 'Nominativ',  cells: ['der',  'die',  'das',  'die'] },
+              { label: 'Akkusativ',  cells: ['den ←', 'die',  'das',  'die'] },
+              { label: 'Dativ',      cells: ['dem ←', 'der ←', 'dem ←', 'den ←'] },
+              { label: 'Genitiv',    cells: ['des ←', 'der ←', 'des ←', 'der ←'] },
+            ],
+          },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Pattern shortcut',
+          text: 'Only maskulin Akkusativ changes (der → den). Feminin and neutrum Nominativ = Akkusativ. Dativ plural always adds -n to the noun (den Männern, den Frauen).',
+        },
+      },
+      {
+        title: 'Indefinite Articles · ein, eine, ein',
+        body: 'The indefinite article follows the same pattern as the definite article, but some endings are zero in the nominativ.',
+        declensionTables: [
+          {
+            title: 'Unbestimmter Artikel',
+            headers: ['', 'maskulin (ein)', 'feminin (eine)', 'neutrum (ein)', 'Plural (—)'],
+            rows: [
+              { label: 'Nominativ', cells: ['ein',    'eine',   'ein',    '—'] },
+              { label: 'Akkusativ', cells: ['einen ←','eine',   'ein',    '—'] },
+              { label: 'Dativ',     cells: ['einem ←','einer ←','einem ←','—'] },
+              { label: 'Genitiv',   cells: ['eines ←','einer ←','eines ←','—'] },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Akkusativ Prepositions · always Akkusativ',
+        body: 'These prepositions always require the Akkusativ. No exceptions.',
+        exampleTable: [
+          { label: 'durch',  de: 'Wir fahren durch den Tunnel.',     en: 'through the tunnel' },
+          { label: 'für',    de: 'Das ist für meinen Vater.',        en: 'for my father' },
+          { label: 'gegen',  de: 'Sie ist gegen den Plan.',          en: 'against the plan' },
+          { label: 'ohne',   de: 'Ohne einen Ausweis geht es nicht.',en: 'without an ID card' },
+          { label: 'um',     de: 'Wir sitzen um den Tisch.',        en: 'around the table' },
+        ],
+      },
+      {
+        title: 'Dativ Prepositions · always Dativ',
+        body: 'These prepositions always require the Dativ.',
+        exampleTable: [
+          { label: 'aus',        de: 'Er kommt aus der Türkei.',         en: 'from Turkey' },
+          { label: 'bei',        de: 'Ich wohne bei meiner Tante.',      en: 'at my aunt\'s' },
+          { label: 'mit',        de: 'Ich fahre mit dem Bus.',           en: 'by bus' },
+          { label: 'nach',       de: 'Nach dem Essen gehe ich spazieren.',en: 'after dinner' },
+          { label: 'seit',       de: 'Ich lerne seit einem Jahr Deutsch.',en: 'for a year (ongoing)' },
+          { label: 'von',        de: 'Das ist ein Geschenk von meiner Freundin.', en: 'from my friend' },
+          { label: 'zu',         de: 'Ich gehe zum Arzt.',               en: 'to the doctor' },
+          { label: 'gegenüber',  de: 'Die Post ist gegenüber dem Bahnhof.', en: 'opposite the station' },
+        ],
+      },
+      {
+        title: 'Two-Way Prepositions · Akkusativ or Dativ',
+        body:
+          'These nine prepositions take Akkusativ when showing movement toward a destination ' +
+          '(wohin?) and Dativ when showing a static location (wo?). ' +
+          'The question test: Wohin? → Akkusativ. Wo? → Dativ.',
+        exampleTable: [
+          { label: 'in (Akk)',  de: 'Ich gehe in den Supermarkt.',   en: 'I\'m going into the supermarket. (wohin?)' },
+          { label: 'in (Dat)',  de: 'Ich bin im Supermarkt.',         en: 'I\'m in the supermarket. (wo?)' },
+          { label: 'an (Akk)',  de: 'Ich hänge das Bild an die Wand.',en: 'I\'m hanging the picture on the wall.' },
+          { label: 'an (Dat)',  de: 'Das Bild hängt an der Wand.',    en: 'The picture is hanging on the wall.' },
+          { label: 'auf (Akk)', de: 'Ich lege das Buch auf den Tisch.',en: 'I\'m putting the book on the table.' },
+          { label: 'auf (Dat)', de: 'Das Buch liegt auf dem Tisch.',  en: 'The book is lying on the table.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Two-way prepositions',
+          text: 'an · auf · hinter · in · neben · über · unter · vor · zwischen. Motion (wohin?) = Akkusativ. Location (wo?) = Dativ.',
+        },
+      },
+      {
+        title: 'Genitiv · Possession and Formal Prepositions',
+        body:
+          'Genitiv marks possession and follows a small group of formal prepositions. ' +
+          'In spoken German, von + Dativ is increasingly used instead of Genitiv. ' +
+          'Maskulin and neutrum nouns add -(e)s in the Genitiv.',
+        exampleTable: [
+          { label: 'Maskulin -s',   de: 'Das Auto des Mannes.',         en: 'the man\'s car' },
+          { label: 'Neutrum -s',    de: 'Der Name des Kindes.',          en: 'the child\'s name' },
+          { label: 'Feminin (no s)', de: 'Die Tasche der Frau.',         en: 'the woman\'s bag' },
+          { label: 'Spoken alt.',   de: 'Das Auto von dem Mann.',        en: 'von + Dativ instead of Genitiv' },
+          { label: 'wegen',         de: 'Wegen des Wetters blieb er zu Hause.', en: 'because of the weather' },
+          { label: 'trotz',         de: 'Trotz des Regens gingen wir spazieren.', en: 'despite the rain' },
+        ],
+      },
+    ],
   },
   // ── Passive ──────────────────────────────────────────────────
   {
@@ -1026,10 +1260,205 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'connectors',
     title: 'Connectors & Conjunctions',
-    intro: 'Placeholder — real content coming soon.',
     category: 'Structure',
     teaser: 'und, aber, weil, dass, obwohl — coordinating vs. subordinating, and the verb-to-end rule.',
     relatedSituations: ['apotheke'],
+    intro:
+      'German connectors fall into four groups, each with a different effect on word order. ' +
+      'Coordinating conjunctions change nothing. ' +
+      'Subordinating conjunctions push the verb to the very end of the clause. ' +
+      'Adverbial connectors go to position 1 and invert the subject and verb. ' +
+      'Two-part correlatives frame both sides of a contrast or addition.',
+
+    sections: [
+      {
+        title: 'Coordinating · Verb Stays in Position 2',
+        body:
+          'Coordinating conjunctions join two main clauses. ' +
+          'They sit between the clauses and have no effect on word order — ' +
+          'the verb stays in position 2 in both halves.',
+        connectors: [
+          {
+            kind: 'coordinating',
+            label: 'Coordinating conjunctions — verb stays in P2',
+            note: 'These sit between two main clauses (Pos. 0). Word order after them is unchanged.',
+            items: [
+              { word: 'und',      meaning: 'and' },
+              { word: 'aber',     meaning: 'but' },
+              { word: 'oder',     meaning: 'or' },
+              { word: 'denn',     meaning: 'because / for (always P2 after — never P1)' },
+              { word: 'sondern',  meaning: 'but rather (corrects a negative)' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich lerne Deutsch', role: 'pos1' },
+              { text: 'und',               role: 'mittelfeld' },
+              { text: 'er',                role: 'mittelfeld' },
+              { text: 'lernt',             role: 'verb', highlight: true },
+              { text: 'Spanisch.',         role: 'satzende' },
+            ],
+            caption: 'und — verb stays in P2 in both clauses.',
+          },
+          {
+            slots: [
+              { text: 'Ich komme nicht,', role: 'pos1' },
+              { text: 'sondern',          role: 'mittelfeld' },
+              { text: 'ich',              role: 'mittelfeld' },
+              { text: 'bleibe',           role: 'verb', highlight: true },
+              { text: 'zu Hause.',        role: 'satzende' },
+            ],
+            caption: 'sondern — corrects a negative: not X, but rather Y.',
+          },
+        ],
+      },
+      {
+        title: 'Subordinating · Verb to the End',
+        body:
+          'Subordinating conjunctions introduce a Nebensatz (subordinate clause). ' +
+          'The conjugated verb moves to the very end of that clause. ' +
+          'A comma always separates the Hauptsatz from the Nebensatz.',
+        connectors: [
+          {
+            kind: 'subordinating',
+            label: 'Subordinating conjunctions — verb goes to END',
+            note: 'Comma before the Nebensatz. If the Nebensatz comes first, the main clause inverts (verb in P2).',
+            items: [
+              { word: 'weil',     meaning: 'because (reason)' },
+              { word: 'dass',     meaning: 'that (reported speech, expectations)' },
+              { word: 'obwohl',   meaning: 'although (concession)' },
+              { word: 'wenn',     meaning: 'if / whenever (condition or repetition)' },
+              { word: 'als',      meaning: 'when (single past event)' },
+              { word: 'ob',       meaning: 'whether' },
+              { word: 'damit',    meaning: 'so that (purpose)' },
+              { word: 'bevor',    meaning: 'before' },
+              { word: 'nachdem',  meaning: 'after' },
+              { word: 'während',  meaning: 'while' },
+              { word: 'seit(dem)',meaning: 'since (time)' },
+              { word: 'bis',      meaning: 'until' },
+              { word: 'falls',    meaning: 'in case / if (possibility)' },
+              { word: 'sodass',   meaning: 'so that (result)' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich bleibe zu Hause,', role: 'pos1' },
+              { text: 'weil',                 role: 'mittelfeld' },
+              { text: 'ich',                  role: 'mittelfeld' },
+              { text: 'krank',                role: 'mittelfeld' },
+              { text: 'bin.',                 role: 'verb-end', highlight: true },
+            ],
+            caption: 'weil pushes the verb to the very end.',
+          },
+          {
+            slots: [
+              { text: 'Weil ich krank', role: 'pos1' },
+              { text: 'bin,',           role: 'verb', highlight: true },
+              { text: 'bleibe',         role: 'verb', highlight: true },
+              { text: 'ich',            role: 'mittelfeld' },
+              { text: 'zu Hause.',      role: 'satzende' },
+            ],
+            caption: 'Nebensatz first → main clause inverts: verb comes before subject.',
+          },
+        ],
+      },
+      {
+        title: 'Adverbial Connectors · Position 1, Verb Inverts',
+        body:
+          'Adverbial connectors are not conjunctions — they are adverbs that sit in position 1 of the main clause. ' +
+          'Because position 1 is taken, the verb stays in position 2 and the subject shifts to position 3. ' +
+          'This inversion is the same rule as time-expression fronting in any Hauptsatz.',
+        connectors: [
+          {
+            kind: 'adverbial',
+            label: 'Adverbial connectors — occupy P1, verb stays P2, subject moves to P3',
+            note: 'These cause inversion because they fill position 1. They are NOT conjunctions — they do not start a Nebensatz.',
+            items: [
+              { word: 'deshalb',    meaning: 'therefore / that\'s why' },
+              { word: 'deswegen',   meaning: 'because of that / therefore' },
+              { word: 'daher',      meaning: 'hence / therefore' },
+              { word: 'trotzdem',   meaning: 'nevertheless / despite that' },
+              { word: 'dennoch',    meaning: 'yet / still / nonetheless' },
+              { word: 'außerdem',   meaning: 'moreover / besides' },
+              { word: 'dann',       meaning: 'then (sequence)' },
+              { word: 'danach',     meaning: 'after that' },
+              { word: 'zuerst',     meaning: 'first' },
+              { word: 'schließlich',meaning: 'finally / after all' },
+              { word: 'allerdings', meaning: 'however / admittedly' },
+              { word: 'nämlich',    meaning: 'namely / you see (goes after the verb)' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich bin krank.', role: 'pos1' },
+              { text: 'Deshalb',        role: 'pos1' },
+              { text: 'bleibe',         role: 'verb', highlight: true },
+              { text: 'ich zu Hause.',  role: 'satzende' },
+            ],
+            caption: 'deshalb fills P1 → verb stays P2 → subject ich shifts to P3.',
+          },
+          {
+            slots: [
+              { text: 'Es regnet.',   role: 'pos1' },
+              { text: 'Trotzdem',     role: 'pos1' },
+              { text: 'gehen',        role: 'verb', highlight: true },
+              { text: 'wir spazieren.', role: 'satzende' },
+            ],
+            caption: 'trotzdem — nevertheless, we go for a walk (inversion after trotzdem).',
+          },
+        ],
+      },
+      {
+        title: 'Two-Part Correlatives',
+        body:
+          'Correlative conjunctions work in pairs — one in each clause, framing the relationship between them. ' +
+          'Word order after each part follows normal main clause rules.',
+        connectors: [
+          {
+            kind: 'correlative',
+            label: 'Two-part connectors — one in each clause',
+            note: 'Each part sits in its own clause. The verb follows normal P2 rules after each connector.',
+            items: [
+              { word: 'entweder … oder',          meaning: 'either … or' },
+              { word: 'weder … noch',              meaning: 'neither … nor' },
+              { word: 'sowohl … als auch',         meaning: 'both … and' },
+              { word: 'nicht nur … sondern auch',  meaning: 'not only … but also' },
+              { word: 'zwar … aber',               meaning: 'it\'s true … but' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Entweder',     role: 'pos1' },
+              { text: 'kommst',       role: 'verb', highlight: true },
+              { text: 'du jetzt,',    role: 'mittelfeld' },
+              { text: 'oder',         role: 'mittelfeld' },
+              { text: 'ich',          role: 'mittelfeld' },
+              { text: 'gehe',         role: 'verb', highlight: true },
+              { text: 'allein.',      role: 'satzende' },
+            ],
+            caption: 'entweder … oder: either you come now, or I go alone.',
+          },
+          {
+            slots: [
+              { text: 'Er',           role: 'pos1' },
+              { text: 'spricht',      role: 'verb', highlight: true },
+              { text: 'sowohl Deutsch', role: 'mittelfeld' },
+              { text: 'als auch',     role: 'mittelfeld' },
+              { text: 'Englisch.',    role: 'satzende' },
+            ],
+            caption: 'sowohl … als auch: both German and English.',
+          },
+        ],
+      },
+    ],
   },
 ];
 

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TenseMap from '../../components/TenseMap.astro';
 import TenseLadder from '../../components/TenseLadder.astro';
 import ModalStack from '../../components/ModalStack.astro';
+import DeclensionTableComponent from '../../components/DeclensionTable.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
@@ -28,7 +29,8 @@ const hasContent =
   (topic.verbConjugations?.length ?? 0) > 0 ||
   (topic.sentenceFrames?.length ?? 0) > 0 ||
   (topic.progression?.length ?? 0) > 0 ||
-  (topic.modalStack?.length ?? 0) > 0;
+  (topic.modalStack?.length ?? 0) > 0 ||
+  (topic.declensionTables?.length ?? 0) > 0;
 
 const relatedSits = (topic.relatedSituations ?? [])
   .map((s) => situations.find((sit) => sit.slug === s))
@@ -99,6 +101,10 @@ const relatedSits = (topic.relatedSituations ?? [])
           </div>
         )}
 
+        {section.declensionTables && section.declensionTables.length > 0 && (
+          <DeclensionTableComponent tables={section.declensionTables} />
+        )}
+
         {section.callout && (
           <Callout kind={section.callout.kind ?? 'tip'} label={section.callout.label}>
             {section.callout.text}
@@ -120,6 +126,14 @@ const relatedSits = (topic.relatedSituations ?? [])
       <section class="spoke__section">
         <h2 class="spoke__section-title">The Eight Tenses</h2>
         <TenseMap tenses={topic.tenseOverviews} />
+      </section>
+    )}
+
+    {/* Top-level declension tables (case system) */}
+    {topic.declensionTables && topic.declensionTables.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">Article Declension</h2>
+        <DeclensionTableComponent tables={topic.declensionTables} />
       </section>
     )}
 

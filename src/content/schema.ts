@@ -205,10 +205,19 @@ export interface ConnectorItem {
 }
 
 export interface ConnectorGroup {
-  kind: 'coordinating' | 'subordinating';
-  label: string;      // "Coordinating — verb stays in place"
-  note?: string;      // extra rule reminder shown under the group
+  kind: 'coordinating' | 'subordinating' | 'adverbial' | 'correlative';
+  label: string;
+  note?: string;
   items: ConnectorItem[];
+}
+
+// ---------- Declension tables (case system) ----------
+
+export interface DeclensionTable {
+  title: string;
+  note?: string;
+  headers: string[];                          // e.g. ['', 'maskulin', 'feminin', 'neutrum', 'Plural']
+  rows: { label: string; cells: string[] }[]; // one row per case
 }
 
 export interface FoundationSection {
@@ -221,8 +230,8 @@ export interface FoundationSection {
   };
   sentenceFrames?: SentenceFrame[];
   connectors?: ConnectorGroup[];
-  // Simple two-column table (label + German example + optional English gloss)
   exampleTable?: { label: string; de: string; en?: string }[];
+  declensionTables?: DeclensionTable[];
 }
 
 // ---------- Modal stacking table ----------
@@ -253,7 +262,8 @@ export interface FoundationTopic {
   progression?: ProgressionRow[];  // CEFR expansion of this concept
   // free-form sections can also carry vocab groups, tables, etc.
   vocab?: VocabGroup[];
-  modalStack?: ModalStackRow[];    // modal + tense combination table
+  modalStack?: ModalStackRow[];
+  declensionTables?: DeclensionTable[];
   relatedSituations?: string[];    // situation slugs that USE this concept
 }
 

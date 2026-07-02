@@ -36,24 +36,38 @@ const { groups } = Astro.props;
     border: 1px solid var(--border);
   }
 
-  /* Coordinating — teal tint (verb stays) */
+  /* Coordinating — teal (verb stays) */
   .cl__group--coordinating {
     background: var(--accent-bg);
     border-color: var(--accent-tint);
   }
 
-  /* Subordinating — surface (verb moves) */
+  /* Subordinating — amber (verb moves) */
   .cl__group--subordinating {
     background: var(--tip-bg);
     border-color: var(--tip-border);
+  }
+
+  /* Adverbial — indigo/purple (verb inverts) */
+  .cl__group--adverbial {
+    background: var(--cefr-b-bg, #eff6ff);
+    border-color: var(--cefr-b-border, #bfdbfe);
+  }
+
+  /* Correlative — neutral surface (two-part pairs) */
+  .cl__group--correlative {
+    background: var(--surface);
+    border-color: var(--border);
   }
 
   .cl__label {
     margin-bottom: .75rem;
   }
 
-  .cl__group--coordinating .cl__label { color: var(--accent-deep); }
+  .cl__group--coordinating  .cl__label { color: var(--accent-deep); }
   .cl__group--subordinating .cl__label { color: var(--tip-text); }
+  .cl__group--adverbial     .cl__label { color: var(--cefr-b-text, #1d4ed8); }
+  .cl__group--correlative   .cl__label { color: var(--ink-soft); }
 
   .cl__chips {
     display: flex;
@@ -91,6 +105,8 @@ const { groups } = Astro.props;
     line-height: 1.5;
   }
 
-  .cl__group--coordinating .cl__note { color: var(--accent-deep); }
+  .cl__group--coordinating  .cl__note { color: var(--accent-deep); }
   .cl__group--subordinating .cl__note { color: var(--tip-text); }
+  .cl__group--adverbial     .cl__note { color: var(--cefr-b-text, #1d4ed8); }
+  .cl__group--correlative   .cl__note { color: var(--ink-soft); }
 </style>

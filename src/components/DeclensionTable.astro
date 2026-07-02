@@ -1,0 +1,129 @@
+---
+import type { DeclensionTable } from '../content/schema';
+
+interface Props {
+  tables: DeclensionTable[];
+}
+const { tables } = Astro.props;
+---
+
+<div class="dt-group">
+  {tables.map((table) => (
+    <div class="dt">
+      <div class="dt__title eyebrow">{table.title}</div>
+      {table.note && <p class="dt__note">{table.note}</p>}
+      <div class="dt__wrap">
+        <table class="dt__table">
+          <thead>
+            <tr>
+              {table.headers.map((h, i) => (
+                <th class={i === 0 ? 'dt__th--case' : 'dt__th--gender'}>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.rows.map((row) => (
+              <tr>
+                <td class="dt__case">{row.label}</td>
+                {row.cells.map((cell, i) => (
+                  <td class={`dt__cell dt__cell--col${i}`}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .dt-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .dt {
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  .dt__title {
+    color: var(--ink-faint);
+  }
+
+  .dt__note {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .dt__wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .dt__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+
+  .dt__table thead {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dt__table th {
+    padding: .5rem 1rem;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-align: left;
+  }
+
+  .dt__th--case { color: var(--ink-mute); width: 26%; }
+
+  /* gender columns — subtle colour echo */
+  .dt__table th:nth-child(2) { color: var(--gender-der); }
+  .dt__table th:nth-child(3) { color: var(--gender-die); }
+  .dt__table th:nth-child(4) { color: var(--gender-das); }
+  .dt__table th:nth-child(5) { color: var(--gender-pl);  }
+
+  .dt__table td {
+    padding: .625rem 1rem;
+    border-bottom: 1px solid var(--border-2);
+    vertical-align: middle;
+  }
+
+  .dt__table tr:last-child td { border-bottom: none; }
+  .dt__table tr:hover td { background: var(--surface); }
+
+  .dt__case {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .dt__cell {
+    font-family: var(--font-mono);
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Highlight the cells that change (Akkusativ maskulin = col 0) */
+  .dt__cell--col0 { color: var(--gender-der); }
+  .dt__cell--col1 { color: var(--gender-die); }
+  .dt__cell--col2 { color: var(--gender-das); }
+  .dt__cell--col3 { color: var(--gender-pl);  }
+</style>
