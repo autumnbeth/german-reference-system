@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import VerbConjugationComponent from '../../components/VerbConjugation.astro';
+import SentenceFrameComponent from '../../components/SentenceFrame.astro';
+import ProgressionTable from '../../components/ProgressionTable.astro';
 import { foundationTopics, getFoundationTopic } from '../../data/foundation';
 import { situations } from '../../data/index';
 
@@ -12,6 +15,11 @@ const topic = getFoundationTopic(slug);
 if (!topic) throw new Error(`No foundation topic for slug: ${slug}`);
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const hasContent =
+  (topic.verbConjugations?.length ?? 0) > 0 ||
+  (topic.sentenceFrames?.length ?? 0) > 0 ||
+  (topic.progression?.length ?? 0) > 0;
 
 const relatedSits = (topic.relatedSituations ?? [])
   .map((s) => situations.find((sit) => sit.slug === s))
@@ -29,25 +37,52 @@ const relatedSits = (topic.relatedSituations ?? [])
         <div class="eyebrow spoke__category">{topic.category}</div>
       )}
       <h1 class="spoke__title">{topic.title}</h1>
-      {topic.teaser && (
-        <p class="spoke__teaser">{topic.teaser}</p>
-      )}
+      <p class="spoke__intro">{topic.intro}</p>
     </header>
 
-    <div class="spoke__placeholder">
-      <div class="placeholder-card">
-        <div class="eyebrow placeholder-card__label">Content coming soon</div>
-        <p class="placeholder-card__body">
-          The {topic.title} page will include sentence-structure diagrams,
-          a CEFR progression table, and worked examples drawn from real situations.
-          Drop in the data and this page renders automatically.
-        </p>
+    {!hasContent && (
+      <div class="spoke__placeholder">
+        <div class="placeholder-card">
+          <div class="eyebrow placeholder-card__label">Content coming soon</div>
+          <p class="placeholder-card__body">
+            The {topic.title} page will include sentence-structure diagrams,
+            a CEFR progression table, and worked examples drawn from real situations.
+            Drop in the data and this page renders automatically.
+          </p>
+        </div>
       </div>
-    </div>
+    )}
+
+    {topic.verbConjugations && topic.verbConjugations.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-heading eyebrow">Conjugations</h2>
+        <div class="spoke__verbs">
+          {topic.verbConjugations.map((v) => (
+            <VerbConjugationComponent verb={v} />
+          ))}
+        </div>
+      </section>
+    )}
+
+    {topic.sentenceFrames && topic.sentenceFrames.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-heading eyebrow">Sentence Structure</h2>
+        {topic.sentenceFrames.map((frame) => (
+          <SentenceFrameComponent frame={frame} />
+        ))}
+      </section>
+    )}
+
+    {topic.progression && topic.progression.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-heading eyebrow">Progression · A1 → B2</h2>
+        <ProgressionTable rows={topic.progression} title="" />
+      </section>
+    )}
 
     {relatedSits.length > 0 && (
-      <section class="spoke__related">
-        <h2 class="spoke__related-heading eyebrow">Situations that use this</h2>
+      <section class="spoke__section">
+        <h2 class="spoke__section-heading eyebrow">Situations that use this</h2>
         <ul class="spoke__related-list">
           {relatedSits.map((s) => s && (
             <li>
@@ -65,7 +100,7 @@ const relatedSits = (topic.relatedSituations ?? [])
 
 <style>
   .spoke {
-    max-width: 760px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 2rem 4rem;
   }
@@ -79,6 +114,8 @@ const relatedSits = (topic.relatedSituations ?? [])
   }
   .spoke__back:hover { color: var(--accent-deep); }
 
+  .spoke__header { margin-bottom: 2rem; }
+
   .spoke__category { margin-bottom: .5rem; }
 
   .spoke__title {
@@ -86,16 +123,32 @@ const relatedSits = (topic.relatedSituations ?? [])
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 600;
     color: var(--ink);
-    margin: 0 0 .5rem;
+    margin: 0 0 .75rem;
     line-height: 1.2;
   }
 
-  .spoke__teaser {
+  .spoke__intro {
     font-family: var(--font-serif);
     font-size: 1.0625rem;
     color: var(--ink-body);
     line-height: 1.7;
-    margin: 0 0 2rem;
+    margin: 0;
+    max-width: 640px;
+  }
+
+  .spoke__section {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .spoke__section-heading { color: var(--ink-faint); }
+
+  .spoke__verbs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 
   .spoke__placeholder { margin-bottom: 2rem; }
@@ -116,8 +169,6 @@ const relatedSits = (topic.relatedSituations ?? [])
     line-height: 1.65;
     margin: 0;
   }
-
-  .spoke__related-heading { margin-bottom: .75rem; }
 
   .spoke__related-list {
     list-style: none;

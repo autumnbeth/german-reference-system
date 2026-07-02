@@ -142,6 +142,26 @@ export interface Situation {
   hero?: { caption?: string; alt: string };    // 3:1 situation hero
 }
 
+// ---------- Verb conjugation tables ----------
+
+export interface ConjugationRow {
+  pronoun: string;   // "ich" | "du" | "er/sie/es" | "wir" | "ihr" | "sie/Sie"
+  form: string;      // the conjugated form, e.g. "habe"
+}
+
+export interface TenseTable {
+  tense: string;     // "Präsens" | "Präteritum" | "Perfekt" | "Futur I"
+  rows: ConjugationRow[];
+  note?: string;     // e.g. "Perfekt uses sein as auxiliary"
+}
+
+export interface VerbConjugation {
+  verb: string;      // "haben"
+  meaning: string;   // "to have"
+  role?: string;     // e.g. "auxiliary for Perfekt · direct object verbs"
+  tenses: TenseTable[];
+}
+
 // ---------- The Foundation (the grammar "map") ----------
 // Reuses the same primitives so Foundation and Situations look identical.
 
@@ -152,6 +172,7 @@ export interface FoundationTopic {
   category?: string;     // "Structure" | "Grammar" | "Verbs"
   teaser?: string;       // one-line description shown on the hub card
   // Foundation pages are visual: they lean on these reusable blocks.
+  verbConjugations?: VerbConjugation[];
   sentenceFrames?: SentenceFrame[];
   progression?: ProgressionRow[];  // CEFR expansion of this concept
   // free-form sections can also carry vocab groups, tables, etc.

@@ -1,0 +1,125 @@
+---
+import type { VerbConjugation } from '../content/schema';
+
+interface Props {
+  verb: VerbConjugation;
+}
+const { verb } = Astro.props;
+---
+<div class="vc">
+  <div class="vc__header">
+    <span class="vc__verb">{verb.verb}</span>
+    <span class="vc__meaning gloss">{verb.meaning}</span>
+    {verb.role && <span class="vc__role eyebrow">{verb.role}</span>}
+  </div>
+
+  <div class="vc__tenses">
+    {verb.tenses.map((t) => (
+      <div class="vc__tense">
+        <div class="vc__tense-name eyebrow">{t.tense}</div>
+        <table class="vc__table">
+          <tbody>
+            {t.rows.map((row) => (
+              <tr>
+                <td class="vc__pronoun">{row.pronoun}</td>
+                <td class="vc__form">{row.form}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {t.note && <p class="vc__note">{t.note}</p>}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .vc {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+
+  .vc__header {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    padding: 1rem 1.5rem .875rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .vc__verb {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .vc__meaning {
+    font-size: .9375rem;
+  }
+
+  .vc__role {
+    margin-left: auto;
+    color: var(--accent-deep);
+    font-size: 10px;
+    background: var(--accent-bg);
+    padding: 3px 8px;
+    border-radius: var(--r-pill);
+  }
+
+  .vc__tenses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+  }
+
+  .vc__tense {
+    padding: 1rem 1.25rem 1rem;
+    border-right: 1px solid var(--border-2);
+    border-bottom: 1px solid var(--border-2);
+  }
+
+  .vc__tense:last-child { border-right: none; }
+
+  .vc__tense-name {
+    color: var(--accent-deep);
+    margin-bottom: .625rem;
+  }
+
+  .vc__table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .vc__table tr:hover td { background: var(--surface); }
+
+  .vc__pronoun {
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    padding: .2rem .5rem .2rem 0;
+    white-space: nowrap;
+    width: 40%;
+  }
+
+  .vc__form {
+    font-size: .9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding: .2rem 0;
+    font-family: var(--font-mono);
+  }
+
+  .vc__note {
+    margin: .5rem 0 0;
+    font-size: .75rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-style: italic;
+  }
+</style>
