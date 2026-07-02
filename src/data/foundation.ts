@@ -219,10 +219,85 @@ export const foundationTopics: FoundationTopic[] = [
     category: 'Verbs',
     teaser: 'All eight German tenses — formation, register, and when to use each one.',
     intro:
-      'German has eight tenses, but you will live in just two or three of them ' +
-      'until B2. This map shows all eight: how each one is formed, when to use it, ' +
-      'and whether it belongs to spoken or written German — or both. ' +
-      'Conjugations use lernen as the paradigm verb throughout.',
+      'Every German tense follows the same structural rule: one conjugated verb in position 2, ' +
+      'everything else stacks at the end. ' +
+      'Präsens uses one verb. Perfekt uses two. Futur II uses three. ' +
+      'The frame never changes — only the verbs change. ' +
+      'Master the ladder below and all eight tenses fall into place.',
+
+    tenseLadder: [
+      {
+        tense: 'Präsens',
+        verbCount: 1,
+        structure: 'conjugated verb only',
+        example: 'Ich lerne.',
+        note: 'spoken & written',
+      },
+      {
+        tense: 'Präteritum',
+        verbCount: 1,
+        structure: 'past stem (no auxiliary)',
+        example: 'Ich lernte.',
+        note: 'written / narrative',
+      },
+      {
+        tense: 'Perfekt',
+        verbCount: 2,
+        structure: 'haben/sein (P2) + Partizip II (END)',
+        example: 'Ich habe gelernt.',
+        note: 'spoken past',
+      },
+      {
+        tense: 'Plusquamperfekt',
+        verbCount: 2,
+        structure: 'hatte/war (P2) + Partizip II (END)',
+        example: 'Ich hatte gelernt.',
+        note: 'past before the past',
+      },
+      {
+        tense: 'Futur I',
+        verbCount: 2,
+        structure: 'werden (P2) + Infinitiv (END)',
+        example: 'Ich werde lernen.',
+        note: 'future / assumption',
+      },
+      {
+        tense: 'Futur II',
+        verbCount: 3,
+        structure: 'werden (P2) + Partizip II + haben/sein (END)',
+        example: 'Ich werde gelernt haben.',
+        note: 'completed future',
+      },
+      {
+        tense: 'Konjunktiv II',
+        verbCount: 2,
+        structure: 'würde (P2) + Infinitiv (END)  ·  or irregular stem',
+        example: 'Ich würde lernen.',
+        note: 'hypothetical / polite',
+      },
+      {
+        tense: 'Konjunktiv I',
+        verbCount: 1,
+        structure: 'Konj. I stem (reported speech)',
+        example: 'Er lerne. (reported)',
+        note: 'indirect speech · written',
+      },
+    ],
+
+    habenSein: {
+      seinNote: 'Motion, change of state, and being/staying',
+      habenNote: 'Everything else — transitive and most intransitive verbs',
+      seinVerbs: [
+        'gehen', 'fahren', 'laufen', 'kommen', 'fliegen',
+        'aufwachen', 'einschlafen', 'sterben', 'werden',
+        'bleiben', 'sein', 'passieren', 'fallen',
+      ],
+      habenVerbs: [
+        'lernen', 'essen', 'arbeiten', 'schreiben',
+        'kaufen', 'sehen', 'hören', 'lesen',
+        'machen', 'denken', 'helfen', 'nehmen',
+      ],
+    },
 
     tenseOverviews: [
       {

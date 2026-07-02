@@ -160,6 +160,23 @@ export interface TenseOverview {
   };
 }
 
+// ---------- Tense ladder ----------
+
+export interface TenseLadderRow {
+  tense: string;          // "Perfekt"
+  verbCount: 1 | 2 | 3;  // how many verb parts the tense uses
+  structure: string;      // "haben/sein (P2) + Partizip II (END)"
+  example: string;        // "Ich habe gelernt."
+  note?: string;          // e.g. "spoken past"
+}
+
+export interface HabenSeinGuide {
+  seinVerbs: string[];    // motion/change verbs that take sein
+  habenVerbs: string[];   // all others
+  seinNote: string;
+  habenNote: string;
+}
+
 // ---------- Verb conjugation tables ----------
 
 export interface ConjugationRow {
@@ -217,6 +234,8 @@ export interface FoundationTopic {
   teaser?: string;       // one-line description shown on the hub card
   // Foundation pages are visual: they lean on these reusable blocks.
   sections?: FoundationSection[];
+  tenseLadder?: TenseLadderRow[];
+  habenSein?: HabenSeinGuide;
   tenseOverviews?: TenseOverview[];
   verbConjugations?: VerbConjugation[];
   sentenceFrames?: SentenceFrame[];

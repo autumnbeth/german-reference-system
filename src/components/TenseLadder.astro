@@ -1,0 +1,249 @@
+---
+import type { TenseLadderRow, HabenSeinGuide } from '../content/schema';
+
+interface Props {
+  rows: TenseLadderRow[];
+  habenSein?: HabenSeinGuide;
+}
+const { rows, habenSein } = Astro.props;
+---
+
+<div class="tl">
+
+  <!-- The ladder table -->
+  <div class="tl__master-note eyebrow">
+    One pattern · the structure never changes · only the verbs change
+  </div>
+
+  <div class="tl__table-wrap">
+    <table class="tl__table">
+      <thead>
+        <tr>
+          <th>Tense</th>
+          <th>Verbs</th>
+          <th>Structure</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr class={`tl__row tl__row--v${row.verbCount}`}>
+            <td class="tl__tense">
+              {row.tense}
+              {row.note && <span class="tl__row-note">{row.note}</span>}
+            </td>
+            <td class="tl__verbs" aria-label={`${row.verbCount} verb${row.verbCount > 1 ? 's' : ''}`}>
+              <div class="tl__dots">
+                {Array.from({ length: row.verbCount }).map((_, i) => (
+                  <span class={`tl__dot tl__dot--${i === 0 ? 'main' : i === 1 ? 'aux' : 'third'}`} />
+                ))}
+              </div>
+              <span class="tl__verb-count">{row.verbCount}</span>
+            </td>
+            <td class="tl__structure">{row.structure}</td>
+            <td class="tl__example">{row.example}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- haben vs sein guide -->
+  {habenSein && (
+    <div class="hs">
+      <div class="eyebrow hs__heading">haben vs. sein — which auxiliary?</div>
+      <div class="hs__cols">
+        <div class="hs__col hs__col--sein">
+          <div class="hs__col-label eyebrow">sein</div>
+          <p class="hs__col-note">{habenSein.seinNote}</p>
+          <div class="hs__verbs">
+            {habenSein.seinVerbs.map((v) => (
+              <span class="hs__verb hs__verb--sein">{v}</span>
+            ))}
+          </div>
+        </div>
+        <div class="hs__col hs__col--haben">
+          <div class="hs__col-label eyebrow">haben</div>
+          <p class="hs__col-note">{habenSein.habenNote}</p>
+          <div class="hs__verbs">
+            {habenSein.habenVerbs.map((v) => (
+              <span class="hs__verb hs__verb--haben">{v}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
+
+<style>
+  /* ── Ladder ── */
+  .tl {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: var(--font-sans);
+  }
+
+  .tl__master-note {
+    color: var(--accent-deep);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-tint);
+    border-radius: var(--r-sm);
+    padding: .4rem .875rem;
+    display: inline-block;
+  }
+
+  .tl__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .tl__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+
+  .tl__table thead {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tl__table th {
+    text-align: left;
+    padding: .625rem 1rem;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .tl__table td {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--border-2);
+    vertical-align: middle;
+  }
+
+  .tl__table tr:last-child td { border-bottom: none; }
+  .tl__table tr:hover td { background: var(--surface); }
+
+  /* Accent left border by verb count */
+  .tl__row--v1 td:first-child { border-left: 3px solid var(--cefr-a-text); }
+  .tl__row--v2 td:first-child { border-left: 3px solid var(--accent); }
+  .tl__row--v3 td:first-child { border-left: 3px solid var(--gender-die); }
+
+  .tl__tense {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .tl__row-note {
+    display: block;
+    font-size: .7rem;
+    font-weight: 400;
+    color: var(--ink-mute);
+    margin-top: .1rem;
+  }
+
+  .tl__verbs {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .tl__dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .tl__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .tl__dot--main  { background: var(--ink); }
+  .tl__dot--aux   { background: var(--accent); }
+  .tl__dot--third { background: var(--gender-die); }
+
+  .tl__verb-count {
+    font-size: .75rem;
+    color: var(--ink-mute);
+    font-weight: 700;
+  }
+
+  .tl__structure {
+    font-family: var(--font-mono);
+    font-size: .8125rem;
+    color: var(--ink-body);
+  }
+
+  .tl__example {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink);
+    font-size: .9375rem;
+    white-space: nowrap;
+  }
+
+  /* ── haben vs sein ── */
+  .hs {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hs__heading { color: var(--ink-faint); }
+
+  .hs__cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 560px) {
+    .hs__cols { grid-template-columns: 1fr; }
+  }
+
+  .hs__col-label {
+    margin-bottom: .375rem;
+  }
+
+  .hs__col--sein  .hs__col-label { color: var(--accent-deep); }
+  .hs__col--haben .hs__col-label { color: var(--ink-soft); }
+
+  .hs__col-note {
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0 0 .625rem;
+  }
+
+  .hs__verbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .375rem;
+  }
+
+  .hs__verb {
+    font-family: var(--font-mono);
+    font-size: .8125rem;
+    font-weight: 600;
+    padding: .2rem .625rem;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--border);
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .hs__verb--sein { border-color: var(--accent-tint); color: var(--accent-deep); background: var(--accent-bg); }
+</style>
