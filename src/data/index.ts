@@ -17,6 +17,10 @@ import { vorstellungsgespraech } from './situations/vorstellungsgespraech';
 import { ersterArbeitstag } from './situations/erster_arbeitstag';
 import { freundeTreffen } from './situations/freunde_treffen';
 import { terminVereinbaren } from './situations/termin_vereinbaren';
+import { gespraechMitLehrkraft } from './situations/gespraech_mit_lehrkraft';
+import { elternabend } from './situations/elternabend';
+import { anmeldung } from './situations/anmeldung';
+import { buergeramt } from './situations/buergeramt';
 
 export const situations: Situation[] = [
   apotheke,
@@ -31,6 +35,10 @@ export const situations: Situation[] = [
   ersterArbeitstag,
   freundeTreffen,
   terminVereinbaren,
+  gespraechMitLehrkraft,
+  elternabend,
+  anmeldung,
+  buergeramt,
 ];
 
 export function getSituation(slug: string): Situation | undefined {
