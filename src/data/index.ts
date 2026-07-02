@@ -6,9 +6,13 @@
 
 import type { Situation } from '../content/schema';
 import apotheke from './situations/apotheke';
+import { arzttermin } from './situations/arzttermin';
+import { notfall } from './situations/notfall';
 
 export const situations: Situation[] = [
   apotheke,
+  arzttermin,
+  notfall,
 ];
 
 export function getSituation(slug: string): Situation | undefined {
