@@ -142,6 +142,24 @@ export interface Situation {
   hero?: { caption?: string; alt: string };    // 3:1 situation hero
 }
 
+// ---------- Tense overview map ----------
+
+export type TenseRegister = 'spoken' | 'written' | 'both';
+
+export interface TenseOverview {
+  name: string;           // "Perfekt"
+  formula: string;        // "haben/sein (Präsens) + Partizip II"
+  use: string;            // when and why to use this tense
+  example: string;        // German example sentence
+  exampleEn?: string;     // English gloss
+  register: TenseRegister;
+  note?: string;          // extra rule or caveat
+  conjugation?: {         // optional full paradigm (verb name + 6 rows)
+    verb: string;
+    rows: { pronoun: string; form: string }[];
+  };
+}
+
 // ---------- Verb conjugation tables ----------
 
 export interface ConjugationRow {
@@ -199,6 +217,7 @@ export interface FoundationTopic {
   teaser?: string;       // one-line description shown on the hub card
   // Foundation pages are visual: they lean on these reusable blocks.
   sections?: FoundationSection[];
+  tenseOverviews?: TenseOverview[];
   verbConjugations?: VerbConjugation[];
   sentenceFrames?: SentenceFrame[];
   progression?: ProgressionRow[];  // CEFR expansion of this concept

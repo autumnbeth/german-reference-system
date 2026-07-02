@@ -1,0 +1,196 @@
+---
+import type { TenseOverview } from '../content/schema';
+
+interface Props {
+  tenses: TenseOverview[];
+}
+const { tenses } = Astro.props;
+
+const registerLabel: Record<string, string> = {
+  spoken:  'Spoken',
+  written: 'Written',
+  both:    'Spoken & Written',
+};
+---
+<div class="tense-map">
+  {tenses.map((t) => (
+    <div class={`tm-card tm-card--${t.register}`}>
+      <div class="tm-card__header">
+        <span class="tm-card__name">{t.name}</span>
+        <span class={`tm-card__register tm-card__register--${t.register}`}>
+          {registerLabel[t.register]}
+        </span>
+      </div>
+
+      <div class="tm-card__formula eyebrow">{t.formula}</div>
+
+      <p class="tm-card__use">{t.use}</p>
+
+      <div class="tm-card__example">
+        <span class="tm-card__de">{t.example}</span>
+        {t.exampleEn && <span class="gloss tm-card__en">{t.exampleEn}</span>}
+      </div>
+
+      {t.note && <p class="tm-card__note">{t.note}</p>}
+
+      {t.conjugation && (
+        <details class="tm-card__conj">
+          <summary class="tm-card__conj-toggle eyebrow">
+            Conjugation · {t.conjugation.verb}
+          </summary>
+          <table class="tm-card__table">
+            <tbody>
+              {t.conjugation.rows.map((row) => (
+                <tr>
+                  <td class="tm-card__pronoun">{row.pronoun}</td>
+                  <td class="tm-card__form">{row.form}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </details>
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .tense-map {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+
+  .tm-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 1.25rem 1.375rem 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+  }
+
+  /* subtle left accent by register */
+  .tm-card--spoken  { border-left: 3px solid var(--accent); }
+  .tm-card--written { border-left: 3px solid var(--ink-mute); }
+  .tm-card--both    { border-left: 3px solid var(--gender-das); }
+
+  .tm-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+  }
+
+  .tm-card__name {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .tm-card__register {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+  }
+  .tm-card__register--spoken  { background: var(--accent-bg);  color: var(--accent-deep); }
+  .tm-card__register--written { background: var(--surface);     color: var(--ink-soft); border: 1px solid var(--border); }
+  .tm-card__register--both    { background: var(--cefr-a-bg);   color: var(--cefr-a-text); }
+
+  .tm-card__formula {
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    color: var(--accent-deep);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .tm-card__use {
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    color: var(--ink-body);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .tm-card__example {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    padding: .5rem .75rem;
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    border-left: 2px solid var(--border);
+  }
+
+  .tm-card__de {
+    font-family: var(--font-serif);
+    font-size: .9375rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .tm-card__en { font-size: .8125rem; }
+
+  .tm-card__note {
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 0;
+    padding: .4rem .625rem;
+    background: var(--tip-bg);
+    border: 1px solid var(--tip-border);
+    border-radius: var(--r-sm);
+  }
+
+  /* Conjugation toggle */
+  .tm-card__conj { margin-top: .25rem; }
+
+  .tm-card__conj-toggle {
+    cursor: pointer;
+    color: var(--ink-faint);
+    transition: color .1s;
+    list-style: none;
+    user-select: none;
+  }
+  .tm-card__conj-toggle::-webkit-details-marker { display: none; }
+  .tm-card__conj-toggle::before {
+    content: '▸ ';
+    font-size: 9px;
+    color: var(--ink-mute);
+  }
+  details[open] .tm-card__conj-toggle::before { content: '▾ '; }
+  .tm-card__conj-toggle:hover { color: var(--accent-deep); }
+
+  .tm-card__table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: .5rem;
+  }
+
+  .tm-card__table tr:hover td { background: var(--surface); }
+
+  .tm-card__pronoun {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    padding: .2rem .5rem .2rem 0;
+    width: 36%;
+  }
+
+  .tm-card__form {
+    font-family: var(--font-mono);
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding: .2rem 0;
+  }
+</style>

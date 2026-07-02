@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TenseMap from '../../components/TenseMap.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
@@ -20,6 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const hasContent =
   (topic.sections?.length ?? 0) > 0 ||
+  (topic.tenseOverviews?.length ?? 0) > 0 ||
   (topic.verbConjugations?.length ?? 0) > 0 ||
   (topic.sentenceFrames?.length ?? 0) > 0 ||
   (topic.progression?.length ?? 0) > 0;
@@ -84,6 +86,14 @@ const relatedSits = (topic.relatedSituations ?? [])
         )}
       </section>
     ))}
+
+    {/* Tense overview map (tense-stack page) */}
+    {topic.tenseOverviews && topic.tenseOverviews.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">The Eight Tenses</h2>
+        <TenseMap tenses={topic.tenseOverviews} />
+      </section>
+    )}
 
     {/* Top-level verb conjugations (verb-tenses page) */}
     {topic.verbConjugations && topic.verbConjugations.length > 0 && (
