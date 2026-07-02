@@ -162,6 +162,32 @@ export interface VerbConjugation {
   tenses: TenseTable[];
 }
 
+// ---------- Foundation sections (named blocks on a spoke page) ----------
+
+export interface ConnectorItem {
+  word: string;       // "weil"
+  meaning: string;    // "because"
+}
+
+export interface ConnectorGroup {
+  kind: 'coordinating' | 'subordinating';
+  label: string;      // "Coordinating — verb stays in place"
+  note?: string;      // extra rule reminder shown under the group
+  items: ConnectorItem[];
+}
+
+export interface FoundationSection {
+  title: string;
+  body?: string;      // explanatory paragraph (Newsreader)
+  callout?: {
+    kind?: 'tip' | 'confidence' | 'challenge';
+    label?: string;
+    text: string;
+  };
+  sentenceFrames?: SentenceFrame[];
+  connectors?: ConnectorGroup[];
+}
+
 // ---------- The Foundation (the grammar "map") ----------
 // Reuses the same primitives so Foundation and Situations look identical.
 
@@ -172,6 +198,7 @@ export interface FoundationTopic {
   category?: string;     // "Structure" | "Grammar" | "Verbs"
   teaser?: string;       // one-line description shown on the hub card
   // Foundation pages are visual: they lean on these reusable blocks.
+  sections?: FoundationSection[];
   verbConjugations?: VerbConjugation[];
   sentenceFrames?: SentenceFrame[];
   progression?: ProgressionRow[];  // CEFR expansion of this concept

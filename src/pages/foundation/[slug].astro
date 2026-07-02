@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
+import ConnectorList from '../../components/ConnectorList.astro';
 import ProgressionTable from '../../components/ProgressionTable.astro';
+import Callout from '../../components/Callout.astro';
 import { foundationTopics, getFoundationTopic } from '../../data/foundation';
 import { situations } from '../../data/index';
 
@@ -17,6 +19,7 @@ if (!topic) throw new Error(`No foundation topic for slug: ${slug}`);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const hasContent =
+  (topic.sections?.length ?? 0) > 0 ||
   (topic.verbConjugations?.length ?? 0) > 0 ||
   (topic.sentenceFrames?.length ?? 0) > 0 ||
   (topic.progression?.length ?? 0) > 0;
@@ -53,9 +56,39 @@ const relatedSits = (topic.relatedSituations ?? [])
       </div>
     )}
 
+    {/* Named sections (satzbau-style) */}
+    {topic.sections && topic.sections.map((section) => (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">{section.title}</h2>
+
+        {section.body && (
+          <p class="spoke__section-body">{section.body}</p>
+        )}
+
+        {section.connectors && section.connectors.length > 0 && (
+          <ConnectorList groups={section.connectors} />
+        )}
+
+        {section.sentenceFrames && section.sentenceFrames.length > 0 && (
+          <div class="spoke__frames">
+            {section.sentenceFrames.map((frame) => (
+              <SentenceFrameComponent frame={frame} />
+            ))}
+          </div>
+        )}
+
+        {section.callout && (
+          <Callout kind={section.callout.kind ?? 'tip'} label={section.callout.label}>
+            {section.callout.text}
+          </Callout>
+        )}
+      </section>
+    ))}
+
+    {/* Top-level verb conjugations (verb-tenses page) */}
     {topic.verbConjugations && topic.verbConjugations.length > 0 && (
       <section class="spoke__section">
-        <h2 class="spoke__section-heading eyebrow">Conjugations</h2>
+        <h2 class="spoke__section-title">Conjugations</h2>
         <div class="spoke__verbs">
           {topic.verbConjugations.map((v) => (
             <VerbConjugationComponent verb={v} />
@@ -64,25 +97,28 @@ const relatedSits = (topic.relatedSituations ?? [])
       </section>
     )}
 
+    {/* Top-level sentence frames */}
     {topic.sentenceFrames && topic.sentenceFrames.length > 0 && (
       <section class="spoke__section">
-        <h2 class="spoke__section-heading eyebrow">Sentence Structure</h2>
-        {topic.sentenceFrames.map((frame) => (
-          <SentenceFrameComponent frame={frame} />
-        ))}
+        <h2 class="spoke__section-title">Sentence Structure</h2>
+        <div class="spoke__frames">
+          {topic.sentenceFrames.map((frame) => (
+            <SentenceFrameComponent frame={frame} />
+          ))}
+        </div>
       </section>
     )}
 
     {topic.progression && topic.progression.length > 0 && (
       <section class="spoke__section">
-        <h2 class="spoke__section-heading eyebrow">Progression · A1 → B2</h2>
+        <h2 class="spoke__section-title">Progression</h2>
         <ProgressionTable rows={topic.progression} title="" />
       </section>
     )}
 
     {relatedSits.length > 0 && (
       <section class="spoke__section">
-        <h2 class="spoke__section-heading eyebrow">Situations that use this</h2>
+        <h2 class="spoke__section-title">Situations that use this</h2>
         <ul class="spoke__related-list">
           {relatedSits.map((s) => s && (
             <li>
@@ -114,7 +150,7 @@ const relatedSits = (topic.relatedSituations ?? [])
   }
   .spoke__back:hover { color: var(--accent-deep); }
 
-  .spoke__header { margin-bottom: 2rem; }
+  .spoke__header { margin-bottom: 2.5rem; }
 
   .spoke__category { margin-bottom: .5rem; }
 
@@ -133,17 +169,43 @@ const relatedSits = (topic.relatedSituations ?? [])
     color: var(--ink-body);
     line-height: 1.7;
     margin: 0;
-    max-width: 640px;
+    max-width: 680px;
   }
 
+  /* ── Sections ── */
   .spoke__section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-2);
   }
 
-  .spoke__section-heading { color: var(--ink-faint); }
+  .spoke__section:first-of-type { border-top: none; padding-top: 0; }
+
+  .spoke__section-title {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .spoke__section-body {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 680px;
+  }
+
+  .spoke__frames {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
 
   .spoke__verbs {
     display: flex;
@@ -151,6 +213,7 @@ const relatedSits = (topic.relatedSituations ?? [])
     gap: 1.25rem;
   }
 
+  /* ── Placeholder ── */
   .spoke__placeholder { margin-bottom: 2rem; }
 
   .placeholder-card {
@@ -170,6 +233,7 @@ const relatedSits = (topic.relatedSituations ?? [])
     margin: 0;
   }
 
+  /* ── Related ── */
   .spoke__related-list {
     list-style: none;
     margin: 0;

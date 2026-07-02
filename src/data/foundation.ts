@@ -10,10 +10,185 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'satzbau',
     title: 'Sentence Architecture',
-    intro: 'Placeholder — real content coming soon.',
     category: 'Structure',
     teaser: 'How German sentences are built: the verb-second rule, position 1, and the middle field.',
     relatedSituations: ['apotheke'],
+    intro:
+      'German word order follows two rules that explain almost every pattern you will encounter. ' +
+      'In a main clause (Hauptsatz) the verb always occupies position 2 — no matter what comes first. ' +
+      'In a subordinate clause (Nebensatz) the verb moves to the very end. ' +
+      'Everything else in German sentence structure flows from those two rules.',
+
+    sections: [
+      // ── Section 1: The Hauptsatz ─────────────────────────────
+      {
+        title: 'The Hauptsatz · Main Clause',
+
+        body:
+          'The conjugated verb always sits in position 2. Position 1 can hold the subject, ' +
+          'a time expression, or almost anything else — but the moment it moves, ' +
+          'the verb stays in position 2 and the subject shifts to position 3.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich',     role: 'pos1' },
+              { text: 'lerne',   role: 'verb', highlight: true },
+              { text: 'heute Deutsch.', role: 'mittelfeld' },
+            ],
+            caption: 'Subject in position 1 — the default order.',
+          },
+          {
+            slots: [
+              { text: 'Heute',   role: 'pos1' },
+              { text: 'lerne',   role: 'verb', highlight: true },
+              { text: 'ich Deutsch.', role: 'mittelfeld' },
+            ],
+            caption: 'Time expression in position 1 — verb stays in position 2, subject moves to position 3.',
+          },
+        ],
+      },
+
+      // ── Section 2: Subordinating conjunctions ────────────────
+      {
+        title: 'Subordinating Conjunctions · Verb to the End',
+
+        body:
+          'Subordinating conjunctions introduce a Nebensatz (subordinate clause). ' +
+          'They push the conjugated verb all the way to the end of that clause. ' +
+          'The Hauptsatz and Nebensatz are separated by a comma.',
+        connectors: [
+          {
+            kind: 'subordinating',
+            label: 'Subordinating — verb moves to the end',
+            note: 'weil ich krank bin · dass er kommt · obwohl es regnet',
+            items: [
+              { word: 'weil',    meaning: 'because' },
+              { word: 'dass',    meaning: 'that' },
+              { word: 'obwohl',  meaning: 'although' },
+              { word: 'wenn',    meaning: 'when / if' },
+              { word: 'als',     meaning: 'when (past)' },
+              { word: 'ob',      meaning: 'whether' },
+              { word: 'damit',   meaning: 'so that' },
+              { word: 'während', meaning: 'while' },
+              { word: 'bevor',   meaning: 'before' },
+              { word: 'nachdem', meaning: 'after' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich gehe zum Arzt,', role: 'pos1' },
+              { text: 'weil',               role: 'mittelfeld' },
+              { text: 'ich krank',          role: 'mittelfeld' },
+              { text: 'bin.',               role: 'verb-end', highlight: true },
+            ],
+            caption: 'The verb "bin" is pushed to the very end of the Nebensatz.',
+          },
+          {
+            slots: [
+              { text: 'Er sagt,',  role: 'pos1' },
+              { text: 'dass',      role: 'mittelfeld' },
+              { text: 'er morgen', role: 'mittelfeld' },
+              { text: 'kommt.',    role: 'verb-end', highlight: true },
+            ],
+            caption: 'dass introduces indirect speech — verb goes to the end.',
+          },
+        ],
+      },
+
+      // ── Section 3: Nebensatz first ───────────────────────────
+      {
+        title: 'Nebensatz First · Verb Inversion',
+
+        body:
+          'A Nebensatz can come before the Hauptsatz. When it does, the entire subordinate clause ' +
+          'fills position 1. The Hauptsatz verb must still be in position 2 — ' +
+          'which means it is the very first word of the Hauptsatz section, immediately after the comma.',
+        callout: {
+          kind: 'tip',
+          label: 'The rule in one sentence',
+          text: 'Nebensatz = Position 1. The Hauptsatz verb is still in Position 2 — so it lands right after the comma, as the first word of the main clause.',
+        },
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Weil ich krank bin,', role: 'pos1' },
+              { text: 'gehe',               role: 'verb', highlight: true },
+              { text: 'ich zum Arzt.',       role: 'mittelfeld' },
+            ],
+            caption: 'The whole Nebensatz fills position 1. "gehe" is position 2 — the first word after the comma.',
+          },
+          {
+            slots: [
+              { text: 'Obwohl es regnet,', role: 'pos1' },
+              { text: 'fahren',            role: 'verb', highlight: true },
+              { text: 'wir ans Meer.',     role: 'mittelfeld' },
+            ],
+            caption: 'Same pattern with obwohl. The subject "wir" is pushed to position 3.',
+          },
+        ],
+      },
+
+      // ── Section 4: Coordinating conjunctions ─────────────────
+      {
+        title: 'Coordinating Conjunctions · Verb Stays Put',
+
+        body:
+          'Coordinating conjunctions join two complete Hauptsatz clauses. ' +
+          'They sit between the clauses but are not part of either one — ' +
+          'they do not occupy position 1, so the word order of both clauses is unchanged.',
+        connectors: [
+          {
+            kind: 'coordinating',
+            label: 'Coordinating — verb stays in position 2',
+            note: 'These conjunctions sit outside the clause. Word order on both sides is normal.',
+            items: [
+              { word: 'und',     meaning: 'and' },
+              { word: 'aber',    meaning: 'but' },
+              { word: 'oder',    meaning: 'or' },
+              { word: 'denn',    meaning: 'because / for' },
+              { word: 'sondern', meaning: 'but rather' },
+            ],
+          },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich bin müde,', role: 'pos1' },
+              { text: 'aber',          role: 'mittelfeld' },
+              { text: 'ich',           role: 'mittelfeld' },
+              { text: 'lerne',         role: 'verb', highlight: true },
+              { text: 'weiter.',       role: 'mittelfeld' },
+            ],
+            caption: '"aber" sits between the two clauses. Verb in the second clause is still in position 2.',
+          },
+        ],
+      },
+    ],
+
+    progression: [
+      {
+        level: 'A1',
+        canDo: 'Build simple Hauptsatz sentences with the verb in position 2.',
+        example: 'Heute lerne ich Deutsch.',
+      },
+      {
+        level: 'A2',
+        canDo: 'Join clauses with und/aber; form a Nebensatz with weil or dass; front a Nebensatz and invert correctly.',
+        example: 'Weil ich krank bin, gehe ich zum Arzt.',
+      },
+      {
+        level: 'B1',
+        canDo: 'Use obwohl, während, bevor and nachdem; handle verb inversion confidently in speech.',
+        example: 'Obwohl es spät war, haben wir weitergearbeitet.',
+      },
+      {
+        level: 'B2',
+        canDo: 'Chain multiple clauses; use dass and ob in indirect speech; vary position 1 for emphasis and style.',
+        example: 'Er fragte, ob ich kommen würde, obwohl er die Antwort schon kannte.',
+      },
+    ],
   },
   {
     slug: 'verbklammer',

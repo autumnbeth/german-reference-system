@@ -1,0 +1,96 @@
+---
+import type { ConnectorGroup } from '../content/schema';
+
+interface Props {
+  groups: ConnectorGroup[];
+}
+const { groups } = Astro.props;
+---
+<div class="cl">
+  {groups.map((group) => (
+    <div class={`cl__group cl__group--${group.kind}`}>
+      <div class="cl__label eyebrow">{group.label}</div>
+      <div class="cl__chips">
+        {group.items.map((item) => (
+          <div class="cl__chip">
+            <span class="cl__word">{item.word}</span>
+            <span class="cl__meaning gloss">{item.meaning}</span>
+          </div>
+        ))}
+      </div>
+      {group.note && <p class="cl__note">{group.note}</p>}
+    </div>
+  ))}
+</div>
+
+<style>
+  .cl {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cl__group {
+    border-radius: var(--r-md);
+    padding: 1rem 1.25rem 1.1rem;
+    border: 1px solid var(--border);
+  }
+
+  /* Coordinating — teal tint (verb stays) */
+  .cl__group--coordinating {
+    background: var(--accent-bg);
+    border-color: var(--accent-tint);
+  }
+
+  /* Subordinating — surface (verb moves) */
+  .cl__group--subordinating {
+    background: var(--tip-bg);
+    border-color: var(--tip-border);
+  }
+
+  .cl__label {
+    margin-bottom: .75rem;
+  }
+
+  .cl__group--coordinating .cl__label { color: var(--accent-deep); }
+  .cl__group--subordinating .cl__label { color: var(--tip-text); }
+
+  .cl__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+
+  .cl__chip {
+    display: flex;
+    align-items: baseline;
+    gap: .375rem;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    padding: .25rem .75rem;
+    font-family: var(--font-sans);
+  }
+
+  .cl__word {
+    font-weight: 700;
+    font-size: .9rem;
+    color: var(--ink);
+    font-family: var(--font-mono);
+  }
+
+  .cl__meaning {
+    font-size: .8rem;
+  }
+
+  .cl__note {
+    margin: .75rem 0 0;
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .cl__group--coordinating .cl__note { color: var(--accent-deep); }
+  .cl__group--subordinating .cl__note { color: var(--tip-text); }
+</style>
