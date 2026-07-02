@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TenseMap from '../../components/TenseMap.astro';
 import TenseLadder from '../../components/TenseLadder.astro';
+import ModalStack from '../../components/ModalStack.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
@@ -26,7 +27,8 @@ const hasContent =
   (topic.tenseOverviews?.length ?? 0) > 0 ||
   (topic.verbConjugations?.length ?? 0) > 0 ||
   (topic.sentenceFrames?.length ?? 0) > 0 ||
-  (topic.progression?.length ?? 0) > 0;
+  (topic.progression?.length ?? 0) > 0 ||
+  (topic.modalStack?.length ?? 0) > 0;
 
 const relatedSits = (topic.relatedSituations ?? [])
   .map((s) => situations.find((sit) => sit.slug === s))
@@ -73,6 +75,22 @@ const relatedSits = (topic.relatedSituations ?? [])
           <ConnectorList groups={section.connectors} />
         )}
 
+        {section.exampleTable && section.exampleTable.length > 0 && (
+          <div class="spoke__ex-table-wrap">
+            <table class="spoke__ex-table">
+              <tbody>
+                {section.exampleTable.map((row) => (
+                  <tr>
+                    <td class="spoke__ex-label">{row.label}</td>
+                    <td class="spoke__ex-de">{row.de}</td>
+                    {row.en && <td class="spoke__ex-en">{row.en}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
         {section.sentenceFrames && section.sentenceFrames.length > 0 && (
           <div class="spoke__frames">
             {section.sentenceFrames.map((frame) => (
@@ -102,6 +120,14 @@ const relatedSits = (topic.relatedSituations ?? [])
       <section class="spoke__section">
         <h2 class="spoke__section-title">The Eight Tenses</h2>
         <TenseMap tenses={topic.tenseOverviews} />
+      </section>
+    )}
+
+    {/* Modal stacking table */}
+    {topic.modalStack && topic.modalStack.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">Modal Stacking — All Constructions</h2>
+        <ModalStack rows={topic.modalStack} />
       </section>
     )}
 
@@ -231,6 +257,48 @@ const relatedSits = (topic.relatedSituations ?? [])
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+  }
+
+  /* ── Example table (passive tenses, Konj. forms, modal reference) ── */
+  .spoke__ex-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .spoke__ex-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+
+  .spoke__ex-table tr { border-bottom: 1px solid var(--border-2); }
+  .spoke__ex-table tr:last-child { border-bottom: none; }
+  .spoke__ex-table tr:hover td { background: var(--surface); }
+
+  .spoke__ex-table td { padding: .625rem 1rem; vertical-align: middle; }
+
+  .spoke__ex-label {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    white-space: nowrap;
+    width: 22%;
+  }
+
+  .spoke__ex-de {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink);
+    width: 42%;
+  }
+
+  .spoke__ex-en {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    width: 36%;
   }
 
   /* ── Placeholder ── */

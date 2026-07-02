@@ -1,0 +1,122 @@
+---
+import type { ModalStackRow } from '../content/schema';
+
+interface Props {
+  rows: ModalStackRow[];
+}
+const { rows } = Astro.props;
+---
+
+<div class="ms">
+  <div class="ms__rule eyebrow">
+    Modals sit in position 2 · everything else stacks at the end
+  </div>
+
+  <div class="ms__table-wrap">
+    <table class="ms__table">
+      <thead>
+        <tr>
+          <th>Construction</th>
+          <th>Formula</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => (
+          <tr>
+            <td class="ms__construction">{row.construction}</td>
+            <td class="ms__formula">{row.formula}</td>
+            <td class="ms__example">
+              <span class="ms__de">{row.example}</span>
+              {row.exampleEn && <span class="ms__en">{row.exampleEn}</span>}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .ms {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: var(--font-sans);
+  }
+
+  .ms__rule {
+    color: var(--accent-deep);
+    background: var(--accent-bg);
+    border: 1px solid var(--accent-tint);
+    border-radius: var(--r-sm);
+    padding: .4rem .875rem;
+    display: inline-block;
+  }
+
+  .ms__table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .ms__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+
+  .ms__table thead {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ms__table th {
+    text-align: left;
+    padding: .625rem 1rem;
+    font-size: .6875rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .ms__table td {
+    padding: .75rem 1rem;
+    border-bottom: 1px solid var(--border-2);
+    vertical-align: middle;
+  }
+
+  .ms__table tr:last-child td { border-bottom: none; }
+  .ms__table tr:hover td { background: var(--surface); }
+
+  .ms__construction {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .ms__formula {
+    font-family: var(--font-mono);
+    font-size: .8125rem;
+    color: var(--accent-deep);
+  }
+
+  .ms__example {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+  }
+
+  .ms__de {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  .ms__en {
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    color: var(--ink-soft);
+  }
+</style>

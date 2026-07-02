@@ -221,6 +221,17 @@ export interface FoundationSection {
   };
   sentenceFrames?: SentenceFrame[];
   connectors?: ConnectorGroup[];
+  // Simple two-column table (label + German example + optional English gloss)
+  exampleTable?: { label: string; de: string; en?: string }[];
+}
+
+// ---------- Modal stacking table ----------
+
+export interface ModalStackRow {
+  construction: string;  // "Präsens + Modal"
+  formula: string;       // "Modal (P2) + INF (END)"
+  example: string;       // "Er kann kommen."
+  exampleEn?: string;
 }
 
 // ---------- The Foundation (the grammar "map") ----------
@@ -242,6 +253,7 @@ export interface FoundationTopic {
   progression?: ProgressionRow[];  // CEFR expansion of this concept
   // free-form sections can also carry vocab groups, tables, etc.
   vocab?: VocabGroup[];
+  modalStack?: ModalStackRow[];    // modal + tense combination table
   relatedSituations?: string[];    // situation slugs that USE this concept
 }
 

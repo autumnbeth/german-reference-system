@@ -205,14 +205,360 @@ export const foundationTopics: FoundationTopic[] = [
     category: 'Grammar',
     teaser: 'Nominative, accusative, dative, genitive — what changes and why it matters.',
   },
+  // ── Passive ──────────────────────────────────────────────────
+  {
+    slug: 'passive',
+    title: 'Passive Voice',
+    category: 'Structure',
+    teaser: 'Vorgangspassiv and Zustandspassiv — how German shifts the focus from actor to action.',
+    relatedSituations: ['apotheke'],
+    intro:
+      'The passive voice in German is not a new tense — it slots into the tense ladder you already know. ' +
+      'Vorgangspassiv uses werden + Partizip II to describe an action in progress. ' +
+      'Zustandspassiv uses sein + Partizip II to describe the resulting state. ' +
+      'The object of the active sentence becomes the grammatical subject of the passive.',
+
+    sections: [
+      {
+        title: 'Vorgangspassiv · Action Passive',
+        body:
+          'The Vorgangspassiv describes something being done. ' +
+          'It uses werden as the frame verb (position 2 or end) plus the Partizip II of the main verb at the end. ' +
+          'werden is conjugated for each tense — the main verb stays as a fixed Partizip II.',
+        exampleTable: [
+          { label: 'Präsens',        de: 'Das Haus wird gebaut.',             en: 'The house is being built.' },
+          { label: 'Präteritum',     de: 'Das Haus wurde gebaut.',            en: 'The house was being built.' },
+          { label: 'Perfekt',        de: 'Das Haus ist gebaut worden.',       en: 'The house has been built.' },
+          { label: 'Plusquamperfekt',de: 'Das Haus war gebaut worden.',       en: 'The house had been built.' },
+          { label: 'Futur I',        de: 'Das Haus wird gebaut werden.',      en: 'The house will be built.' },
+          { label: 'Konjunktiv II',  de: 'Das Haus würde gebaut werden.',     en: 'The house would be built.' },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Das Haus', role: 'pos1' },
+              { text: 'wird',     role: 'verb', highlight: true },
+              { text: 'vom Bauarbeiter', role: 'mittelfeld' },
+              { text: 'gebaut.',  role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'The object (das Haus) becomes the subject. The agent appears with von + dative.',
+          },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Perfekt note',
+          text: 'In the Perfekt passive, werden loses its ge- prefix: gebaut worden (not geworden). This worden signals passive — geworden means "became".',
+        },
+      },
+      {
+        title: 'Passiv mit Modalverb · Passive + Modal',
+        body:
+          'Modal verbs combine with the passive the same way they combine with active infinitives. ' +
+          'The modal sits in position 2, the Partizip II + werden cluster stacks at the end. ' +
+          'In a Nebensatz the modal moves to the very end, after the passive cluster.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Das Haus', role: 'pos1' },
+              { text: 'muss',     role: 'verb', highlight: true },
+              { text: 'schnell',  role: 'mittelfeld' },
+              { text: 'gebaut werden.', role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'Modal + passive: muss (P2) · gebaut werden (END).',
+          },
+          {
+            slots: [
+              { text: '… weil', role: 'pos1' },
+              { text: 'das Haus', role: 'mittelfeld' },
+              { text: 'schnell', role: 'mittelfeld' },
+              { text: 'gebaut werden muss.', role: 'verb-end', highlight: true },
+            ],
+            caption: 'Nebensatz: the entire verb cluster — gebaut werden muss — stacks at the end.',
+          },
+        ],
+      },
+      {
+        title: 'Zustandspassiv · State Passive',
+        body:
+          'The Zustandspassiv describes the condition that results from a completed action. ' +
+          'It uses sein (not werden) + Partizip II. ' +
+          'The key distinction: werden = action happening now · sein = state that exists now.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Das Haus', role: 'pos1' },
+              { text: 'wird',     role: 'verb', highlight: true },
+              { text: 'gebaut.',  role: 'verb-end', highlight: true },
+            ],
+            caption: 'Vorgangspassiv — the action is in progress right now.',
+          },
+          {
+            slots: [
+              { text: 'Das Haus', role: 'pos1' },
+              { text: 'ist',      role: 'verb', highlight: true },
+              { text: 'gebaut.',  role: 'verb-end', highlight: true },
+            ],
+            caption: 'Zustandspassiv — the house exists in a completed/built state.',
+          },
+        ],
+      },
+      {
+        title: 'lassen + Infinitiv · Having Something Done',
+        body:
+          'lassen is not true passive, but it fills a similar role — expressing that the subject causes ' +
+          'something to be done (by someone else). It follows the same Verbklammer pattern as modal verbs.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich',     role: 'pos1' },
+              { text: 'lasse',   role: 'verb', highlight: true },
+              { text: 'mein Auto', role: 'mittelfeld' },
+              { text: 'reparieren.', role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'I am having my car repaired. (someone else does the repair)',
+          },
+          {
+            slots: [
+              { text: 'Er',      role: 'pos1' },
+              { text: 'lässt',   role: 'verb', highlight: true },
+              { text: 'sich das', role: 'mittelfeld' },
+              { text: 'erklären.', role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'He has it explained to himself. (reflexive lassen)',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── Konjunktiv ───────────────────────────────────────────────
+  {
+    slug: 'konjunktiv',
+    title: 'Konjunktiv',
+    category: 'Grammar',
+    teaser: 'Konjunktiv II for hypotheticals · Konjunktiv I for reported speech.',
+    intro:
+      'Konjunktiv is a mood, not a tense — it does not change when something happens, ' +
+      'it changes the speaker\'s stance toward what they are saying. ' +
+      'Konjunktiv II signals that something is hypothetical, unreal, or wished-for. ' +
+      'Konjunktiv I signals that you are reporting what someone else said, not your own view.',
+
+    sections: [
+      {
+        title: 'Konjunktiv II · Hypothetical & Conditional',
+        body:
+          'Konjunktiv II has two forms. The würde-form (würde + Infinitiv) is preferred in spoken German ' +
+          'and works for all regular verbs. ' +
+          'A small set of high-frequency verbs have their own strong stem forms that are always preferred ' +
+          'over würde + their infinitive — because the würde-forms would sound awkward or ambiguous.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Wenn ich Zeit', role: 'pos1' },
+              { text: 'hätte,',        role: 'verb', highlight: true },
+              { text: '',              role: 'mittelfeld' },
+              { text: '',              role: 'satzende' },
+            ],
+            caption: 'Condition clause: Konjunktiv II strong form — hätte (not würde haben).',
+          },
+          {
+            slots: [
+              { text: 'würde',  role: 'verb', highlight: true },
+              { text: 'ich mehr', role: 'mittelfeld' },
+              { text: 'lernen.', role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'Result clause: würde + Infinitiv.',
+          },
+        ],
+        exampleTable: [
+          { label: 'sein → wäre',    de: 'Das wäre schön.',               en: 'That would be nice.' },
+          { label: 'haben → hätte',  de: 'Ich hätte gern mehr Zeit.',      en: 'I would like more time.' },
+          { label: 'werden → würde', de: 'Ich würde gern kommen.',         en: 'I would like to come.' },
+          { label: 'können → könnte',de: 'Könntest du mir helfen?',        en: 'Could you help me?' },
+          { label: 'müssen → müsste',de: 'Du müsstest das wissen.',        en: 'You should know that.' },
+          { label: 'dürfen → dürfte',de: 'Das dürfte schwierig sein.',     en: 'That is likely to be difficult.' },
+          { label: 'wollen → wollte',de: 'Ich wollte das nicht sagen.',    en: 'I didn\'t mean to say that.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'When to use the stem form vs. würde',
+          text: 'Always use stem forms for sein (wäre), haben (hätte), and all six modal verbs. Use würde + Infinitiv for everything else.',
+        },
+      },
+      {
+        title: 'Konjunktiv II Perfekt · Past Hypothetical',
+        body:
+          'To talk about something hypothetical in the past — what would have happened if things had been different — ' +
+          'combine hätte or wäre (Konjunktiv II) with the Partizip II of the main verb. ' +
+          'This is the "third conditional" of German.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Wenn ich das gewusst', role: 'pos1' },
+              { text: 'hätte,',               role: 'verb', highlight: true },
+              { text: '',                      role: 'satzende' },
+            ],
+            caption: 'Past condition: hätte/wäre + Partizip II.',
+          },
+          {
+            slots: [
+              { text: 'wäre',           role: 'verb', highlight: true },
+              { text: 'ich früher',      role: 'mittelfeld' },
+              { text: 'gekommen.',       role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'Past result: wäre/hätte + Partizip II at the end.',
+          },
+        ],
+        exampleTable: [
+          { label: 'haben verbs', de: 'Ich hätte mehr gelernt.',          en: 'I would have studied more.' },
+          { label: 'sein verbs',  de: 'Er wäre früher gekommen.',         en: 'He would have come earlier.' },
+          { label: 'modal',       de: 'Du hättest fragen können.',         en: 'You could have asked.' },
+        ],
+      },
+      {
+        title: 'Konjunktiv I · Reported Speech',
+        body:
+          'Konjunktiv I is built from the infinitive stem + a set of endings. ' +
+          'It is the mood of journalism, official reporting, and formal indirect speech. ' +
+          'Using it signals that the speaker is transmitting someone else\'s words — not personally endorsing them. ' +
+          'Where Konjunktiv I forms overlap with Präsens (especially wir, sie/Sie), ' +
+          'Konjunktiv II or the würde-form is used instead to keep the indirect-speech signal clear.',
+        exampleTable: [
+          { label: 'sein (most common)', de: 'Er sagte, er sei krank.',          en: 'He said he was sick.' },
+          { label: 'haben',              de: 'Sie sagte, sie habe keine Zeit.',   en: 'She said she had no time.' },
+          { label: 'regular verb',       de: 'Er erklärte, er lerne täglich.',    en: 'He explained he studies daily.' },
+          { label: 'modal verb',         de: 'Sie berichtete, er müsse warten.',  en: 'She reported he had to wait.' },
+        ],
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Er sagte,',  role: 'pos1' },
+              { text: 'er',         role: 'mittelfeld' },
+              { text: 'sei',        role: 'verb-end', highlight: true },
+              { text: 'müde.',      role: 'satzende' },
+            ],
+            caption: 'Konjunktiv I sei — distinct from Präsens ist, so clearly marked as indirect.',
+          },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Key Konjunktiv I forms',
+          text: 'sein → ich sei, du seiest, er/sie/es sei, wir seien, ihr seiet, sie seien. For regular verbs: ich lerne, du lernest, er lerne (note: er lerne ≠ er lernt).',
+        },
+      },
+    ],
+  },
+
+  // ── Modal Verbs ──────────────────────────────────────────────
   {
     slug: 'modal-verbs',
-    title: 'Modal Verbs',
-    intro: 'Placeholder — real content coming soon.',
+    title: 'Modal Verbs & Stacking',
     category: 'Verbs',
-    teaser: 'können, müssen, wollen, sollen, dürfen, möchten — and how they push the main verb to the end.',
+    teaser: 'The six modals + how they combine with every tense and passive construction.',
     relatedSituations: ['apotheke'],
+    intro:
+      'Modal verbs do not need their own framework — they plug into the sentence structure you already know. ' +
+      'The modal always sits in position 2. The main verb goes to the end as an Infinitiv. ' +
+      'That same pattern holds whether you are in Präsens, Perfekt, passive, or Konjunktiv II. ' +
+      'Modal stacking is the same frame with more verbs at the end.',
+
+    sections: [
+      {
+        title: 'The Six Modal Verbs',
+        body: 'Each modal expresses a different kind of relationship between the subject and the main action.',
+        exampleTable: [
+          { label: 'müssen',  de: 'Ich muss gehen.',          en: 'I must / have to go.' },
+          { label: 'können',  de: 'Ich kann schwimmen.',       en: 'I can / am able to swim.' },
+          { label: 'dürfen',  de: 'Du darfst hier parken.',    en: 'You may / are allowed to park here.' },
+          { label: 'wollen',  de: 'Er will schlafen.',         en: 'He wants to sleep.' },
+          { label: 'sollen',  de: 'Du sollst warten.',         en: 'You are supposed to wait.' },
+          { label: 'mögen / möchten', de: 'Ich möchte einen Kaffee.', en: 'I would like a coffee.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Irregular Präsens',
+          text: 'All six modals have irregular first and third person singular forms in Präsens: ich kann, er kann (not *kannt). ich muss, er muss. ich will, er will. ich soll, er soll. ich darf, er darf. ich mag, er mag.',
+        },
+      },
+      {
+        title: 'Position Rule',
+        body: 'The structure never changes regardless of which tense or construction you are using.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich',    role: 'pos1' },
+              { text: 'kann',   role: 'verb', highlight: true },
+              { text: 'heute',  role: 'mittelfeld' },
+              { text: 'kommen.', role: 'verb-end', highlight: true },
+            ],
+            showBracket: true,
+            caption: 'Modal in position 2. Main verb infinitiv at the end.',
+          },
+          {
+            slots: [
+              { text: '… weil', role: 'pos1' },
+              { text: 'ich',    role: 'mittelfeld' },
+              { text: 'heute',  role: 'mittelfeld' },
+              { text: 'kommen kann.', role: 'verb-end', highlight: true },
+            ],
+            caption: 'Nebensatz: the entire verb cluster moves to the end.',
+          },
+        ],
+      },
+    ],
+
+    modalStack: [
+      {
+        construction: 'Präsens + Modal',
+        formula: 'Modal (P2) · INF (END)',
+        example: 'Er kann kommen.',
+        exampleEn: 'He can come.',
+      },
+      {
+        construction: 'Präteritum + Modal',
+        formula: 'Modal-Prät. (P2) · INF (END)',
+        example: 'Er konnte kommen.',
+        exampleEn: 'He was able to come.',
+      },
+      {
+        construction: 'Perfekt + Modal',
+        formula: 'haben (P2) · INF · Modal-INF (END)',
+        example: 'Er hat kommen können.',
+        exampleEn: 'He has been able to come.',
+      },
+      {
+        construction: 'Futur I + Modal',
+        formula: 'werden (P2) · INF · Modal-INF (END)',
+        example: 'Er wird kommen können.',
+        exampleEn: 'He will be able to come.',
+      },
+      {
+        construction: 'Passive + Modal',
+        formula: 'Modal (P2) · PII · werden (END)',
+        example: 'Das muss gebaut werden.',
+        exampleEn: 'That must be built.',
+      },
+      {
+        construction: 'Konjunktiv II + Modal',
+        formula: 'Modal-Konj.II (P2) · INF (END)',
+        example: 'Er könnte kommen.',
+        exampleEn: 'He could come. / He might come.',
+      },
+      {
+        construction: 'Passive Perfekt + Modal',
+        formula: 'Modal (P2) · PII · worden · sein (END)',
+        example: 'Es hätte gemacht werden müssen.',
+        exampleEn: 'It would have had to have been done.',
+      },
+    ],
   },
+
   {
     slug: 'tense-stack',
     title: 'Tense Stack',
