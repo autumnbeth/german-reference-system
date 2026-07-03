@@ -6,23 +6,22 @@ interface Props {
 }
 const { group } = Astro.props;
 
-const articleMap = { der: 'der', die: 'die', das: 'das', pl: 'die' };
+const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das', pl: 'die' };
 ---
-<div class="vocab-group">
-  <div class="eyebrow vocab-group__label">{group.label}</div>
-  <div class="vocab-grid">
+<div class="vg">
+  <div class="eyebrow vg__label">{group.label}</div>
+  <div class="vg__list">
     {group.items.map((item) => (
-      <div class="vocab-card">
-        <div class="vocab-card__art-word">
-          <span class={`art art--${item.gender}`}>{articleMap[item.gender]}</span>
-          <span class="vocab-card__word">{item.word}</span>
-        </div>
-        <span class="gloss vocab-card__meaning">{item.meaning}</span>
-        {item.plural && (
-          <span class="vocab-card__plural">Pl. {item.plural}</span>
-        )}
-        {item.note && (
-          <span class="vocab-card__note">{item.note}</span>
+      <div class="vg__row">
+        <span class={`vg__art art art--${item.gender}`}>{articleMap[item.gender]}</span>
+        <span class="vg__word">{item.word}</span>
+        <span class="vg__meaning gloss">{item.meaning}</span>
+        {(item.plural || item.note) && (
+          <span class="vg__meta">
+            {item.plural && `Pl. ${item.plural}`}
+            {item.plural && item.note && ' · '}
+            {item.note}
+          </span>
         )}
       </div>
     ))}
@@ -30,47 +29,72 @@ const articleMap = { der: 'der', die: 'die', das: 'das', pl: 'die' };
 </div>
 
 <style>
-  .vocab-group { margin-bottom: 1.5rem; }
-  .vocab-group__label { margin-bottom: .75rem; }
-
-  .vocab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: .625rem;
+  .vg {
+    margin-bottom: 1.75rem;
   }
 
-  .vocab-card {
-    background: var(--paper);
-    border: 1px solid var(--border);
-    border-radius: var(--r-sm);
-    padding: .75rem .875rem;
-    box-shadow: var(--shadow-sm);
+  .vg__label {
+    margin-bottom: .625rem;
+    padding-bottom: .375rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .vg__list {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
   }
 
-  .vocab-card__art-word {
-    display: flex;
+  .vg__row {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr 1fr auto;
     align-items: baseline;
-    gap: .35rem;
+    gap: 0 1rem;
+    padding: .4rem 0;
+    border-bottom: 1px solid var(--border-2);
     font-family: var(--font-sans);
   }
 
-  .vocab-card__word {
+  .vg__row:last-child {
+    border-bottom: none;
+  }
+
+  .vg__art {
+    font-size: .8125rem;
+    font-weight: 700;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .vg__word {
+    font-size: .9375rem;
     font-weight: 600;
-    font-size: 1rem;
     color: var(--ink);
   }
 
-  .vocab-card__meaning {
+  .vg__meaning {
     font-size: .875rem;
   }
 
-  .vocab-card__plural,
-  .vocab-card__note {
+  .vg__meta {
     font-size: .75rem;
     color: var(--ink-soft);
-    font-family: var(--font-sans);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  @media (max-width: 560px) {
+    .vg__row {
+      grid-template-columns: 2.25rem 1fr;
+      row-gap: .1rem;
+    }
+
+    .vg__meaning {
+      grid-column: 2;
+    }
+
+    .vg__meta {
+      grid-column: 2;
+      text-align: left;
+    }
   }
 </style>
