@@ -14,15 +14,12 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
     {group.items.map((item) => (
       <div class="vg__row">
         <span class={`vg__art art art--${item.gender}`}>{articleMap[item.gender]}</span>
-        <span class="vg__word">{item.word}</span>
+        <span class="vg__word-col">
+          <span class="vg__word">{item.word}</span>
+          {item.plural && <span class="vg__plural">· Pl. {item.plural}</span>}
+          {item.note && <span class="vg__note">{item.note}</span>}
+        </span>
         <span class="vg__meaning gloss">{item.meaning}</span>
-        {(item.plural || item.note) && (
-          <span class="vg__meta">
-            {item.plural && `Pl. ${item.plural}`}
-            {item.plural && item.note && ' · '}
-            {item.note}
-          </span>
-        )}
       </div>
     ))}
   </div>
@@ -46,7 +43,7 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
 
   .vg__row {
     display: grid;
-    grid-template-columns: 2.25rem 1fr 1fr auto;
+    grid-template-columns: 2.25rem 1fr 1fr;
     align-items: baseline;
     gap: 0 1rem;
     padding: .4rem 0;
@@ -54,9 +51,7 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
     font-family: var(--font-sans);
   }
 
-  .vg__row:last-child {
-    border-bottom: none;
-  }
+  .vg__row:last-child { border-bottom: none; }
 
   .vg__art {
     font-size: .8125rem;
@@ -65,21 +60,34 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
     white-space: nowrap;
   }
 
+  .vg__word-col {
+    display: flex;
+    align-items: baseline;
+    gap: .375rem;
+    flex-wrap: wrap;
+  }
+
   .vg__word {
     font-size: .9375rem;
     font-weight: 600;
     color: var(--ink);
   }
 
-  .vg__meaning {
-    font-size: .875rem;
-  }
-
-  .vg__meta {
+  .vg__plural {
     font-size: .75rem;
     color: var(--ink-soft);
     white-space: nowrap;
-    text-align: right;
+  }
+
+  .vg__note {
+    font-size: .75rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .vg__meaning {
+    font-size: .875rem;
+    text-align: left;
   }
 
   @media (max-width: 560px) {
@@ -89,10 +97,6 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
     }
 
     .vg__meaning {
-      grid-column: 2;
-    }
-
-    .vg__meta {
       grid-column: 2;
       text-align: left;
     }
