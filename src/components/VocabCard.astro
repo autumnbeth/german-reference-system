@@ -6,7 +6,7 @@ interface Props {
 }
 const { group } = Astro.props;
 
-const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das', pl: 'die' };
+const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das', pl: 'die', verb: '—' };
 ---
 <div class="vg">
   <div class="eyebrow vg__label">{group.label}</div>
@@ -58,6 +58,11 @@ const articleMap: Record<string, string> = { der: 'der', die: 'die', das: 'das',
     font-weight: 700;
     text-align: right;
     white-space: nowrap;
+  }
+
+  .art--verb {
+    color: var(--ink-mute);
+    font-weight: 400;
   }
 
   .vg__word-col {

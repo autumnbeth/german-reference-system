@@ -10,7 +10,7 @@
 
 // ---------- Shared primitives ----------
 
-export type Gender = 'der' | 'die' | 'das' | 'pl'; // pl = plural (die, orange)
+export type Gender = 'der' | 'die' | 'das' | 'pl' | 'verb'; // pl = plural (die, orange); verb = no article
 export type CEFR = 'A1' | 'A2' | 'B1' | 'B2' | 'C1';
 
 /** A single vocabulary item. Article is always carried and colored by gender. */
