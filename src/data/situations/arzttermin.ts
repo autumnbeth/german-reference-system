@@ -517,6 +517,16 @@ export const arzttermin: Situation = {
             'Wann sollte ich wiederkommen, wenn es nicht besser wird?',
           ],
         },
+        {
+          levels: ['B2'],
+          funktion: 'Key structures',
+          phrases: [
+            'Ich leide unter …',
+            'Die Symptome haben sich verschlechtert.',
+            'Es ist möglich, dass …',
+            'Wir sollten …',
+          ],
+        },
       ],
       writing: {
         kind: 'email-formal',
@@ -543,18 +553,6 @@ export const arzttermin: Situation = {
           'Formal greeting and closing',
         ],
       },
-      phrases: [
-        {
-          levels: ['B2'],
-          funktion: 'Key structures',
-          phrases: [
-            'Ich leide unter …',
-            'Die Symptome haben sich verschlechtert.',
-            'Es ist möglich, dass …',
-            'Wir sollten …',
-          ],
-        },
-      ],
     },
 
     C1: {

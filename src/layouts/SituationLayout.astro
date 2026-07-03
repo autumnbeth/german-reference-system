@@ -219,7 +219,7 @@ const activeSlug = s.slug;
 <!-- Tab switching -->
 <script>
   // CEFR level tabs
-  const bar = document.querySelector('.tabs__bar');
+  const bar = document.querySelector('#level-tabs .tabs__bar');
   if (bar) {
     bar.addEventListener('click', (e) => {
       const btn = (e.target as Element).closest<HTMLButtonElement>('.tabs__tab');
