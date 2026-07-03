@@ -68,11 +68,34 @@ const activeSlug = s.slug;
         </Callout>
       </div>
 
-      <!-- Vocabulary (shared across all levels) -->
+      <!-- Vocabulary (tabbed by group) -->
       {s.vocab.length > 0 && (
         <section class="situation__section">
           <h2 class="section-heading">Vocabulary</h2>
-          {s.vocab.map((group) => <VocabCard group={group} />)}
+          <div class="vocab-tabs" id="vocab-tabs">
+            <div class="tabs__bar vocab-tabs__bar" role="tablist" aria-label="Vocabulary groups">
+              {s.vocab.map((group, i) => (
+                <button
+                  class={`vocab-tabs__tab${i === 0 ? ' vocab-tabs__tab--active' : ''}`}
+                  role="tab"
+                  aria-selected={i === 0 ? 'true' : 'false'}
+                  aria-controls={`vocab-panel-${i}`}
+                  data-vocab-index={i}
+                >
+                  {group.label.split('·')[0].trim()}
+                </button>
+              ))}
+            </div>
+            {s.vocab.map((group, i) => (
+              <div
+                id={`vocab-panel-${i}`}
+                class={`vocab-tabs__panel${i === 0 ? ' vocab-tabs__panel--active' : ''}`}
+                role="tabpanel"
+              >
+                <VocabCard group={group} />
+              </div>
+            ))}
+          </div>
         </section>
       )}
 
@@ -195,6 +218,7 @@ const activeSlug = s.slug;
 
 <!-- Tab switching -->
 <script>
+  // CEFR level tabs
   const bar = document.querySelector('.tabs__bar');
   if (bar) {
     bar.addEventListener('click', (e) => {
@@ -213,6 +237,28 @@ const activeSlug = s.slug;
       btn.classList.add('tabs__tab--active');
       btn.setAttribute('aria-selected', 'true');
       document.getElementById(`panel-${level}`)?.classList.add('tabs__panel--active');
+    });
+  }
+
+  // Vocabulary group tabs
+  const vocabBar = document.querySelector('.vocab-tabs__bar');
+  if (vocabBar) {
+    vocabBar.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest<HTMLButtonElement>('.vocab-tabs__tab');
+      if (!btn) return;
+      const idx = btn.dataset.vocabIndex!;
+
+      document.querySelectorAll('.vocab-tabs__tab').forEach((t) => {
+        t.classList.remove('vocab-tabs__tab--active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.vocab-tabs__panel').forEach((p) => {
+        p.classList.remove('vocab-tabs__panel--active');
+      });
+
+      btn.classList.add('vocab-tabs__tab--active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(`vocab-panel-${idx}`)?.classList.add('vocab-tabs__panel--active');
     });
   }
 </script>
@@ -389,6 +435,41 @@ const activeSlug = s.slug;
     font-size: .9375rem;
     color: var(--ink-body);
   }
+
+  /* ── Vocab tabs ── */
+  .vocab-tabs__bar {
+    flex-wrap: wrap;
+    gap: .25rem;
+  }
+
+  .vocab-tabs__tab {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    cursor: pointer;
+    padding: .3rem .875rem;
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: background .1s, color .1s, border-color .1s;
+    white-space: nowrap;
+  }
+
+  .vocab-tabs__tab:hover {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    border-color: var(--accent-tint);
+  }
+
+  .vocab-tabs__tab--active {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    border-color: var(--accent-tint);
+  }
+
+  .vocab-tabs__panel { display: none; padding-top: .875rem; }
+  .vocab-tabs__panel--active { display: block; }
 
   /* ── Foundation links ── */
   .foundation-links {
