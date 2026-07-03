@@ -217,50 +217,43 @@ const activeSlug = s.slug;
 </BaseLayout>
 
 <!-- Tab switching -->
-<script>
-  // CEFR level tabs
-  const bar = document.querySelector('#level-tabs .tabs__bar');
-  if (bar) {
-    bar.addEventListener('click', (e) => {
-      const btn = (e.target as Element).closest<HTMLButtonElement>('.tabs__tab');
-      if (!btn) return;
-      const level = btn.dataset.level!;
-
-      document.querySelectorAll('.tabs__tab').forEach((t) => {
+<script is:inline>
+  document.addEventListener('click', function(e) {
+    // CEFR level tabs — identified by data-level attribute
+    var cefrBtn = e.target.closest('[data-level]');
+    if (cefrBtn && cefrBtn.classList.contains('tabs__tab')) {
+      var level = cefrBtn.dataset.level;
+      document.querySelectorAll('.tabs__tab').forEach(function(t) {
         t.classList.remove('tabs__tab--active');
         t.setAttribute('aria-selected', 'false');
       });
-      document.querySelectorAll('.tabs__panel').forEach((p) => {
+      document.querySelectorAll('.tabs__panel').forEach(function(p) {
         p.classList.remove('tabs__panel--active');
       });
+      cefrBtn.classList.add('tabs__tab--active');
+      cefrBtn.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById('panel-' + level);
+      if (panel) panel.classList.add('tabs__panel--active');
+      return;
+    }
 
-      btn.classList.add('tabs__tab--active');
-      btn.setAttribute('aria-selected', 'true');
-      document.getElementById(`panel-${level}`)?.classList.add('tabs__panel--active');
-    });
-  }
-
-  // Vocabulary group tabs
-  const vocabBar = document.querySelector('.vocab-tabs__bar');
-  if (vocabBar) {
-    vocabBar.addEventListener('click', (e) => {
-      const btn = (e.target as Element).closest<HTMLButtonElement>('.vocab-tabs__tab');
-      if (!btn) return;
-      const idx = btn.dataset.vocabIndex!;
-
-      document.querySelectorAll('.vocab-tabs__tab').forEach((t) => {
+    // Vocabulary tabs — identified by data-vocab-index attribute
+    var vocabBtn = e.target.closest('[data-vocab-index]');
+    if (vocabBtn) {
+      var idx = vocabBtn.dataset.vocabIndex;
+      document.querySelectorAll('.vocab-tabs__tab').forEach(function(t) {
         t.classList.remove('vocab-tabs__tab--active');
         t.setAttribute('aria-selected', 'false');
       });
-      document.querySelectorAll('.vocab-tabs__panel').forEach((p) => {
+      document.querySelectorAll('.vocab-tabs__panel').forEach(function(p) {
         p.classList.remove('vocab-tabs__panel--active');
       });
-
-      btn.classList.add('vocab-tabs__tab--active');
-      btn.setAttribute('aria-selected', 'true');
-      document.getElementById(`vocab-panel-${idx}`)?.classList.add('vocab-tabs__panel--active');
-    });
-  }
+      vocabBtn.classList.add('vocab-tabs__tab--active');
+      vocabBtn.setAttribute('aria-selected', 'true');
+      var vocabPanel = document.getElementById('vocab-panel-' + idx);
+      if (vocabPanel) vocabPanel.classList.add('vocab-tabs__panel--active');
+    }
+  });
 </script>
 
 <style>
