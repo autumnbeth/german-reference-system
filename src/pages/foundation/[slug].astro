@@ -146,15 +146,39 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       <FoundationSections sections={topic.sections} />
     )}
 
-    {/* Tense ladder (tense-stack page) */}
+    {/* Accordion for parent topics — renders each child's content inline */}
+    {children.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">The Tenses — Deep Dive</h2>
+        <div class="tense-accordion">
+          {children.map((c) => (
+            <details class="tense-accordion__item">
+              <summary class="tense-accordion__summary">
+                <span class="tense-accordion__title">{c.title}</span>
+                {(c.summary ?? c.teaser) && <span class="tense-accordion__teaser">{c.summary ?? c.teaser}</span>}
+                <span class="tense-accordion__chevron" aria-hidden="true">›</span>
+              </summary>
+              <div class="tense-accordion__body">
+                {c.sections && c.sections.length > 0 && (
+                  <FoundationSections sections={c.sections} headingLevel="h3" />
+                )}
+                <a href={`${base}/foundation/${c.slug}/`} class="tense-accordion__full-link">
+                  Open full page →
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {/* Tense ladder (tense-stack page) — visual reference below the accordion */}
     {topic.tenseLadder && topic.tenseLadder.length > 0 && (
       <section class="spoke__section">
         <h2 class="spoke__section-title">The Tense Ladder</h2>
         <TenseLadder rows={topic.tenseLadder} habenSein={topic.habenSein} />
       </section>
     )}
-
-    {/* Tense overview map — intentionally removed; content lives in the accordion below */}
 
     {/* Top-level declension tables (case system) */}
     {topic.declensionTables && topic.declensionTables.length > 0 && (
@@ -188,32 +212,6 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       <section class="spoke__section">
         <h2 class="spoke__section-title">Progression</h2>
         <ProgressionTable rows={topic.progression} title="" />
-      </section>
-    )}
-
-    {/* Accordion for parent topics — renders each child's content inline */}
-    {children.length > 0 && (
-      <section class="spoke__section">
-        <h2 class="spoke__section-title">The Tenses — Deep Dive</h2>
-        <div class="tense-accordion">
-          {children.map((c) => (
-            <details class="tense-accordion__item">
-              <summary class="tense-accordion__summary">
-                <span class="tense-accordion__title">{c.title}</span>
-                {(c.summary ?? c.teaser) && <span class="tense-accordion__teaser">{c.summary ?? c.teaser}</span>}
-                <span class="tense-accordion__chevron" aria-hidden="true">›</span>
-              </summary>
-              <div class="tense-accordion__body">
-                {c.sections && c.sections.length > 0 && (
-                  <FoundationSections sections={c.sections} headingLevel="h3" />
-                )}
-                <a href={`${base}/foundation/${c.slug}/`} class="tense-accordion__full-link">
-                  Open full page →
-                </a>
-              </div>
-            </details>
-          ))}
-        </div>
       </section>
     )}
 

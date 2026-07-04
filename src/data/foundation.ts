@@ -906,21 +906,6 @@ export const foundationTopics: FoundationTopic[] = [
       },
     ],
 
-    habenSein: {
-      seinNote: 'Motion, change of state, and being/staying',
-      habenNote: 'Everything else — transitive and most intransitive verbs',
-      seinVerbs: [
-        'gehen', 'fahren', 'laufen', 'kommen', 'fliegen',
-        'aufwachen', 'einschlafen', 'sterben', 'werden',
-        'bleiben', 'sein', 'passieren', 'fallen',
-      ],
-      habenVerbs: [
-        'lernen', 'essen', 'arbeiten', 'schreiben',
-        'kaufen', 'sehen', 'hören', 'lesen',
-        'machen', 'denken', 'helfen', 'nehmen',
-      ],
-    },
-
     tenseOverviews: [
       {
         name: 'Präsens',
@@ -1594,11 +1579,9 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'lernen (wir/ihr/sie)', de: 'haben · habt · haben gelernt', en: '' },
           { label: 'fahren (ich/du/er)',   de: 'bin · bist · ist gefahren',  en: 'Perfekt of a sein-verb' },
           { label: 'fahren (wir/ihr/sie)', de: 'sind · seid · sind gefahren', en: '' },
+          { label: 'sein-verbs',  de: 'gehen · fahren · laufen · kommen · fliegen · aufwachen · einschlafen · sterben · werden · bleiben · sein · passieren · fallen', en: 'motion & change of state' },
+          { label: 'haben-verbs', de: 'lernen · essen · arbeiten · schreiben · kaufen · sehen · hören · lesen · machen · denken · helfen · nehmen', en: 'everything else' },
         ],
-        callout: {
-          kind: 'tip',
-          text: 'Use sein with verbs of motion or change of state: fahren, gehen, kommen, werden, bleiben, sein itself.',
-        },
       },
       {
         title: 'Präteritum — the written past',
