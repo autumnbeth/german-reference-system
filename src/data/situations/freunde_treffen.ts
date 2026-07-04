@@ -17,7 +17,7 @@ export const freundeTreffen: Situation = {
 
   vocab: [
     {
-      label: 'Verabredungen · Making plans',
+      label: 'A1 · Verabredungen',
       items: [
         { gender: 'die', word: 'Verabredung', meaning: 'arrangement / date (social)', plural: 'Verabredungen' },
         { gender: 'der', word: 'Treffpunkt', meaning: 'meeting point', plural: 'Treffpunkte' },
@@ -27,7 +27,7 @@ export const freundeTreffen: Situation = {
       ],
     },
     {
-      label: 'Verben · Key verbs',
+      label: 'A2 · Verben',
       items: [
         { gender: 'die', word: 'Lust (haben auf)', meaning: 'to feel like / to fancy (something)', note: '"Ich habe Lust auf …"' },
         { gender: 'der', word: 'Vorschlag (vorschlagen)', meaning: 'suggestion (to suggest)', note: 'irregular: schlägt vor' },
@@ -37,7 +37,7 @@ export const freundeTreffen: Situation = {
       ],
     },
     {
-      label: 'Aktivitäten · Activities',
+      label: 'B1 · Aktivitäten',
       items: [
         { gender: 'das', word: 'Kino', meaning: 'cinema', plural: 'Kinos', note: 'ins Kino gehen' },
         { gender: 'der', word: 'Ausflug', meaning: 'day trip / outing', plural: 'Ausflüge', note: 'einen Ausflug machen' },

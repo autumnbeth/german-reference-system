@@ -19,7 +19,7 @@ export const restaurant: Situation = {
 
   vocab: [
     {
-      label: 'Speisekarte & Gänge · Menu & Courses',
+      label: 'A1 · Speisekarte & Gänge',
       items: [
         { gender: 'die', word: 'Speisekarte', meaning: 'menu', plural: 'Speisekarten' },
         { gender: 'das', word: 'Gericht', meaning: 'dish / course', plural: 'Gerichte' },
@@ -31,7 +31,7 @@ export const restaurant: Situation = {
       ],
     },
     {
-      label: 'Ernährung · Dietary',
+      label: 'A2 · Ernährung',
       items: [
         { gender: 'die', word: 'Allergie', meaning: 'allergy', plural: 'Allergien' },
         { gender: 'die', word: 'Zutat', meaning: 'ingredient', plural: 'Zutaten' },
@@ -44,7 +44,7 @@ export const restaurant: Situation = {
       ],
     },
     {
-      label: 'Adjektive · Dietary Adjectives',
+      label: 'B1 · Adjektive',
       items: [
         { gender: 'die', word: 'vegetarisch', meaning: 'vegetarian', note: 'adjective, no gender' },
         { gender: 'die', word: 'vegan', meaning: 'vegan', note: 'adjective, no gender' },
@@ -54,7 +54,7 @@ export const restaurant: Situation = {
       ],
     },
     {
-      label: 'Zahlen & Service · Payment & Service',
+      label: 'B2 · Zahlen & Service',
       items: [
         { gender: 'die', word: 'Rechnung', meaning: 'bill / check' },
         { gender: 'das', word: 'Trinkgeld', meaning: 'tip' },

@@ -17,7 +17,7 @@ export const notfall: Situation = {
 
   vocab: [
     {
-      label: 'Hilfsdienste · Emergency Services',
+      label: 'A1 · Hilfsdienste',
       items: [
         { gender: 'die', word: 'Feuerwehr', meaning: 'fire brigade (112)' },
         { gender: 'die', word: 'Polizei', meaning: 'police (110)' },
@@ -27,7 +27,7 @@ export const notfall: Situation = {
       ],
     },
     {
-      label: 'Ortsangaben · Giving Location',
+      label: 'A2 · Ortsangaben',
       items: [
         { gender: 'die', word: 'Straße', meaning: 'street' },
         { gender: 'die', word: 'Kreuzung', meaning: 'intersection / junction' },
@@ -38,7 +38,7 @@ export const notfall: Situation = {
       ],
     },
     {
-      label: 'Verletzungen & Gefahren · Injuries & Dangers',
+      label: 'B1 · Verletzungen & Gefahren',
       items: [
         { gender: 'die', word: 'Verletzung', meaning: 'injury' },
         { gender: 'der', word: 'Unfall', meaning: 'accident' },
@@ -51,7 +51,7 @@ export const notfall: Situation = {
       ],
     },
     {
-      label: 'Anweisungen · Instructions',
+      label: 'B2 · Anweisungen',
       items: [
         { gender: 'die', word: 'stabile Seitenlage', meaning: 'recovery position' },
         { gender: 'die', word: 'Herzmassage', meaning: 'chest compressions / CPR' },

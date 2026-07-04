@@ -17,7 +17,7 @@ export const vermieterKontaktieren: Situation = {
 
   vocab: [
     {
-      label: 'Probleme in der Wohnung · Problems in the Flat',
+      label: 'A1 · Probleme in der Wohnung',
       items: [
         { gender: 'die', word: 'Heizung', meaning: 'heating system', plural: 'Heizungen' },
         { gender: 'das', word: 'Fenster', meaning: 'window', plural: 'Fenster' },
@@ -32,7 +32,7 @@ export const vermieterKontaktieren: Situation = {
       ],
     },
     {
-      label: 'Reparatur & Handwerker · Repairs',
+      label: 'A2 · Reparatur & Handwerker',
       items: [
         { gender: 'die', word: 'Reparatur', meaning: 'repair', plural: 'Reparaturen' },
         { gender: 'der', word: 'Handwerker', meaning: 'tradesperson / repairperson', plural: 'Handwerker' },
@@ -44,7 +44,7 @@ export const vermieterKontaktieren: Situation = {
       ],
     },
     {
-      label: 'Kommunikation · Communication',
+      label: 'B1 · Kommunikation',
       items: [
         { gender: 'die', word: 'Miete', meaning: 'rent' },
         { gender: 'die', word: 'Mietminderung', meaning: 'rent reduction', note: 'legal right when flat is unusable' },

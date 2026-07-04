@@ -19,7 +19,7 @@ export const elternabend: Situation = {
 
   vocab: [
     {
-      label: 'Schulfächer · School subjects',
+      label: 'A1 · Schulfächer',
       items: [
         { gender: 'die', word: 'Mathe', meaning: 'Maths (short for Mathematik)' },
         { gender: 'das', word: 'Deutsch', meaning: 'German (language / subject)' },
@@ -31,7 +31,7 @@ export const elternabend: Situation = {
       ],
     },
     {
-      label: 'Personen · School roles',
+      label: 'A2 · Personen',
       items: [
         { gender: 'die', word: 'Lehrerin', meaning: 'female teacher', plural: 'Lehrerinnen' },
         { gender: 'der', word: 'Lehrer', meaning: 'male teacher', plural: 'Lehrer' },
@@ -43,7 +43,7 @@ export const elternabend: Situation = {
       ],
     },
     {
-      label: 'Schulereignisse · School events',
+      label: 'B1 · Schulereignisse',
       items: [
         { gender: 'der', word: 'Ausflug', meaning: 'school trip', plural: 'Ausflüge' },
         { gender: 'die', word: 'Klassenarbeit', meaning: 'class test', plural: 'Klassenarbeiten' },
@@ -54,7 +54,7 @@ export const elternabend: Situation = {
       ],
     },
     {
-      label: 'Unterstützung · Support',
+      label: 'B2 · Unterstützung',
       items: [
         { gender: 'die', word: 'Rückmeldung', meaning: 'feedback' },
         { gender: 'die', word: 'Unterstützung', meaning: 'support' },

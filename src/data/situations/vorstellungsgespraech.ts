@@ -18,7 +18,7 @@ export const vorstellungsgespraech: Situation = {
 
   vocab: [
     {
-      label: 'Bewerbung · Application',
+      label: 'A1 · Bewerbung',
       items: [
         { gender: 'die', word: 'Bewerbung', meaning: 'application', plural: 'Bewerbungen' },
         { gender: 'der', word: 'Lebenslauf', meaning: 'CV / résumé', plural: 'Lebensläufe' },
@@ -28,7 +28,7 @@ export const vorstellungsgespraech: Situation = {
       ],
     },
     {
-      label: 'Erfahrung · Experience',
+      label: 'A2 · Erfahrung',
       items: [
         { gender: 'die', word: 'Erfahrung', meaning: 'experience', plural: 'Erfahrungen' },
         { gender: 'das', word: 'Praktikum', meaning: 'internship', plural: 'Praktika' },
@@ -38,7 +38,7 @@ export const vorstellungsgespraech: Situation = {
       ],
     },
     {
-      label: 'Eigenschaften · Qualities',
+      label: 'B1 · Eigenschaften',
       items: [
         { gender: 'die', word: 'Stärke', meaning: 'strength', plural: 'Stärken' },
         { gender: 'die', word: 'Teamfähigkeit', meaning: 'ability to work in a team', note: 'adjective: teamfähig' },
@@ -47,7 +47,7 @@ export const vorstellungsgespraech: Situation = {
       ],
     },
     {
-      label: 'Arbeitsbedingungen · Conditions',
+      label: 'B2 · Arbeitsbedingungen',
       items: [
         { gender: 'die', word: 'Arbeitszeit', meaning: 'working hours', plural: 'Arbeitszeiten' },
         { gender: 'das', word: 'Gehalt', meaning: 'salary', plural: 'Gehälter' },

@@ -17,7 +17,7 @@ export const supermarkt: Situation = {
 
   vocab: [
     {
-      label: 'Im Laden · In the Store',
+      label: 'A1 · Im Laden',
       items: [
         { gender: 'der', word: 'Einkaufswagen', meaning: 'shopping trolley', plural: 'Einkaufswagen' },
         { gender: 'der', word: 'Einkaufskorb', meaning: 'shopping basket', plural: 'Einkaufskörbe' },
@@ -30,7 +30,7 @@ export const supermarkt: Situation = {
       ],
     },
     {
-      label: 'Preise & Angebote · Prices & Offers',
+      label: 'A2 · Preise & Angebote',
       items: [
         { gender: 'das', word: 'Angebot', meaning: 'special offer', plural: 'Angebote' },
         { gender: 'der', word: 'Rabatt', meaning: 'discount' },
@@ -43,7 +43,7 @@ export const supermarkt: Situation = {
       ],
     },
     {
-      label: 'Einkaufen · Shopping',
+      label: 'B1 · Einkaufen',
       items: [
         { gender: 'die', word: 'Einkaufsliste', meaning: 'shopping list' },
         { gender: 'die', word: 'Menge', meaning: 'quantity / amount' },

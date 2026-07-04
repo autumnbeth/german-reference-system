@@ -18,7 +18,7 @@ export const ersterArbeitstag: Situation = {
 
   vocab: [
     {
-      label: 'Menschen · People',
+      label: 'A1 · Menschen',
       items: [
         { gender: 'der', word: 'Kollege', meaning: 'colleague (male)', plural: 'Kollegen' },
         { gender: 'die', word: 'Kollegin', meaning: 'colleague (female)', plural: 'Kolleginnen' },
@@ -28,7 +28,7 @@ export const ersterArbeitstag: Situation = {
       ],
     },
     {
-      label: 'Räume & Ausstattung · Spaces & Equipment',
+      label: 'A2 · Räume & Ausstattung',
       items: [
         { gender: 'der', word: 'Pausenraum', meaning: 'break room', plural: 'Pausenräume' },
         { gender: 'der', word: 'Besprechungsraum', meaning: 'meeting room', plural: 'Besprechungsräume' },
@@ -38,7 +38,7 @@ export const ersterArbeitstag: Situation = {
       ],
     },
     {
-      label: 'Systeme & Abläufe · Systems & Processes',
+      label: 'B1 · Systeme & Abläufe',
       items: [
         { gender: 'das', word: 'Passwort', meaning: 'password', plural: 'Passwörter' },
         { gender: 'die', word: 'Zeiterfassung', meaning: 'time recording system', note: 'usually singular' },
@@ -48,7 +48,7 @@ export const ersterArbeitstag: Situation = {
       ],
     },
     {
-      label: 'B1 · Abläufe verstehen',
+      label: 'B2 · Abläufe verstehen',
       items: [
         { gender: 'die', word: 'Besprechung', meaning: 'meeting', plural: 'Besprechungen' },
         { gender: 'die', word: 'Einarbeitung', meaning: 'onboarding / induction' },

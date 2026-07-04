@@ -18,7 +18,7 @@ export const terminVereinbaren: Situation = {
 
   vocab: [
     {
-      label: 'Termin · Appointment',
+      label: 'A1 · Termin',
       items: [
         { gender: 'der', word: 'Termin', meaning: 'appointment', plural: 'Termine' },
         { gender: 'die', word: 'Uhrzeit', meaning: 'time (of day)', plural: 'Uhrzeiten' },
@@ -28,7 +28,7 @@ export const terminVereinbaren: Situation = {
       ],
     },
     {
-      label: 'Aktionen · Actions',
+      label: 'A2 · Aktionen',
       items: [
         { gender: 'die', word: 'Vereinbarung (vereinbaren)', meaning: 'arrangement (to arrange/book)', note: '"einen Termin vereinbaren"' },
         { gender: 'die', word: 'Verschiebung (verschieben)', meaning: 'postponement (to reschedule)', note: '"den Termin verschieben"' },
@@ -38,7 +38,7 @@ export const terminVereinbaren: Situation = {
       ],
     },
     {
-      label: 'Unterlagen · Documents',
+      label: 'B1 · Unterlagen',
       items: [
         { gender: 'pl', word: 'Unterlagen', meaning: 'documents / paperwork', note: 'usually plural' },
         { gender: 'der', word: 'Ausweis', meaning: 'identity card / ID', plural: 'Ausweise' },
@@ -48,7 +48,7 @@ export const terminVereinbaren: Situation = {
       ],
     },
     {
-      label: 'Verfügbarkeit & Kommunikation · Availability & Communication',
+      label: 'B2 · Verfügbarkeit & Kommunikation',
       items: [
         { gender: 'adj', word: 'verhindert', meaning: 'unable to attend / unavailable' },
         { gender: 'adj', word: 'flexibel', meaning: 'flexible' },

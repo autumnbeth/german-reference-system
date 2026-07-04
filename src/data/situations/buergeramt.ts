@@ -18,7 +18,7 @@ export const buergeramt: Situation = {
 
   vocab: [
     {
-      label: 'Terminmanagement · Appointments',
+      label: 'A1 · Terminmanagement',
       items: [
         { gender: 'der', word: 'Termin', meaning: 'appointment', plural: 'Termine' },
         { gender: 'die', word: 'Terminbestätigung', meaning: 'appointment confirmation', plural: 'Terminbestätigungen' },
@@ -29,7 +29,7 @@ export const buergeramt: Situation = {
       ],
     },
     {
-      label: 'Dokumente & Formulare · Documents',
+      label: 'A2 · Dokumente & Formulare',
       items: [
         { gender: 'das', word: 'Formular', meaning: 'form', plural: 'Formulare' },
         { gender: 'der', word: 'Ausweis', meaning: 'ID card', plural: 'Ausweise' },
@@ -39,7 +39,7 @@ export const buergeramt: Situation = {
       ],
     },
     {
-      label: 'Prozesse · Key verbs',
+      label: 'B1 · Prozesse',
       items: [
         { gender: 'die', word: 'beantragen', meaning: 'to apply for', note: 'Ich beantrage einen neuen Ausweis.' },
         { gender: 'die', word: 'nachreichen', meaning: 'to submit later / hand in after the fact', note: 'separable: Ich reiche das nach.' },

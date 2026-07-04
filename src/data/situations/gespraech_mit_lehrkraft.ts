@@ -17,7 +17,7 @@ export const gespraechMitLehrkraft: Situation = {
 
   vocab: [
     {
-      label: 'Schulleistung · School performance',
+      label: 'A1 · Schulleistung',
       items: [
         { gender: 'die', word: 'Note', meaning: 'grade / mark', plural: 'Noten' },
         { gender: 'der', word: 'Fortschritt', meaning: 'progress', plural: 'Fortschritte' },
@@ -29,7 +29,7 @@ export const gespraechMitLehrkraft: Situation = {
       ],
     },
     {
-      label: 'Unterstützung · Support',
+      label: 'A2 · Unterstützung',
       items: [
         { gender: 'der', word: 'Förderplan', meaning: 'support plan', plural: 'Förderpläne' },
         { gender: 'die', word: 'Nachhilfe', meaning: 'private tutoring' },
@@ -41,7 +41,7 @@ export const gespraechMitLehrkraft: Situation = {
       ],
     },
     {
-      label: 'Adjektive · Describing progress',
+      label: 'B1 · Adjektive',
       items: [
         { gender: 'der', word: 'überfordert', meaning: 'overwhelmed (adj.)', note: 'used predicatively: Das Kind ist überfordert.' },
         { gender: 'der', word: 'unsicher', meaning: 'uncertain / unsure (adj.)', note: 'used predicatively: Mein Kind ist unsicher.' },

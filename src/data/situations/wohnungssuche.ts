@@ -17,7 +17,7 @@ export const wohnungssuche: Situation = {
 
   vocab: [
     {
-      label: 'Wohnung & Zimmer · Flat & Rooms',
+      label: 'A1 · Wohnung & Zimmer',
       items: [
         { gender: 'die', word: 'Wohnung', meaning: 'flat / apartment', plural: 'Wohnungen' },
         { gender: 'das', word: 'Zimmer', meaning: 'room', plural: 'Zimmer' },
@@ -32,7 +32,7 @@ export const wohnungssuche: Situation = {
       ],
     },
     {
-      label: 'Miete & Kosten · Rent & Costs',
+      label: 'A2 · Miete & Kosten',
       items: [
         { gender: 'die', word: 'Kaltmiete', meaning: 'base rent (excl. utilities)' },
         { gender: 'die', word: 'Warmmiete', meaning: 'total rent (incl. utilities)' },
@@ -44,7 +44,7 @@ export const wohnungssuche: Situation = {
       ],
     },
     {
-      label: 'Lage & Ausstattung · Location & Features',
+      label: 'B1 · Lage & Ausstattung',
       items: [
         { gender: 'die', word: 'Lage', meaning: 'location / position' },
         { gender: 'die', word: 'Haltestelle', meaning: 'public transport stop', plural: 'Haltestellen' },
@@ -56,7 +56,7 @@ export const wohnungssuche: Situation = {
       ],
     },
     {
-      label: 'Bewerbung · Application',
+      label: 'B2 · Bewerbung',
       items: [
         { gender: 'die', word: 'Besichtigung', meaning: 'viewing appointment' },
         { gender: 'die', word: 'Schufa-Auskunft', meaning: 'credit check report', note: 'required by most landlords' },

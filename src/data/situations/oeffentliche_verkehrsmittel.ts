@@ -16,7 +16,7 @@ export const oeffentlicheVerkehrsmittel: Situation = {
 
   vocab: [
     {
-      label: 'Fahrkarten & Gültigkeit · Tickets & Validity',
+      label: 'A1 · Fahrkarten & Gültigkeit',
       items: [
         { gender: 'die', word: 'Fahrkarte', meaning: 'ticket', plural: 'Fahrkarten' },
         { gender: 'der', word: 'Fahrschein', meaning: 'ticket (formal)', plural: 'Fahrscheine' },
@@ -29,7 +29,7 @@ export const oeffentlicheVerkehrsmittel: Situation = {
       ],
     },
     {
-      label: 'Infrastruktur · Infrastructure',
+      label: 'A2 · Infrastruktur',
       items: [
         { gender: 'das', word: 'Gleis', meaning: 'platform track', plural: 'Gleise' },
         { gender: 'der', word: 'Bahnsteig', meaning: 'platform', plural: 'Bahnsteige' },
@@ -41,7 +41,7 @@ export const oeffentlicheVerkehrsmittel: Situation = {
       ],
     },
     {
-      label: 'Störungen · Disruptions',
+      label: 'B1 · Störungen',
       items: [
         { gender: 'die', word: 'Verspätung', meaning: 'delay', plural: 'Verspätungen' },
         { gender: 'die', word: 'Gleisänderung', meaning: 'platform change' },
@@ -54,7 +54,7 @@ export const oeffentlicheVerkehrsmittel: Situation = {
       ],
     },
     {
-      label: 'Transportmittel · Types of Transport',
+      label: 'B2 · Transportmittel',
       items: [
         { gender: 'der', word: 'Bus', meaning: 'bus', plural: 'Busse' },
         { gender: 'die', word: 'Straßenbahn', meaning: 'tram', plural: 'Straßenbahnen' },

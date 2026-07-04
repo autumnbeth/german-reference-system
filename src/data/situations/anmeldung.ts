@@ -19,7 +19,7 @@ export const anmeldung: Situation = {
 
   vocab: [
     {
-      label: 'Dokumente · Documents',
+      label: 'A1 · Dokumente',
       items: [
         { gender: 'der', word: 'Ausweis', meaning: 'ID card', plural: 'Ausweise' },
         { gender: 'der', word: 'Reisepass', meaning: 'passport', plural: 'Reisepässe' },
@@ -30,7 +30,7 @@ export const anmeldung: Situation = {
       ],
     },
     {
-      label: 'Vorgänge · Procedures',
+      label: 'A2 · Vorgänge',
       items: [
         { gender: 'die', word: 'Anmeldung', meaning: 'registration of address (moving in)' },
         { gender: 'die', word: 'Ummeldung', meaning: 'change of address registration (moving within Germany)' },
@@ -41,7 +41,7 @@ export const anmeldung: Situation = {
       ],
     },
     {
-      label: 'Aktionen · Key verbs',
+      label: 'B1 · Aktionen',
       items: [
         { gender: 'die', word: 'nachreichen', meaning: 'to submit later / hand in after the fact', note: 'separable verb: Ich reiche das nach.' },
         { gender: 'die', word: 'ausfüllen', meaning: 'to fill in (a form)', note: 'separable verb: Ich fülle das Formular aus.' },
