@@ -29,8 +29,14 @@ const activeSlug = s.slug;
 <BaseLayout title={`${s.title} · German Reference System`}>
   <div class="site-shell">
 
+    <!-- ── Mobile nav toggle ── -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-expanded="false" aria-controls="site-sidebar">
+      <span class="sidebar-toggle__icon" aria-hidden="true">☰</span>
+      <span>Navigate</span>
+    </button>
+
     <!-- ── Sidebar ── -->
-    <nav class="sidebar" aria-label="Situations">
+    <nav class="sidebar" id="site-sidebar" aria-label="Situations">
       {Object.entries(navGroups).map(([theme, sits]) => (
         <div class="sidebar__group">
           <div class="sidebar__theme eyebrow">{theme}</div>
@@ -218,6 +224,16 @@ const activeSlug = s.slug;
 
 <!-- Tab switching -->
 <script is:inline>
+  // Mobile sidebar toggle
+  var sidebarToggle = document.getElementById('sidebar-toggle');
+  var siteSidebar = document.getElementById('site-sidebar');
+  if (sidebarToggle && siteSidebar) {
+    sidebarToggle.addEventListener('click', function() {
+      var open = siteSidebar.classList.toggle('sidebar--open');
+      sidebarToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
   document.addEventListener('click', function(e) {
     // CEFR level tabs — identified by data-level attribute
     var cefrBtn = e.target.closest('[data-level]');
@@ -482,4 +498,59 @@ const activeSlug = s.slug;
     font-weight: 500;
   }
   .foundation-links__link:hover { text-decoration: underline; }
+
+  /* ── Sidebar toggle (hidden on desktop) ── */
+  .sidebar-toggle {
+    display: none;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    padding: .625rem 1rem;
+    background: var(--surface);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    text-align: left;
+  }
+  .sidebar-toggle:hover { color: var(--ink); }
+  .sidebar-toggle[aria-expanded="true"] { color: var(--accent-deep); background: var(--accent-bg); }
+
+  /* ── Tablet: narrow sidebar ── */
+  @media (max-width: 1024px) {
+    .sidebar { width: 210px; padding: 1.25rem .75rem 2rem; }
+    .situation { padding: 1.75rem 1.75rem; }
+  }
+
+  /* ── Mobile: stacked layout, collapsible sidebar ── */
+  @media (max-width: 768px) {
+    .site-shell { flex-direction: column; }
+
+    .sidebar-toggle { display: flex; }
+
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      display: none;
+    }
+    .sidebar--open { display: block; }
+
+    .situation {
+      padding: 1.25rem 1rem 3rem;
+      max-width: 100%;
+    }
+
+    .situation__title { font-size: 1.75rem; }
+
+    .tabs__bar { flex-wrap: wrap; }
+
+    .phrase-layer { padding: .75rem .875rem; }
+  }
 </style>

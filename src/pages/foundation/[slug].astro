@@ -353,4 +353,12 @@ const relatedSits = (topic.relatedSituations ?? [])
     font-weight: 500;
   }
   .spoke__related-link:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .spoke { padding: 1.25rem 1rem 3rem; }
+    .spoke__title { font-size: 1.75rem; }
+
+    /* Allow wide tables (declension, modal stack) to scroll horizontally */
+    .spoke__section { overflow-x: auto; }
+  }
 </style>
