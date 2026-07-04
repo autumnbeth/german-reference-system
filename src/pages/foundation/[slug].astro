@@ -208,13 +208,6 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       </section>
     )}
 
-    {topic.progression && topic.progression.length > 0 && (
-      <section class="spoke__section">
-        <h2 class="spoke__section-title">Progression</h2>
-        <ProgressionTable rows={topic.progression} title="" />
-      </section>
-    )}
-
     {relatedSits.length > 0 && (
       <section class="spoke__section">
         <h2 class="spoke__section-title">Situations that use this</h2>
@@ -227,6 +220,14 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
             </li>
           ))}
         </ul>
+      </section>
+    )}
+
+    {/* Progression — always last, serves as a summary of the concept across levels */}
+    {topic.progression && topic.progression.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">Progression</h2>
+        <ProgressionTable rows={topic.progression} title="" />
       </section>
     )}
 
