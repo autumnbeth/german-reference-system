@@ -94,6 +94,18 @@ const navGroups = getFoundationByCategory();
       </div>
     )}
 
+    {/* Verb conjugations — rendered first so auxiliaries anchor the page */}
+    {topic.verbConjugations && topic.verbConjugations.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">The Three Auxiliaries — haben · sein · werden</h2>
+        <div class="spoke__verbs">
+          {topic.verbConjugations.map((v) => (
+            <VerbConjugationComponent verb={v} />
+          ))}
+        </div>
+      </section>
+    )}
+
     {/* Named sections (satzbau-style) */}
     {topic.sections && topic.sections.map((section) => (
       <section class="spoke__section">
@@ -172,18 +184,6 @@ const navGroups = getFoundationByCategory();
       <section class="spoke__section">
         <h2 class="spoke__section-title">Modal Stacking — All Constructions</h2>
         <ModalStack rows={topic.modalStack} />
-      </section>
-    )}
-
-    {/* Top-level verb conjugations (verb-tenses page) */}
-    {topic.verbConjugations && topic.verbConjugations.length > 0 && (
-      <section class="spoke__section">
-        <h2 class="spoke__section-title">Conjugations</h2>
-        <div class="spoke__verbs">
-          {topic.verbConjugations.map((v) => (
-            <VerbConjugationComponent verb={v} />
-          ))}
-        </div>
       </section>
     )}
 
