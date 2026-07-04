@@ -9,7 +9,7 @@ import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
 import ProgressionTable from '../../components/ProgressionTable.astro';
 import Callout from '../../components/Callout.astro';
-import { foundationTopics, getFoundationTopic } from '../../data/foundation';
+import { foundationTopics, getFoundationTopic, getFoundationByCategory } from '../../data/foundation';
 import { situations } from '../../data/index';
 
 export function getStaticPaths() {
@@ -35,13 +35,43 @@ const hasContent =
 const relatedSits = (topic.relatedSituations ?? [])
   .map((s) => situations.find((sit) => sit.slug === s))
   .filter(Boolean);
+
+const navGroups = getFoundationByCategory();
 ---
 <BaseLayout title={`${topic.title} · Foundation · German Reference System`}>
-  <div class="spoke">
+  <div class="foundation-shell">
 
-    <div class="spoke__nav">
-      <a href={`${base}/foundation/`} class="spoke__back eyebrow">← Foundation</a>
-    </div>
+    <!-- ── Mobile nav toggle ── -->
+    <button class="sidebar-toggle" id="foundation-sidebar-toggle" aria-expanded="false" aria-controls="foundation-sidebar">
+      <span aria-hidden="true">☰</span>
+      <span>Navigate</span>
+    </button>
+
+    <!-- ── Sidebar ── -->
+    <nav class="sidebar" id="foundation-sidebar" aria-label="Foundation topics">
+      <a href={`${base}/foundation/`} class="sidebar__home eyebrow">← Grammar Foundation</a>
+      {Object.entries(navGroups).map(([category, topics]) => (
+        <div class="sidebar__group">
+          <a
+            href={`${base}/foundation/#${category.toLowerCase().replace(/\s+/g, '-')}`}
+            class="sidebar__theme eyebrow"
+          >{category}</a>
+          <ul class="sidebar__list">
+            {topics.map((t) => (
+              <li>
+                <a
+                  href={`${base}/foundation/${t.slug}/`}
+                  class={`sidebar__link${t.slug === slug ? ' sidebar__link--active' : ''}`}
+                >{t.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+    <!-- ── Main content ── -->
+  <div class="spoke">
 
     <header class="spoke__header">
       {topic.category && (
@@ -191,7 +221,8 @@ const relatedSits = (topic.relatedSituations ?? [])
       </section>
     )}
 
-  </div>
+  </div><!-- /.spoke -->
+  </div><!-- /.foundation-shell -->
 </BaseLayout>
 
 <style>
@@ -354,11 +385,132 @@ const relatedSits = (topic.relatedSituations ?? [])
   }
   .spoke__related-link:hover { text-decoration: underline; }
 
+  /* ── Shell + Sidebar ── */
+  .foundation-shell {
+    display: flex;
+    min-height: 100vh;
+    max-width: var(--max-content);
+    margin: 0 auto;
+  }
+
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem 2rem;
+    position: sticky;
+    top: 52px;
+    height: calc(100vh - 52px);
+    overflow-y: auto;
+    background: var(--surface);
+  }
+
+  .sidebar__home {
+    display: block;
+    color: var(--ink-faint);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    padding: 0 .5rem;
+    transition: color .1s;
+  }
+  .sidebar__home:hover { color: var(--accent-deep); }
+
+  .sidebar__group { margin-bottom: 1.25rem; }
+
+  .sidebar__theme {
+    display: block;
+    padding: 0 .5rem .375rem;
+    color: var(--accent-deep);
+    text-decoration: none;
+    margin-bottom: .25rem;
+    transition: color .1s;
+  }
+  .sidebar__theme:hover { color: var(--accent); }
+
+  .sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar__link {
+    display: block;
+    padding: .375rem .5rem;
+    border-radius: var(--r-sm);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    color: var(--ink-body);
+    text-decoration: none;
+    transition: background .1s, color .1s;
+  }
+  .sidebar__link:hover { background: var(--accent-bg); color: var(--accent-deep); }
+  .sidebar__link--active {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  .spoke {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* ── Sidebar toggle (mobile only) ── */
+  .sidebar-toggle {
+    display: none;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    padding: .625rem 1rem;
+    background: var(--surface);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: .875rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    text-align: left;
+  }
+  .sidebar-toggle:hover { color: var(--ink); }
+  .sidebar-toggle[aria-expanded="true"] { color: var(--accent-deep); background: var(--accent-bg); }
+
+  /* ── Tablet ── */
+  @media (max-width: 1024px) {
+    .sidebar { width: 210px; padding: 1.25rem .75rem 2rem; }
+    .spoke { padding: 1.75rem 1.75rem; }
+  }
+
+  /* ── Mobile ── */
   @media (max-width: 768px) {
+    .foundation-shell { flex-direction: column; }
+
+    .sidebar-toggle { display: flex; }
+
+    .sidebar {
+      width: 100%;
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 1rem;
+      display: none;
+    }
+    .sidebar--open { display: block; }
+
     .spoke { padding: 1.25rem 1rem 3rem; }
     .spoke__title { font-size: 1.75rem; }
-
-    /* Allow wide tables (declension, modal stack) to scroll horizontally */
     .spoke__section { overflow-x: auto; }
   }
 </style>
+
+<script is:inline>
+  var toggle = document.getElementById('foundation-sidebar-toggle');
+  var sidebar = document.getElementById('foundation-sidebar');
+  if (toggle && sidebar) {
+    toggle.addEventListener('click', function() {
+      var open = sidebar.classList.toggle('sidebar--open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+</script>

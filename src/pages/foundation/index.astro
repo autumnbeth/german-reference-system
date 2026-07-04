@@ -21,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <main class="hub__main">
       {Object.entries(byCategory).map(([category, topics]) => (
-        <section class="hub__category">
+        <section class="hub__category" id={category.toLowerCase().replace(/\s+/g, '-')}>
           <h2 class="hub__category-heading eyebrow">{category}</h2>
           <div class="hub__grid">
             {topics.map((topic) => (

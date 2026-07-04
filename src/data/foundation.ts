@@ -10,7 +10,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'satzbau',
     title: 'Sentence Architecture',
-    category: 'Structure',
+    category: 'Sentence Structure',
     teaser: 'How German sentences are built: the verb-second rule, position 1, and the middle field.',
     relatedSituations: ['apotheke'],
     intro:
@@ -193,7 +193,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'verbklammer',
     title: 'Verb Bracket',
-    category: 'Structure',
+    category: 'Sentence Structure',
     teaser: 'The bracket that opens at verb position 2 and closes at the end of the clause.',
     relatedSituations: ['apotheke'],
     intro:
@@ -315,7 +315,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'cases',
     title: 'The Case System',
-    category: 'Grammar',
+    category: 'Building Blocks',
     teaser: 'Nominative, accusative, dative, genitive — what changes and why it matters.',
     intro:
       'German uses four cases to show what role a noun plays in a sentence. ' +
@@ -443,7 +443,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'passive',
     title: 'Passive Voice',
-    category: 'Structure',
+    category: 'Verbs',
     teaser: 'Vorgangspassiv and Zustandspassiv — how German shifts the focus from actor to action.',
     relatedSituations: ['apotheke'],
     intro:
@@ -573,7 +573,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'konjunktiv',
     title: 'Konjunktiv',
-    category: 'Grammar',
+    category: 'Verbs',
     teaser: 'Konjunktiv II for hypotheticals · Konjunktiv I for reported speech.',
     intro:
       'Konjunktiv is a mood, not a tense — it does not change when something happens, ' +
@@ -582,6 +582,39 @@ export const foundationTopics: FoundationTopic[] = [
       'Konjunktiv I signals that you are reporting what someone else said, not your own view.',
 
     sections: [
+      {
+        title: 'Werden — the verb behind three patterns',
+        body:
+          'Werden is the single most important verb to recognise across German grammar because it plays ' +
+          'three completely different roles depending on the construction. ' +
+          'In Futur I it is the future auxiliary. In Passive it builds the action. ' +
+          'In Konjunktiv II it becomes würde — the backbone of the hypothetical. ' +
+          'The same verb, three jobs. Recognising it in each role unlocks the whole system at a glance.',
+        exampleTable: [
+          { label: 'Futur I · wird + Infinitiv',          de: 'Ich werde das lernen.',       en: 'I will learn that.' },
+          { label: 'Passive · wird + Partizip II',         de: 'Das wird gemacht.',            en: 'That is being done.' },
+          { label: 'Konjunktiv II · würde + Infinitiv',   de: 'Ich würde das lernen.',       en: 'I would learn that.' },
+          { label: 'Konj. II Perfekt · hätte + Part. II', de: 'Ich hätte das gelernt.',      en: 'I would have learned that.' },
+          { label: 'Konj. II Perfekt · wäre + Part. II',  de: 'Ich wäre gegangen.',          en: 'I would have gone.' },
+        ],
+      },
+      {
+        title: 'The three auxiliaries — würde · hätte · wäre',
+        body:
+          'Every Konjunktiv II construction uses one of three auxiliaries. ' +
+          'They all come from verbs you already know: werden, haben, sein. ' +
+          'Learning which verb class takes which auxiliary is the key to building any hypothetical sentence.',
+        exampleTable: [
+          { label: 'werden → würde  (unreal present, all verbs)', de: 'Ich würde gern kommen.',       en: 'I would like to come.' },
+          { label: 'haben  → hätte  (unreal past, haben-verbs)',  de: 'Ich hätte das gewusst.',       en: 'I would have known that.' },
+          { label: 'sein   → wäre   (unreal past, sein-verbs)',   de: 'Ich wäre früher gegangen.',    en: 'I would have left earlier.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Quick rule',
+          text: 'würde = unreal present. hätte / wäre = unreal past. The choice between hätte and wäre follows the same haben/sein rule as the Perfekt.',
+        },
+      },
       {
         title: 'Konjunktiv II · Hypothetical & Conditional',
         body:
@@ -854,6 +887,13 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'würde (P2) + Infinitiv (END)  ·  or irregular stem',
         example: 'Ich würde lernen.',
         note: 'hypothetical / polite',
+      },
+      {
+        tense: 'Konjunktiv II Perfekt',
+        verbCount: 2,
+        structure: 'hätte/wäre (P2) + Partizip II (END)',
+        example: 'Ich hätte gelernt.',
+        note: 'past hypothetical',
       },
       {
         tense: 'Konjunktiv I',
@@ -1260,7 +1300,7 @@ export const foundationTopics: FoundationTopic[] = [
   {
     slug: 'connectors',
     title: 'Connectors & Conjunctions',
-    category: 'Structure',
+    category: 'Sentence Structure',
     teaser: 'und, aber, weil, dass, obwohl — coordinating vs. subordinating, and the verb-to-end rule.',
     relatedSituations: ['apotheke'],
     intro:
@@ -1466,12 +1506,21 @@ export function getFoundationTopic(slug: string): FoundationTopic | undefined {
   return foundationTopics.find((t) => t.slug === slug);
 }
 
+const CATEGORY_ORDER = ['Verbs', 'Sentence Structure', 'Building Blocks'];
+
 export function getFoundationByCategory(): Record<string, FoundationTopic[]> {
-  const out: Record<string, FoundationTopic[]> = {};
+  const raw: Record<string, FoundationTopic[]> = {};
   for (const t of foundationTopics) {
     const cat = t.category ?? 'General';
-    if (!out[cat]) out[cat] = [];
-    out[cat].push(t);
+    if (!raw[cat]) raw[cat] = [];
+    raw[cat].push(t);
+  }
+  const out: Record<string, FoundationTopic[]> = {};
+  for (const cat of CATEGORY_ORDER) {
+    if (raw[cat]) out[cat] = raw[cat];
+  }
+  for (const cat of Object.keys(raw)) {
+    if (!out[cat]) out[cat] = raw[cat];
   }
   return out;
 }
