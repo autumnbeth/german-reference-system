@@ -572,7 +572,7 @@ export const foundationTopics: FoundationTopic[] = [
   // ── Konjunktiv ───────────────────────────────────────────────
   {
     slug: 'konjunktiv',
-    title: 'Konjunktiv',
+    title: 'Konjunktiv I & II',
     category: 'Verbs',
     teaser: 'Konjunktiv II for hypotheticals · Konjunktiv I for reported speech.',
     intro:
@@ -1507,6 +1507,180 @@ export const foundationTopics: FoundationTopic[] = [
     ],
   },
   {
+    slug: 'praesens',
+    title: 'Präsens',
+    category: 'Verbs',
+    teaser: 'Present tense endings, stem-change verbs, and the three core auxiliaries.',
+    intro:
+      'The present tense is the engine of everyday German — it covers what is happening now, ' +
+      'regular habits, and even near-future plans with a time word. Master the endings once ' +
+      'and you have a template every other tense builds on.',
+    sections: [
+      {
+        title: 'The endings — stem + ending = form',
+        body: 'Remove -en from the infinitive to get the stem, then add the ending. ' +
+              'The wir and sie/Sie forms always match the infinitive — a useful shortcut.',
+        exampleTable: [
+          { label: 'ich',       de: 'lern-e',   en: 'I learn' },
+          { label: 'du',        de: 'lern-st',  en: 'you learn' },
+          { label: 'er/sie/es', de: 'lern-t',   en: 'he/she/it learns' },
+          { label: 'wir',       de: 'lern-en',  en: 'we learn' },
+          { label: 'ihr',       de: 'lern-t',   en: 'you (pl.) learn' },
+          { label: 'sie/Sie',   de: 'lern-en',  en: 'they / you (formal) learn' },
+        ],
+      },
+      {
+        title: 'Stem-change verbs — e→i, e→ie, a→ä',
+        body: 'Some verbs change their stem vowel in the du and er/sie/es forms only. ' +
+              'The other four forms keep the original vowel.',
+        exampleTable: [
+          { label: 'sprechen (e→i)',  de: 'ich spreche · du sprichst · er spricht',  en: 'to speak' },
+          { label: 'sehen (e→ie)',    de: 'ich sehe · du siehst · er sieht',          en: 'to see' },
+          { label: 'fahren (a→ä)',    de: 'ich fahre · du fährst · er fährt',         en: 'to drive' },
+          { label: 'schlafen (a→ä)', de: 'ich schlafe · du schläfst · er schläft',   en: 'to sleep' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Only du and er/sie/es change. The ich, wir, ihr, and sie/Sie forms always follow the regular pattern.',
+        },
+      },
+      {
+        title: 'The three auxiliaries — haben · sein · werden',
+        body: 'These three verbs are irregular in Präsens and appear inside every compound tense. ' +
+              'Memorise their six forms — you will use them constantly.',
+        exampleTable: [
+          { label: 'haben (ich/du/er)',    de: 'habe · hast · hat',       en: 'to have' },
+          { label: 'haben (wir/ihr/sie)',  de: 'haben · habt · haben',    en: '' },
+          { label: 'sein (ich/du/er)',     de: 'bin · bist · ist',        en: 'to be' },
+          { label: 'sein (wir/ihr/sie)',   de: 'sind · seid · sind',      en: '' },
+          { label: 'werden (ich/du/er)',   de: 'werde · wirst · wird',    en: 'to become' },
+          { label: 'werden (wir/ihr/sie)', de: 'werden · werdet · werden', en: '' },
+        ],
+        callout: {
+          kind: 'confidence',
+          text: 'Full conjugation tables for haben, sein, and werden — including all tenses — are on the Verb Conjugation page.',
+        },
+      },
+    ],
+  },
+  {
+    slug: 'past-tenses',
+    title: 'Past Tenses',
+    category: 'Verbs',
+    teaser: 'Perfekt · Präteritum · Plusquamperfekt — the complete past.',
+    intro:
+      'German has three past tenses, each with its own role. ' +
+      'Perfekt is the spoken past you use in conversation. ' +
+      'Präteritum is the written past of narrative and literature. ' +
+      'Plusquamperfekt places one past event before another.',
+    sections: [
+      {
+        title: 'Perfekt — the spoken past',
+        body: 'Formed with haben or sein (Präsens) in position 2, plus Partizip II at the end. ' +
+              'This is the go-to past tense in conversation.',
+        exampleTable: [
+          { label: 'haben + Partizip II',     de: 'Ich habe gelernt.',            en: 'I learned / have learned' },
+          { label: 'sein + Partizip II',      de: 'Er ist gefahren.',             en: 'He drove / has driven' },
+          { label: 'Partizip II — weak',      de: 'ge- + stem + -(e)t → gelernt, gemacht', en: 'regular verbs' },
+          { label: 'Partizip II — strong',    de: 'ge- + (new stem) + -en → gefahren, geschrieben', en: 'irregular verbs' },
+          { label: 'Partizip II — trennbar',  de: 'stem + ge + prefix + -(e)t/-en → aufgemacht', en: 'separable verbs' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Use sein with verbs of motion or change of state: fahren, gehen, kommen, werden, bleiben, sein itself.',
+        },
+      },
+      {
+        title: 'Präteritum — the written past',
+        body: 'The past tense of novels, news reports, and formal writing. ' +
+              'Exception: haben and sein, plus modal verbs, use Präteritum even in speech — ' +
+              'say "er war" and "ich hatte", not "er ist gewesen".',
+        exampleTable: [
+          { label: 'Weak verbs: stem + -te', de: 'lernen → lernte · machen → machte',  en: 'regular pattern' },
+          { label: 'Strong verbs: vowel change', de: 'fahren → fuhr · schreiben → schrieb', en: 'irregular — must memorise' },
+          { label: 'haben',   de: 'ich hatte · du hattest · er hatte',   en: 'had' },
+          { label: 'sein',    de: 'ich war · du warst · er war',         en: 'was / were' },
+          { label: 'werden',  de: 'ich wurde · du wurdest · er wurde',   en: 'became' },
+        ],
+      },
+      {
+        title: 'Plusquamperfekt — the earlier past',
+        body: 'The past-before-the-past. Shows that one event happened before another past event. ' +
+              'Formed exactly like Perfekt, but swap the Präsens auxiliary for its Präteritum form.',
+        exampleTable: [
+          { label: 'hatte + Partizip II', de: 'Ich hatte schon gegessen.',    en: 'I had already eaten.' },
+          { label: 'war + Partizip II',   de: 'Sie war noch nie geflogen.',   en: 'She had never flown.' },
+          { label: 'In context',          de: 'Als er ankam, hatte sie schon gegessen.', en: 'When he arrived, she had already eaten.' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Same haben/sein rule as Perfekt — just replace habe→hatte and bin→war. The Partizip II stays identical.',
+        },
+      },
+      {
+        title: 'Perfekt vs Präteritum — when to use which',
+        exampleTable: [
+          { label: 'Spoken German',                    de: 'Ich habe gestern gearbeitet.',        en: '→ use Perfekt' },
+          { label: 'Written / narrative',              de: 'Er arbeitete den ganzen Tag.',         en: '→ use Präteritum' },
+          { label: 'haben & sein — always Präteritum', de: 'Er war müde. Sie hatte keine Zeit.',  en: 'even in speech' },
+          { label: 'Modals — always Präteritum',       de: 'Ich musste früh aufstehen.',          en: 'even in speech' },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'future-tenses',
+    title: 'Future Tenses',
+    category: 'Verbs',
+    teaser: 'Futur I · Futur II — intention, prediction, and completed futures.',
+    intro:
+      'German often uses the Präsens with a time word to talk about the future. ' +
+      'The two Futur tenses add a layer of emphasis, strong intention, or — in Futur II — ' +
+      'the idea that something will have been completed by a future point.',
+    sections: [
+      {
+        title: 'Futur I — intention and prediction',
+        body: 'Formed with werden (Präsens) in position 2, plus the Infinitiv at the end. ' +
+              'Use it to emphasise a firm intention or to make a prediction.',
+        exampleTable: [
+          { label: 'Structure',          de: 'werden (P2) + Infinitiv (END)',           en: '' },
+          { label: 'ich / du / er',      de: 'werde · wirst · wird … lernen',           en: 'will learn' },
+          { label: 'wir / ihr / sie',    de: 'werden · werdet · werden … lernen',       en: 'will learn' },
+          { label: 'Intention',          de: 'Ich werde morgen kommen.',                en: 'I will come tomorrow.' },
+          { label: 'Prediction',         de: 'Das wird nicht einfach sein.',            en: 'That won\'t be easy.' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Germans mostly use Präsens + time word for future events. "Ich komme morgen." is more natural than "Ich werde morgen kommen."',
+        },
+      },
+      {
+        title: 'Futur II — completed future action',
+        body: 'A prediction or assumption that something will have been completed by a future point. ' +
+              'Formed with werden + Partizip II + haben/sein at the very end.',
+        exampleTable: [
+          { label: 'Structure',      de: 'werden (P2) + Partizip II + haben/sein (END)',  en: '' },
+          { label: 'with haben',     de: 'Ich werde gelernt haben.',                      en: 'I will have learned.' },
+          { label: 'with sein',      de: 'Er wird angekommen sein.',                      en: 'He will have arrived.' },
+          { label: 'Assumption',     de: 'Du wirst das schon gewusst haben.',             en: 'You will have known that already.' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Same haben/sein rule as Perfekt — verbs of motion and change take sein; everything else takes haben.',
+        },
+      },
+      {
+        title: 'Präsens as future — the natural choice',
+        body: 'When a time marker makes the future clear, Präsens is almost always preferred over Futur I.',
+        exampleTable: [
+          { label: 'With time word',        de: 'Ich komme morgen.',               en: 'I\'m coming tomorrow.' },
+          { label: 'Confirmed plan',        de: 'Wir fahren nächste Woche.',       en: 'We\'re going next week.' },
+          { label: 'Question about plans',  de: 'Was machst du am Wochenende?',   en: 'What are you doing this weekend?' },
+        ],
+      },
+    ],
+  },
+  {
     slug: 'connectors',
     title: 'Connectors & Conjunctions',
     category: 'Sentence Structure',
@@ -1717,6 +1891,24 @@ export function getFoundationTopic(slug: string): FoundationTopic | undefined {
 
 const CATEGORY_ORDER = ['Verbs', 'Sentence Structure', 'Building Blocks'];
 
+const TOPIC_ORDER: Record<string, number> = {
+  // Verbs
+  'tense-stack':    1,
+  'verb-tenses':    2,
+  'modal-verbs':    3,
+  'praesens':       4,
+  'past-tenses':    5,
+  'future-tenses':  6,
+  'konjunktiv':     7,
+  'passive':        8,
+  // Sentence Structure
+  'satzbau':        1,
+  'verbklammer':    2,
+  'connectors':     3,
+  // Building Blocks
+  'cases':          1,
+};
+
 export function getFoundationByCategory(): Record<string, FoundationTopic[]> {
   const raw: Record<string, FoundationTopic[]> = {};
   for (const t of foundationTopics) {
@@ -1726,7 +1918,11 @@ export function getFoundationByCategory(): Record<string, FoundationTopic[]> {
   }
   const out: Record<string, FoundationTopic[]> = {};
   for (const cat of CATEGORY_ORDER) {
-    if (raw[cat]) out[cat] = raw[cat];
+    if (raw[cat]) {
+      out[cat] = [...raw[cat]].sort(
+        (a, b) => (TOPIC_ORDER[a.slug] ?? 99) - (TOPIC_ORDER[b.slug] ?? 99)
+      );
+    }
   }
   for (const cat of Object.keys(raw)) {
     if (!out[cat]) out[cat] = raw[cat];
