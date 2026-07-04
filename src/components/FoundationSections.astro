@@ -15,7 +15,7 @@ const Heading = headingLevel;
 ---
 
 {sections.map((section) => (
-  <section class="fsec">
+  <section class="fsec" id={section.id ?? undefined}>
     <Heading class="fsec__title">{section.title}</Heading>
 
     {section.body && (

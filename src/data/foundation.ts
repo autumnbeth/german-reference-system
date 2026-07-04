@@ -619,6 +619,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Konjunktiv II · Hypothetical & Conditional',
+        id: 'konjunktiv-ii',
         body:
           'Konjunktiv II has two forms. The würde-form (würde + Infinitiv) is preferred in spoken German ' +
           'and works for all regular verbs. ' +
@@ -661,6 +662,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Konjunktiv II Perfekt · Past Hypothetical',
+        id: 'konjunktiv-ii-perfekt',
         body:
           'To talk about something hypothetical in the past — what would have happened if things had been different — ' +
           'combine hätte or wäre (Konjunktiv II) with the Partizip II of the main verb. ' +
@@ -692,6 +694,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Konjunktiv I · Reported Speech',
+        id: 'konjunktiv-i',
         body:
           'Konjunktiv I is built from the infinitive stem + a set of endings. ' +
           'It is the mood of journalism, official reporting, and formal indirect speech. ' +
@@ -847,6 +850,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'conjugated verb only',
         example: 'Ich lerne.',
         note: 'spoken & written',
+        link: '/foundation/praesens/',
       },
       {
         tense: 'Präteritum',
@@ -854,6 +858,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'past stem (no auxiliary)',
         example: 'Ich lernte.',
         note: 'written / narrative',
+        link: '/foundation/past-tenses/#prateritum',
       },
       {
         tense: 'Perfekt',
@@ -861,6 +866,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'haben/sein (P2) + Partizip II (END)',
         example: 'Ich habe gelernt.',
         note: 'spoken past',
+        link: '/foundation/past-tenses/#perfekt',
       },
       {
         tense: 'Plusquamperfekt',
@@ -868,6 +874,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'hatte/war (P2) + Partizip II (END)',
         example: 'Ich hatte gelernt.',
         note: 'past before the past',
+        link: '/foundation/past-tenses/#plusquamperfekt',
       },
       {
         tense: 'Futur I',
@@ -875,6 +882,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'werden (P2) + Infinitiv (END)',
         example: 'Ich werde lernen.',
         note: 'future / assumption',
+        link: '/foundation/future-tenses/#futur-i',
       },
       {
         tense: 'Futur II',
@@ -882,6 +890,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'werden (P2) + Partizip II + haben/sein (END)',
         example: 'Ich werde gelernt haben.',
         note: 'completed future',
+        link: '/foundation/future-tenses/#futur-ii',
       },
       {
         tense: 'Konjunktiv II',
@@ -889,6 +898,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'würde (P2) + Infinitiv (END)  ·  or irregular stem',
         example: 'Ich würde lernen.',
         note: 'hypothetical / polite',
+        link: '/foundation/konjunktiv/#konjunktiv-ii',
       },
       {
         tense: 'Konjunktiv II Perfekt',
@@ -896,6 +906,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'hätte/wäre (P2) + Partizip II (END)',
         example: 'Ich hätte gelernt.',
         note: 'past hypothetical',
+        link: '/foundation/konjunktiv/#konjunktiv-ii-perfekt',
       },
       {
         tense: 'Konjunktiv I',
@@ -903,6 +914,7 @@ export const foundationTopics: FoundationTopic[] = [
         structure: 'Konj. I stem (reported speech)',
         example: 'Er lerne. (reported)',
         note: 'indirect speech · written',
+        link: '/foundation/konjunktiv/#konjunktiv-i',
       },
     ],
 
@@ -1567,6 +1579,7 @@ export const foundationTopics: FoundationTopic[] = [
     sections: [
       {
         title: 'Perfekt — the spoken past',
+        id: 'perfekt',
         body: 'Formed with haben or sein (Präsens) in position 2, plus Partizip II at the end. ' +
               'This is the go-to past tense in conversation.',
         exampleTable: [
@@ -1585,6 +1598,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Präteritum — the written past',
+        id: 'prateritum',
         body: 'The past tense of novels, news reports, and formal writing. ' +
               'Exception: haben and sein, plus modal verbs, use Präteritum even in speech — ' +
               'say "er war" and "ich hatte", not "er ist gewesen".',
@@ -1604,6 +1618,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Plusquamperfekt — the earlier past',
+        id: 'plusquamperfekt',
         body: 'The past-before-the-past. Shows that one event happened before another past event. ' +
               'Formed exactly like Perfekt, but swap the Präsens auxiliary for its Präteritum form.',
         exampleTable: [
@@ -1643,6 +1658,7 @@ export const foundationTopics: FoundationTopic[] = [
     sections: [
       {
         title: 'Futur I — intention and prediction',
+        id: 'futur-i',
         body: 'Formed with werden (Präsens) in position 2, plus the Infinitiv at the end. ' +
               'Use it to emphasise a firm intention or to make a prediction.',
         exampleTable: [
@@ -1659,6 +1675,7 @@ export const foundationTopics: FoundationTopic[] = [
       },
       {
         title: 'Futur II — completed future action',
+        id: 'futur-ii',
         body: 'A prediction or assumption that something will have been completed by a future point. ' +
               'Formed with werden + Partizip II + haben/sein at the very end.',
         exampleTable: [

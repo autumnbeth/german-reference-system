@@ -168,6 +168,7 @@ export interface TenseLadderRow {
   structure: string;      // "haben/sein (P2) + Partizip II (END)"
   example: string;        // "Ich habe gelernt."
   note?: string;          // e.g. "spoken past"
+  link?: string;          // relative path to deep-dive section, e.g. "/foundation/past-tenses/#perfekt"
 }
 
 export interface HabenSeinGuide {
@@ -222,6 +223,7 @@ export interface DeclensionTable {
 
 export interface FoundationSection {
   title: string;
+  id?: string;        // anchor id for deep-link targeting, e.g. "perfekt"
   body?: string;      // explanatory paragraph (Newsreader)
   callout?: {
     kind?: 'tip' | 'confidence' | 'challenge';

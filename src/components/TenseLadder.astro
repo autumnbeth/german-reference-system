@@ -4,8 +4,9 @@ import type { TenseLadderRow, HabenSeinGuide } from '../content/schema';
 interface Props {
   rows: TenseLadderRow[];
   habenSein?: HabenSeinGuide;
+  base?: string;
 }
-const { rows, habenSein } = Astro.props;
+const { rows, habenSein, base = '' } = Astro.props;
 ---
 
 <div class="tl">
@@ -29,7 +30,10 @@ const { rows, habenSein } = Astro.props;
         {rows.map((row) => (
           <tr class={`tl__row tl__row--v${row.verbCount}`}>
             <td class="tl__tense">
-              {row.tense}
+              {row.link
+                ? <a href={base + row.link} class="tl__tense-link">{row.tense}</a>
+                : row.tense
+              }
               {row.note && <span class="tl__row-note">{row.note}</span>}
             </td>
             <td class="tl__verbs" aria-label={`${row.verbCount} verb${row.verbCount > 1 ? 's' : ''}`}>
@@ -139,6 +143,18 @@ const { rows, habenSein } = Astro.props;
     font-weight: 600;
     color: var(--ink);
     white-space: nowrap;
+  }
+
+  .tl__tense-link {
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--ink-faint);
+    transition: color .1s, border-color .1s;
+  }
+  .tl__tense-link:hover {
+    color: var(--accent-deep);
+    border-bottom-color: var(--accent-deep);
   }
 
   .tl__row-note {
