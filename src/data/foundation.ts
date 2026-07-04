@@ -574,6 +574,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'konjunktiv',
     title: 'Konjunktiv I & II',
     category: 'Verbs',
+    parent: 'tense-stack',
     teaser: 'Konjunktiv II for hypotheticals · Konjunktiv I for reported speech.',
     intro:
       'Konjunktiv is a mood, not a tense — it does not change when something happens, ' +
@@ -1510,6 +1511,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'praesens',
     title: 'Präsens',
     category: 'Verbs',
+    parent: 'tense-stack',
     teaser: 'Present tense endings, stem-change verbs, and the three core auxiliaries.',
     intro:
       'The present tense is the engine of everyday German — it covers what is happening now, ' +
@@ -1567,6 +1569,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'past-tenses',
     title: 'Past Tenses',
     category: 'Verbs',
+    parent: 'tense-stack',
     teaser: 'Perfekt · Präteritum · Plusquamperfekt — the complete past.',
     intro:
       'German has three past tenses, each with its own role. ' +
@@ -1632,6 +1635,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'future-tenses',
     title: 'Future Tenses',
     category: 'Verbs',
+    parent: 'tense-stack',
     teaser: 'Futur I · Futur II — intention, prediction, and completed futures.',
     intro:
       'German often uses the Präsens with a time word to talk about the future. ' +
@@ -1909,9 +1913,16 @@ const TOPIC_ORDER: Record<string, number> = {
   'cases':          1,
 };
 
+export function getTopicChildren(parentSlug: string): FoundationTopic[] {
+  return foundationTopics
+    .filter((t) => t.parent === parentSlug)
+    .sort((a, b) => (TOPIC_ORDER[a.slug] ?? 99) - (TOPIC_ORDER[b.slug] ?? 99));
+}
+
 export function getFoundationByCategory(): Record<string, FoundationTopic[]> {
   const raw: Record<string, FoundationTopic[]> = {};
   for (const t of foundationTopics) {
+    if (t.parent) continue; // children are shown nested under their parent, not as hub cards
     const cat = t.category ?? 'General';
     if (!raw[cat]) raw[cat] = [];
     raw[cat].push(t);

@@ -252,6 +252,7 @@ export interface FoundationTopic {
   intro: string;
   category?: string;     // "Structure" | "Grammar" | "Verbs"
   teaser?: string;       // one-line description shown on the hub card
+  parent?: string;       // slug of parent topic — hides this from the hub, shows it nested under parent
   // Foundation pages are visual: they lean on these reusable blocks.
   sections?: FoundationSection[];
   tenseLadder?: TenseLadderRow[];

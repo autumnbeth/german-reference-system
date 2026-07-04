@@ -9,7 +9,7 @@ import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
 import ProgressionTable from '../../components/ProgressionTable.astro';
 import Callout from '../../components/Callout.astro';
-import { foundationTopics, getFoundationTopic, getFoundationByCategory } from '../../data/foundation';
+import { foundationTopics, getFoundationTopic, getFoundationByCategory, getTopicChildren } from '../../data/foundation';
 import { situations } from '../../data/index';
 
 export function getStaticPaths() {
@@ -37,6 +37,9 @@ const relatedSits = (topic.relatedSituations ?? [])
   .filter(Boolean);
 
 const navGroups = getFoundationByCategory();
+const children = getTopicChildren(slug);
+const parentTopic = topic.parent ? getFoundationTopic(topic.parent) : null;
+const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
 ---
 <BaseLayout title={`${topic.title} · Foundation · German Reference System`}>
   <div class="foundation-shell">
@@ -57,14 +60,30 @@ const navGroups = getFoundationByCategory();
             class="sidebar__theme eyebrow"
           >{category}</a>
           <ul class="sidebar__list">
-            {topics.map((t) => (
-              <li>
-                <a
-                  href={`${base}/foundation/${t.slug}/`}
-                  class={`sidebar__link${t.slug === slug ? ' sidebar__link--active' : ''}`}
-                >{t.title}</a>
-              </li>
-            ))}
+            {topics.map((t) => {
+              const tChildren = getTopicChildren(t.slug);
+              const isParentOfActive = tChildren.some((c) => c.slug === slug);
+              return (
+                <li>
+                  <a
+                    href={`${base}/foundation/${t.slug}/`}
+                    class={`sidebar__link${(t.slug === slug || isParentOfActive) ? ' sidebar__link--active' : ''}`}
+                  >{t.title}{tChildren.length > 0 ? ' ›' : ''}</a>
+                  {tChildren.length > 0 && (
+                    <ul class="sidebar__children">
+                      {tChildren.map((c) => (
+                        <li>
+                          <a
+                            href={`${base}/foundation/${c.slug}/`}
+                            class={`sidebar__link sidebar__link--child${c.slug === slug ? ' sidebar__link--active' : ''}`}
+                          >{c.title}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       ))}
@@ -73,8 +92,23 @@ const navGroups = getFoundationByCategory();
     <!-- ── Main content ── -->
   <div class="spoke">
 
+    {/* Breadcrumb for child pages */}
+    {parentTopic && (
+      <nav class="spoke__breadcrumb" aria-label="Breadcrumb">
+        <a href={`${base}/foundation/${parentTopic.slug}/`} class="spoke__back">← {parentTopic.title}</a>
+        <div class="spoke__sibling-strip">
+          {siblings.map((s) => (
+            <a
+              href={`${base}/foundation/${s.slug}/`}
+              class={`spoke__sibling-link${s.slug === slug ? ' spoke__sibling-link--active' : ''}`}
+            >{s.title}</a>
+          ))}
+        </div>
+      </nav>
+    )}
+
     <header class="spoke__header">
-      {topic.category && (
+      {topic.category && !parentTopic && (
         <div class="eyebrow spoke__category">{topic.category}</div>
       )}
       <h1 class="spoke__title">{topic.title}</h1>
@@ -203,6 +237,21 @@ const navGroups = getFoundationByCategory();
       <section class="spoke__section">
         <h2 class="spoke__section-title">Progression</h2>
         <ProgressionTable rows={topic.progression} title="" />
+      </section>
+    )}
+
+    {/* "In this section" grid for parent topics with children */}
+    {children.length > 0 && (
+      <section class="spoke__section spoke__children-section">
+        <h2 class="spoke__section-title">In this section</h2>
+        <div class="spoke__children-grid">
+          {children.map((c) => (
+            <a href={`${base}/foundation/${c.slug}/`} class="spoke__child-card">
+              <div class="spoke__child-title">{c.title}</div>
+              {c.teaser && <div class="spoke__child-teaser">{c.teaser}</div>}
+            </a>
+          ))}
+        </div>
       </section>
     )}
 
@@ -344,6 +393,104 @@ const navGroups = getFoundationByCategory();
     font-size: .8125rem;
     color: var(--ink-soft);
     width: 36%;
+  }
+
+  /* ── Breadcrumb + sibling strip (child pages) ── */
+  .spoke__breadcrumb {
+    margin-bottom: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .spoke__back {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color .1s;
+  }
+  .spoke__back:hover { color: var(--accent-deep); }
+
+  .spoke__sibling-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .375rem;
+  }
+
+  .spoke__sibling-link {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: .3rem .75rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: background .1s, color .1s, border-color .1s;
+  }
+  .spoke__sibling-link:hover {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    border-color: var(--accent-deep);
+  }
+  .spoke__sibling-link--active {
+    background: var(--accent-bg);
+    color: var(--accent-deep);
+    border-color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  /* ── "In this section" child card grid ── */
+  .spoke__children-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .75rem;
+  }
+
+  .spoke__child-card {
+    display: block;
+    padding: 1rem 1.125rem;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--surface);
+    text-decoration: none;
+    transition: border-color .15s, background .15s;
+  }
+  .spoke__child-card:hover {
+    border-color: var(--accent-deep);
+    background: var(--accent-bg);
+  }
+
+  .spoke__child-title {
+    font-family: var(--font-sans);
+    font-size: .9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: .375rem;
+  }
+
+  .spoke__child-teaser {
+    font-family: var(--font-serif);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* ── Sidebar children ── */
+  .sidebar__children {
+    list-style: none;
+    margin: .25rem 0 .25rem .75rem;
+    padding: 0;
+    border-left: 2px solid var(--border);
+  }
+
+  .sidebar__link--child {
+    font-size: .8125rem;
+    padding: .3rem .5rem;
+    color: var(--ink-soft);
   }
 
   /* ── Placeholder ── */
