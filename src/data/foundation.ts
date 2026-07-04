@@ -444,6 +444,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'passive',
     title: 'Passive Voice',
     category: 'Verbs',
+    hubVisible: false,
     teaser: 'Vorgangspassiv and Zustandspassiv — how German shifts the focus from actor to action.',
     relatedSituations: ['apotheke'],
     intro:
@@ -1705,6 +1706,7 @@ export const foundationTopics: FoundationTopic[] = [
     slug: 'connectors',
     title: 'Connectors & Conjunctions',
     category: 'Sentence Structure',
+    hubVisible: false,
     teaser: 'und, aber, weil, dass, obwohl — coordinating vs. subordinating, and the verb-to-end rule.',
     relatedSituations: ['apotheke'],
     intro:
@@ -1940,6 +1942,7 @@ export function getFoundationByCategory(): Record<string, FoundationTopic[]> {
   const raw: Record<string, FoundationTopic[]> = {};
   for (const t of foundationTopics) {
     if (t.parent) continue; // children are shown nested under their parent, not as hub cards
+    if (t.hubVisible === false) continue; // hidden from landing page
     const cat = t.category ?? 'General';
     if (!raw[cat]) raw[cat] = [];
     raw[cat].push(t);
