@@ -123,6 +123,20 @@ export const anmeldung: Situation = {
           ],
         },
       ],
+      dialogue: {
+        title: 'Dialog · Ich möchte mich anmelden',
+        level: 'A1',
+        lines: [
+          { speaker: 'Mitarbeiter', speakerGender: 'der', de: 'Guten Morgen! Was kann ich für Sie tun?', en: 'Good morning! What can I do for you?' },
+          { speaker: 'Anna', speakerGender: 'die', de: 'Guten Morgen. Ich möchte mich anmelden.', en: 'Good morning. I\'d like to register my address.' },
+          { speaker: 'Mitarbeiter', speakerGender: 'der', de: 'Haben Sie einen Termin?', en: 'Do you have an appointment?' },
+          { speaker: 'Anna', speakerGender: 'die', de: 'Ja, ich habe einen Termin um 10 Uhr.', en: 'Yes, I have an appointment at 10 o\'clock.' },
+          { speaker: 'Mitarbeiter', speakerGender: 'der', de: 'Wie ist Ihr Name?', en: 'What is your name?' },
+          { speaker: 'Anna', speakerGender: 'die', de: 'Mein Name ist Anna Müller.', en: 'My name is Anna Müller.' },
+          { speaker: 'Mitarbeiter', speakerGender: 'der', de: 'Und Ihre Adresse?', en: 'And your address?' },
+          { speaker: 'Anna', speakerGender: 'die', de: 'Ich wohne in der Hauptstraße 12 in Berlin.', en: 'I live at Hauptstraße 12 in Berlin.' },
+        ],
+      },
       challenge:
         'Before your appointment, practise saying your name, address, and date of birth in German out loud — that\'s 90% of A1 Anmeldung language.',
     },

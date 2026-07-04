@@ -47,6 +47,19 @@ export const ersterArbeitstag: Situation = {
         { gender: 'die', word: 'Priorität', meaning: 'priority', plural: 'Prioritäten' },
       ],
     },
+    {
+      label: 'B1 · Abläufe verstehen',
+      items: [
+        { gender: 'die', word: 'Besprechung', meaning: 'meeting', plural: 'Besprechungen' },
+        { gender: 'die', word: 'Einarbeitung', meaning: 'onboarding / induction' },
+        { gender: 'der', word: 'Ablauf', meaning: 'process / procedure', plural: 'Abläufe' },
+        { gender: 'die', word: 'Rückmeldung', meaning: 'feedback / response', plural: 'Rückmeldungen' },
+        { gender: 'verb', word: 'zeigen', meaning: 'to show' },
+        { gender: 'verb', word: 'erklären', meaning: 'to explain' },
+        { gender: 'verb', word: 'wiederholen', meaning: 'to repeat' },
+        { gender: 'verb', word: 'richtig verstanden haben', meaning: 'to have understood correctly' },
+      ],
+    },
   ],
 
   progression: [

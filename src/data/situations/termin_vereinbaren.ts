@@ -47,6 +47,19 @@ export const terminVereinbaren: Situation = {
         { gender: 'die', word: 'Überweisung', meaning: 'referral (medical)', plural: 'Überweisungen' },
       ],
     },
+    {
+      label: 'Verfügbarkeit & Kommunikation · Availability & Communication',
+      items: [
+        { gender: 'adj', word: 'verhindert', meaning: 'unable to attend / unavailable' },
+        { gender: 'adj', word: 'flexibel', meaning: 'flexible' },
+        { gender: 'adj', word: 'dringend', meaning: 'urgent' },
+        { gender: 'der', word: 'Vorschlag', meaning: 'suggestion / proposal', plural: 'Vorschläge' },
+        { gender: 'die', word: 'Alternative', meaning: 'alternative', plural: 'Alternativen' },
+        { gender: 'verb', word: 'vorschlagen', meaning: 'to suggest / propose' },
+        { gender: 'verb', word: 'nachfragen', meaning: 'to follow up / ask again' },
+        { gender: 'verb', word: 'auf Wiederhören', meaning: 'goodbye (on the phone)' },
+      ],
+    },
   ],
 
   progression: [

@@ -114,6 +114,20 @@ export const buergeramt: Situation = {
           ],
         },
       ],
+      dialogue: {
+        title: 'Dialog · Am Schalter',
+        level: 'A1',
+        lines: [
+          { speaker: 'Mitarbeiterin', speakerGender: 'die', de: 'Guten Tag! Kann ich Ihnen helfen?', en: 'Good day! Can I help you?' },
+          { speaker: 'Tom', speakerGender: 'der', de: 'Ja, ich habe einen Termin um 10 Uhr.', en: 'Yes, I have an appointment at 10 o\'clock.' },
+          { speaker: 'Mitarbeiterin', speakerGender: 'die', de: 'Wie ist Ihr Name?', en: 'What is your name?' },
+          { speaker: 'Tom', speakerGender: 'der', de: 'Mein Name ist Tom Bauer.', en: 'My name is Tom Bauer.' },
+          { speaker: 'Mitarbeiterin', speakerGender: 'die', de: 'Wofür sind Sie hier?', en: 'What are you here for?' },
+          { speaker: 'Tom', speakerGender: 'der', de: 'Ich bin hier für die Anmeldung.', en: 'I\'m here for the address registration.' },
+          { speaker: 'Mitarbeiterin', speakerGender: 'die', de: 'Haben Sie Ihren Ausweis dabei?', en: 'Do you have your ID with you?' },
+          { speaker: 'Tom', speakerGender: 'der', de: 'Ja, hier ist mein Ausweis.', en: 'Yes, here is my ID.' },
+        ],
+      },
       challenge:
         'Practise saying your appointment time and name out loud before your next Bürgeramt visit — arriving prepared makes everything calmer.',
     },
