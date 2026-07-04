@@ -340,6 +340,25 @@ export const foundationTopics: FoundationTopic[] = [
         },
       },
       {
+        title: 'The question test — how to identify any case',
+        body:
+          'When you are unsure which case to use, ask one of these four questions about the noun. ' +
+          'The question that fits tells you the case.',
+        exampleTable: [
+          { label: 'Wer? / Was?',    de: '→ Nominativ',   en: 'Who is acting? What is the subject? — Der Mann schläft.' },
+          { label: 'Wen? / Was?',    de: '→ Akkusativ',   en: 'Who/what is directly affected? — Ich sehe den Mann.' },
+          { label: 'Wem?',           de: '→ Dativ',        en: 'To/for whom? Indirect recipient? — Ich gebe dem Mann ein Buch.' },
+          { label: 'Wessen?',        de: '→ Genitiv',      en: 'Whose? — Das Buch des Mannes.' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Nominativ vs Akkusativ — the key distinction',
+          text: 'Both answer "Wer/Was?" but Nominativ is the actor (subject) and Akkusativ is what is acted upon (object). ' +
+                '"Der Hund beißt den Mann." — der Hund (Nom, acting) · den Mann (Akk, bitten). ' +
+                '"Den Hund beißt der Mann." — same words, opposite meaning because of the case.',
+        },
+      },
+      {
         title: 'Definite Articles · der, die, das',
         body: 'The definite article changes in four of the sixteen slots. Learn the patterns, not each cell individually.',
         declensionTables: [
@@ -420,6 +439,13 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'ohne',   de: 'Ohne einen Ausweis geht es nicht.',en: 'without an ID card' },
           { label: 'um',     de: 'Wir sitzen um den Tisch.',        en: 'around the table' },
         ],
+        callout: {
+          kind: 'tip',
+          label: 'Mnemonic — DOGFU',
+          text: 'durch · ohne · gegen · für · um — five prepositions, always Akkusativ. ' +
+                'Some learners remember the initial letters as DOGFU, or use the sentence: ' +
+                '"Durch für gegen ohne um — Akkusativ, immer."',
+        },
       },
       {
         title: 'Dativ Prepositions · always Dativ',
@@ -434,6 +460,12 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'zu',         de: 'Ich gehe zum Arzt.',               en: 'to the doctor' },
           { label: 'gegenüber',  de: 'Die Post ist gegenüber dem Bahnhof.', en: 'opposite the station' },
         ],
+        callout: {
+          kind: 'tip',
+          label: 'Rhyme — aus bei mit nach',
+          text: '"Aus, bei, mit, nach — seit, von, zu, gegenüber." ' +
+                'Repeat this until it feels automatic. These eight never take Akkusativ.',
+        },
       },
       {
         title: 'Two-Way Prepositions · Akkusativ or Dativ',
@@ -469,6 +501,48 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'wegen',         de: 'Wegen des Wetters blieb er zu Hause.', en: 'because of the weather' },
           { label: 'trotz',         de: 'Trotz des Regens gingen wir spazieren.', en: 'despite the rain' },
         ],
+      },
+      {
+        title: 'Common traps — where learners get stuck',
+        body:
+          'These are the most frequent case errors. ' +
+          'Knowing them in advance saves a lot of confusion.',
+        exampleTable: [
+          {
+            label: 'Dativ verbs',
+            de: 'Ich helfe dem Mann. · Das gehört mir. · Es gefällt mir.',
+            en: 'helfen, gehören, gefallen, danken, glauben (person) always take Dativ — not Akkusativ.',
+          },
+          {
+            label: 'Feminin Nom = Akk',
+            de: 'Ich sehe die Frau. (Akk) · Die Frau schläft. (Nom)',
+            en: 'Feminin and neutrum Nominativ and Akkusativ are identical — only maskulin changes (der → den).',
+          },
+          {
+            label: 'Pronoun declension',
+            de: 'ich → mich (Akk) · mir (Dat) · du → dich · dir · er → ihn · ihm',
+            en: 'Pronouns decline too. "Ich liebe dich." — dich is Akkusativ, not du.',
+          },
+          {
+            label: 'Dativ plural -n',
+            de: 'den Männern · den Kindern · den Frauen',
+            en: 'Dativ plural: always add -n to the noun if it doesn\'t already end in -n.',
+          },
+          {
+            label: 'Seit = Dativ',
+            de: 'Ich lerne seit einem Jahr Deutsch.',
+            en: 'seit takes Dativ, not Akkusativ. "seit einem Jahr" — not "seit ein Jahr".',
+          },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'What to learn first',
+          text: '1. The question test (Wer/Wen/Wem/Wessen). ' +
+                '2. Only maskulin Akkusativ changes der → den; feminin and neutrum stay the same. ' +
+                '3. The Dativ preposition rhyme (aus bei mit nach…). ' +
+                '4. The five Akkusativ prepositions (durch für gegen ohne um). ' +
+                'Genitiv and adjective endings can wait until those four feel solid.',
+        },
       },
     ],
   },
