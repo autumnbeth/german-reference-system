@@ -378,6 +378,39 @@ export const foundationTopics: FoundationTopic[] = [
         ],
       },
       {
+        title: 'n-Deklination · Weak Masculine Nouns',
+        body:
+          'A group of masculine nouns add -(e)n in every case except Nominativ singular. ' +
+          'Unlike most German nouns — where only the article changes — these nouns change themselves. ' +
+          'The rule: maskulin nouns ending in -e are almost always n-Deklination; ' +
+          'foreign-origin nouns with endings like -ent, -ist, or -ant follow the same pattern.',
+        declensionTables: [
+          {
+            title: 'der Mensch · der Student',
+            note: 'The noun adds -(e)n in every case except Nominativ.',
+            headers: ['', 'der Mensch', 'der Student'],
+            rows: [
+              { label: 'Nominativ', cells: ['der Mensch',     'der Student'] },
+              { label: 'Akkusativ', cells: ['den Menschen ←', 'den Studenten ←'] },
+              { label: 'Dativ',     cells: ['dem Menschen ←', 'dem Studenten ←'] },
+              { label: 'Genitiv',   cells: ['des Menschen ←', 'des Studenten ←'] },
+            ],
+          },
+        ],
+        exampleTable: [
+          { label: 'ending in -e',          de: 'der Junge · der Kollege · der Löwe · der Zeuge · der Hase',      en: 'most common group — -e → -en' },
+          { label: '-ent / -ist / -ant',     de: 'der Student · der Journalist · der Demonstrant · der Tourist',   en: 'foreign origin' },
+          { label: '-oph / -at / -ad',       de: 'der Philosoph · der Soldat · der Kamerad',                       en: 'foreign origin' },
+          { label: 'other common ones',      de: 'der Mensch · der Herr (→ Herrn) · der Bär · der Held · der Bauer', en: 'must memorise' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Quick check: maskulin + ends in -e → almost certainly n-Deklination. ' +
+                'For foreign-origin nouns, watch for -ent, -ist, -ant — they always follow the same rule. ' +
+                'Note: der Herr adds -n (Herrn), not -en.',
+        },
+      },
+      {
         title: 'Akkusativ Prepositions · always Akkusativ',
         body: 'These prepositions always require the Akkusativ. No exceptions.',
         exampleTable: [
