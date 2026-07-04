@@ -87,6 +87,7 @@ const activeSlug = s.slug;
                   aria-selected={i === 0 ? 'true' : 'false'}
                   aria-controls={`vocab-panel-${i}`}
                   data-vocab-index={i}
+                  data-vocab-level={group.label.split('·')[0].trim().split(' ')[0]}
                 >
                   {group.label.split('·')[0].trim()}
                 </button>
@@ -250,6 +251,23 @@ const activeSlug = s.slug;
       cefrBtn.setAttribute('aria-selected', 'true');
       var panel = document.getElementById('panel-' + level);
       if (panel) panel.classList.add('tabs__panel--active');
+
+      // Sync vocab tabs to matching level
+      var matchingVocab = document.querySelector('.vocab-tabs__tab[data-vocab-level="' + level + '"]');
+      if (matchingVocab) {
+        var matchIdx = matchingVocab.dataset.vocabIndex;
+        document.querySelectorAll('.vocab-tabs__tab').forEach(function(t) {
+          t.classList.remove('vocab-tabs__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.vocab-tabs__panel').forEach(function(p) {
+          p.classList.remove('vocab-tabs__panel--active');
+        });
+        matchingVocab.classList.add('vocab-tabs__tab--active');
+        matchingVocab.setAttribute('aria-selected', 'true');
+        var vp = document.getElementById('vocab-panel-' + matchIdx);
+        if (vp) vp.classList.add('vocab-tabs__panel--active');
+      }
       return;
     }
 
