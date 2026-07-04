@@ -154,13 +154,7 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       </section>
     )}
 
-    {/* Tense overview map (tense-stack page) */}
-    {topic.tenseOverviews && topic.tenseOverviews.length > 0 && (
-      <section class="spoke__section">
-        <h2 class="spoke__section-title">The Eight Tenses</h2>
-        <TenseMap tenses={topic.tenseOverviews} />
-      </section>
-    )}
+    {/* Tense overview map — intentionally removed; content lives in the accordion below */}
 
     {/* Top-level declension tables (case system) */}
     {topic.declensionTables && topic.declensionTables.length > 0 && (
@@ -206,7 +200,7 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
             <details class="tense-accordion__item">
               <summary class="tense-accordion__summary">
                 <span class="tense-accordion__title">{c.title}</span>
-                {c.teaser && <span class="tense-accordion__teaser">{c.teaser}</span>}
+                {(c.summary ?? c.teaser) && <span class="tense-accordion__teaser">{c.summary ?? c.teaser}</span>}
                 <span class="tense-accordion__chevron" aria-hidden="true">›</span>
               </summary>
               <div class="tense-accordion__body">

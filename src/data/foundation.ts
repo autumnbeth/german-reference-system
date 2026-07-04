@@ -575,6 +575,7 @@ export const foundationTopics: FoundationTopic[] = [
     title: 'Konjunktiv I & II',
     category: 'Verbs',
     parent: 'tense-stack',
+    summary: 'Hypotheticals, wishes, and polite requests (II) · reported speech in journalism and writing (I).',
     teaser: 'Konjunktiv II for hypotheticals · Konjunktiv I for reported speech.',
     intro:
       'Konjunktiv is a mood, not a tense — it does not change when something happens, ' +
@@ -1512,6 +1513,7 @@ export const foundationTopics: FoundationTopic[] = [
     title: 'Präsens',
     category: 'Verbs',
     parent: 'tense-stack',
+    summary: 'Current actions, habits, general truths, and near-future plans. The most used tense in German.',
     teaser: 'Present tense endings, stem-change verbs, and the three core auxiliaries.',
     intro:
       'The present tense is the engine of everyday German — it covers what is happening now, ' +
@@ -1570,6 +1572,7 @@ export const foundationTopics: FoundationTopic[] = [
     title: 'Past Tenses',
     category: 'Verbs',
     parent: 'tense-stack',
+    summary: 'Perfekt for spoken past · Präteritum for writing · Plusquamperfekt for the earlier past.',
     teaser: 'Perfekt · Präteritum · Plusquamperfekt — the complete past.',
     intro:
       'German has three past tenses, each with its own role. ' +
@@ -1587,6 +1590,10 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'Partizip II — weak',      de: 'ge- + stem + -(e)t → gelernt, gemacht', en: 'regular verbs' },
           { label: 'Partizip II — strong',    de: 'ge- + (new stem) + -en → gefahren, geschrieben', en: 'irregular verbs' },
           { label: 'Partizip II — trennbar',  de: 'stem + ge + prefix + -(e)t/-en → aufgemacht', en: 'separable verbs' },
+          { label: 'lernen (ich/du/er)',   de: 'habe · hast · hat gelernt',    en: 'Perfekt of a haben-verb' },
+          { label: 'lernen (wir/ihr/sie)', de: 'haben · habt · haben gelernt', en: '' },
+          { label: 'fahren (ich/du/er)',   de: 'bin · bist · ist gefahren',  en: 'Perfekt of a sein-verb' },
+          { label: 'fahren (wir/ihr/sie)', de: 'sind · seid · sind gefahren', en: '' },
         ],
         callout: {
           kind: 'tip',
@@ -1604,7 +1611,13 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'haben',   de: 'ich hatte · du hattest · er hatte',   en: 'had' },
           { label: 'sein',    de: 'ich war · du warst · er war',         en: 'was / were' },
           { label: 'werden',  de: 'ich wurde · du wurdest · er wurde',   en: 'became' },
+          { label: 'lernen (ich/du/er)',   de: 'lernte · lerntest · lernte',     en: 'weak verb — Präteritum' },
+          { label: 'lernen (wir/ihr/sie)', de: 'lernten · lerntet · lernten',    en: '' },
         ],
+        callout: {
+          kind: 'tip',
+          text: 'In everyday speech, always prefer Perfekt. Use Präteritum for war, hatte, wurde, and modal verbs at all levels — these sound natural even in conversation.',
+        },
       },
       {
         title: 'Plusquamperfekt — the earlier past',
@@ -1614,6 +1627,8 @@ export const foundationTopics: FoundationTopic[] = [
           { label: 'hatte + Partizip II', de: 'Ich hatte schon gegessen.',    en: 'I had already eaten.' },
           { label: 'war + Partizip II',   de: 'Sie war noch nie geflogen.',   en: 'She had never flown.' },
           { label: 'In context',          de: 'Als er ankam, hatte sie schon gegessen.', en: 'When he arrived, she had already eaten.' },
+          { label: 'lernen (ich/du/er)',   de: 'hatte · hattest · hatte gelernt',  en: 'Plusquamperfekt of a haben-verb' },
+          { label: 'lernen (wir/ihr/sie)', de: 'hatten · hattet · hatten gelernt', en: '' },
         ],
         callout: {
           kind: 'tip',
@@ -1636,6 +1651,7 @@ export const foundationTopics: FoundationTopic[] = [
     title: 'Future Tenses',
     category: 'Verbs',
     parent: 'tense-stack',
+    summary: 'Future plans, intentions, and predictions — and actions that will have been completed.',
     teaser: 'Futur I · Futur II — intention, prediction, and completed futures.',
     intro:
       'German often uses the Präsens with a time word to talk about the future. ' +
@@ -1647,11 +1663,11 @@ export const foundationTopics: FoundationTopic[] = [
         body: 'Formed with werden (Präsens) in position 2, plus the Infinitiv at the end. ' +
               'Use it to emphasise a firm intention or to make a prediction.',
         exampleTable: [
-          { label: 'Structure',          de: 'werden (P2) + Infinitiv (END)',           en: '' },
-          { label: 'ich / du / er',      de: 'werde · wirst · wird … lernen',           en: 'will learn' },
-          { label: 'wir / ihr / sie',    de: 'werden · werdet · werden … lernen',       en: 'will learn' },
-          { label: 'Intention',          de: 'Ich werde morgen kommen.',                en: 'I will come tomorrow.' },
-          { label: 'Prediction',         de: 'Das wird nicht einfach sein.',            en: 'That won\'t be easy.' },
+          { label: 'Structure',              de: 'werden (P2) + Infinitiv (END)',    en: '' },
+          { label: 'lernen (ich/du/er)',   de: 'werde · wirst · wird lernen',     en: 'will learn' },
+          { label: 'lernen (wir/ihr/sie)', de: 'werden · werdet · werden lernen', en: '' },
+          { label: 'Intention',            de: 'Ich werde morgen kommen.',        en: 'I will come tomorrow.' },
+          { label: 'Prediction',           de: 'Das wird nicht einfach sein.',    en: 'That won\'t be easy.' },
         ],
         callout: {
           kind: 'tip',
@@ -1663,10 +1679,11 @@ export const foundationTopics: FoundationTopic[] = [
         body: 'A prediction or assumption that something will have been completed by a future point. ' +
               'Formed with werden + Partizip II + haben/sein at the very end.',
         exampleTable: [
-          { label: 'Structure',      de: 'werden (P2) + Partizip II + haben/sein (END)',  en: '' },
-          { label: 'with haben',     de: 'Ich werde gelernt haben.',                      en: 'I will have learned.' },
-          { label: 'with sein',      de: 'Er wird angekommen sein.',                      en: 'He will have arrived.' },
-          { label: 'Assumption',     de: 'Du wirst das schon gewusst haben.',             en: 'You will have known that already.' },
+          { label: 'Structure',              de: 'werden (P2) + Partizip II + haben/sein (END)', en: '' },
+          { label: 'lernen (ich/du/er)',   de: 'werde · wirst · wird gelernt haben',         en: 'will have learned' },
+          { label: 'lernen (wir/ihr/sie)', de: 'werden · werdet · werden gelernt haben',     en: '' },
+          { label: 'with sein',            de: 'Er wird angekommen sein.',                   en: 'He will have arrived.' },
+          { label: 'Assumption',           de: 'Er wird das vergessen haben.',               en: 'He will have forgotten that.' },
         ],
         callout: {
           kind: 'tip',
