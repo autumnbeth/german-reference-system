@@ -1175,6 +1175,27 @@ export const foundationTopics: FoundationTopic[] = [
           text: 'Ich möchte die Tür aufmachen. · Ich weiß, dass er die Tür aufmacht. The prefix only detaches in a main clause with a simple conjugated verb.',
         },
       },
+      {
+        title: 'Imperativ — Commands',
+        body:
+          'The imperative has three command forms depending on who you are addressing. ' +
+          'All three are built from the Präsens stem — no auxiliary needed. ' +
+          'The du-form drops the ending entirely; ihr uses the normal Präsens ihr-form; ' +
+          'Sie keeps the infinitive and inverts with Sie.',
+        exampleTable: [
+          { label: 'du  (informal sg.)',  de: 'Lern! · Mach! · Fahr!',            en: 'drop -st ending; e optional' },
+          { label: 'ihr (informal pl.)',  de: 'Lernt! · Macht! · Fahrt!',          en: 'identical to Präsens ihr-form' },
+          { label: 'Sie (formal)',        de: 'Lernen Sie! · Machen Sie! · Fahren Sie!', en: 'infinitive + Sie, inverted' },
+          { label: 'wir (let\'s …)',      de: 'Lernen wir! · Machen wir!',         en: 'infinitive + wir, inverted' },
+          { label: 'haben — du/ihr/Sie',  de: 'Hab! · Habt! · Haben Sie!',         en: 'irregular du-form' },
+          { label: 'sein — du/ihr/Sie',   de: 'Sei! · Seid! · Seien Sie!',         en: 'irregular throughout' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Stem-change verbs keep their vowel change in the du-form: sprechen → Sprich! · lesen → Lies! · nehmen → Nimm! ' +
+                'But a→ä verbs do NOT change: fahren → Fahr! (not Fähr!).',
+        },
+      },
     ],
 
     verbConjugations: [
