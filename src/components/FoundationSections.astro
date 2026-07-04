@@ -1,0 +1,132 @@
+---
+import type { FoundationSection } from '../content/schema';
+import ConnectorList from './ConnectorList.astro';
+import SentenceFrameComponent from './SentenceFrame.astro';
+import DeclensionTableComponent from './DeclensionTable.astro';
+import Callout from './Callout.astro';
+
+interface Props {
+  sections: FoundationSection[];
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { sections, headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+---
+
+{sections.map((section) => (
+  <section class="fsec">
+    <Heading class="fsec__title">{section.title}</Heading>
+
+    {section.body && (
+      <p class="fsec__body">{section.body}</p>
+    )}
+
+    {section.connectors && section.connectors.length > 0 && (
+      <ConnectorList groups={section.connectors} />
+    )}
+
+    {section.exampleTable && section.exampleTable.length > 0 && (
+      <div class="fsec__ex-table-wrap">
+        <table class="fsec__ex-table">
+          <tbody>
+            {section.exampleTable.map((row) => (
+              <tr>
+                <td class="fsec__ex-label">{row.label}</td>
+                <td class="fsec__ex-de">{row.de}</td>
+                {row.en && <td class="fsec__ex-en">{row.en}</td>}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+
+    {section.sentenceFrames && section.sentenceFrames.length > 0 && (
+      <div class="fsec__frames">
+        {section.sentenceFrames.map((frame) => (
+          <SentenceFrameComponent frame={frame} />
+        ))}
+      </div>
+    )}
+
+    {section.declensionTables && section.declensionTables.length > 0 && (
+      <DeclensionTableComponent tables={section.declensionTables} />
+    )}
+
+    {section.callout && (
+      <Callout kind={section.callout.kind ?? 'tip'} label={section.callout.label}>
+        {section.callout.text}
+      </Callout>
+    )}
+  </section>
+))}
+
+<style>
+  .fsec {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-2);
+  }
+  .fsec:first-child { border-top: none; padding-top: 0; }
+
+  .fsec__title {
+    font-family: var(--font-sans);
+    font-size: .9375rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .fsec__body {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--ink-body);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 680px;
+  }
+
+  .fsec__frames { display: flex; flex-direction: column; gap: .75rem; }
+
+  .fsec__ex-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+  }
+
+  .fsec__ex-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+  }
+  .fsec__ex-table tr { border-bottom: 1px solid var(--border-2); }
+  .fsec__ex-table tr:last-child { border-bottom: none; }
+  .fsec__ex-table tr:hover td { background: var(--surface); }
+  .fsec__ex-table td { padding: .625rem 1rem; vertical-align: middle; }
+
+  .fsec__ex-label {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--accent-deep);
+    white-space: nowrap;
+    width: 22%;
+  }
+
+  .fsec__ex-de {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink);
+    width: 42%;
+  }
+
+  .fsec__ex-en {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    color: var(--ink-soft);
+    width: 36%;
+  }
+</style>

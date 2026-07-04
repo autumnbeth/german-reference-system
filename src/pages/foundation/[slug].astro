@@ -7,6 +7,7 @@ import DeclensionTableComponent from '../../components/DeclensionTable.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
+import FoundationSections from '../../components/FoundationSections.astro';
 import ProgressionTable from '../../components/ProgressionTable.astro';
 import Callout from '../../components/Callout.astro';
 import { foundationTopics, getFoundationTopic, getFoundationByCategory, getTopicChildren } from '../../data/foundation';
@@ -140,54 +141,10 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       </section>
     )}
 
-    {/* Named sections (satzbau-style) */}
-    {topic.sections && topic.sections.map((section) => (
-      <section class="spoke__section">
-        <h2 class="spoke__section-title">{section.title}</h2>
-
-        {section.body && (
-          <p class="spoke__section-body">{section.body}</p>
-        )}
-
-        {section.connectors && section.connectors.length > 0 && (
-          <ConnectorList groups={section.connectors} />
-        )}
-
-        {section.exampleTable && section.exampleTable.length > 0 && (
-          <div class="spoke__ex-table-wrap">
-            <table class="spoke__ex-table">
-              <tbody>
-                {section.exampleTable.map((row) => (
-                  <tr>
-                    <td class="spoke__ex-label">{row.label}</td>
-                    <td class="spoke__ex-de">{row.de}</td>
-                    {row.en && <td class="spoke__ex-en">{row.en}</td>}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {section.sentenceFrames && section.sentenceFrames.length > 0 && (
-          <div class="spoke__frames">
-            {section.sentenceFrames.map((frame) => (
-              <SentenceFrameComponent frame={frame} />
-            ))}
-          </div>
-        )}
-
-        {section.declensionTables && section.declensionTables.length > 0 && (
-          <DeclensionTableComponent tables={section.declensionTables} />
-        )}
-
-        {section.callout && (
-          <Callout kind={section.callout.kind ?? 'tip'} label={section.callout.label}>
-            {section.callout.text}
-          </Callout>
-        )}
-      </section>
-    ))}
+    {/* Named sections */}
+    {topic.sections && topic.sections.length > 0 && (
+      <FoundationSections sections={topic.sections} />
+    )}
 
     {/* Tense ladder (tense-stack page) */}
     {topic.tenseLadder && topic.tenseLadder.length > 0 && (
@@ -240,16 +197,27 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
       </section>
     )}
 
-    {/* "In this section" grid for parent topics with children */}
+    {/* Accordion for parent topics — renders each child's content inline */}
     {children.length > 0 && (
-      <section class="spoke__section spoke__children-section">
-        <h2 class="spoke__section-title">In this section</h2>
-        <div class="spoke__children-grid">
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">The Tenses — Deep Dive</h2>
+        <div class="tense-accordion">
           {children.map((c) => (
-            <a href={`${base}/foundation/${c.slug}/`} class="spoke__child-card">
-              <div class="spoke__child-title">{c.title}</div>
-              {c.teaser && <div class="spoke__child-teaser">{c.teaser}</div>}
-            </a>
+            <details class="tense-accordion__item">
+              <summary class="tense-accordion__summary">
+                <span class="tense-accordion__title">{c.title}</span>
+                {c.teaser && <span class="tense-accordion__teaser">{c.teaser}</span>}
+                <span class="tense-accordion__chevron" aria-hidden="true">›</span>
+              </summary>
+              <div class="tense-accordion__body">
+                {c.sections && c.sections.length > 0 && (
+                  <FoundationSections sections={c.sections} headingLevel="h3" />
+                )}
+                <a href={`${base}/foundation/${c.slug}/`} class="tense-accordion__full-link">
+                  Open full page →
+                </a>
+              </div>
+            </details>
           ))}
         </div>
       </section>
@@ -443,41 +411,83 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
     font-weight: 600;
   }
 
-  /* ── "In this section" child card grid ── */
-  .spoke__children-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: .75rem;
-  }
-
-  .spoke__child-card {
-    display: block;
-    padding: 1rem 1.125rem;
+  /* ── Tense accordion ── */
+  .tense-accordion {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border);
     border-radius: var(--r-md);
-    background: var(--surface);
-    text-decoration: none;
-    transition: border-color .15s, background .15s;
-  }
-  .spoke__child-card:hover {
-    border-color: var(--accent-deep);
-    background: var(--accent-bg);
+    overflow: hidden;
   }
 
-  .spoke__child-title {
+  .tense-accordion__item {
+    border-bottom: 1px solid var(--border);
+  }
+  .tense-accordion__item:last-child { border-bottom: none; }
+
+  .tense-accordion__summary {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    background: var(--surface);
+    transition: background .1s;
+    user-select: none;
+  }
+  .tense-accordion__summary::-webkit-details-marker { display: none; }
+  .tense-accordion__summary:hover { background: var(--accent-bg); }
+  .tense-accordion__item[open] > .tense-accordion__summary {
+    background: var(--accent-bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tense-accordion__title {
     font-family: var(--font-sans);
     font-size: .9375rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink);
-    margin-bottom: .375rem;
+    flex-shrink: 0;
   }
 
-  .spoke__child-teaser {
+  .tense-accordion__teaser {
     font-family: var(--font-serif);
     font-size: .8125rem;
     color: var(--ink-soft);
-    line-height: 1.5;
+    flex: 1;
   }
+
+  .tense-accordion__chevron {
+    font-size: 1.125rem;
+    color: var(--ink-faint);
+    flex-shrink: 0;
+    transition: transform .2s;
+    display: inline-block;
+  }
+  .tense-accordion__item[open] .tense-accordion__chevron {
+    transform: rotate(90deg);
+  }
+
+  .tense-accordion__body {
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--paper);
+  }
+
+  .tense-accordion__full-link {
+    font-family: var(--font-sans);
+    font-size: .8125rem;
+    font-weight: 500;
+    color: var(--accent-deep);
+    text-decoration: none;
+    padding-top: .75rem;
+    border-top: 1px solid var(--border-2);
+    display: block;
+  }
+  .tense-accordion__full-link:hover { text-decoration: underline; }
 
   /* ── Sidebar children ── */
   .sidebar__children {
