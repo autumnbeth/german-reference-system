@@ -1105,12 +1105,77 @@ export const foundationTopics: FoundationTopic[] = [
   },
   {
     slug: 'verb-tenses',
-    title: 'Verb Tenses',
+    title: 'Verb Conjugation',
     intro:
-      'German builds most of its tenses from three auxiliary verbs — haben, sein, and werden. ' +
-      'Master their conjugations and the logic of each tense falls into place.',
+      'German verb conjugation follows predictable patterns. ' +
+      'Regular verbs share the same set of endings. ' +
+      'Separable verbs split their prefix to the end of the clause. ' +
+      'Three auxiliary verbs — haben, sein, and werden — build every compound tense. ' +
+      'Master these building blocks and the whole conjugation system falls into place.',
     category: 'Verbs',
-    teaser: 'haben, sein, werden — the three auxiliaries that build every German tense.',
+    teaser: 'Regular patterns, separable verbs, and the three auxiliaries that build every tense.',
+
+    sections: [
+      {
+        title: 'Regular Verbs — the standard endings',
+        body:
+          'Most German verbs follow the same ending pattern in Präsens. ' +
+          'Remove the -en infinitive ending to find the stem, then add: ' +
+          '-e (ich), -st (du), -t (er/sie/es), -en (wir), -t (ihr), -en (sie/Sie). ' +
+          'This pattern applies to thousands of verbs. Learn it once.',
+        exampleTable: [
+          { label: 'lernen → lern-',   de: 'ich lerne · du lernst · er lernt · wir lernen · ihr lernt · sie lernen',  en: 'to learn' },
+          { label: 'machen → mach-',   de: 'ich mache · du machst · er macht · wir machen · ihr macht · sie machen',  en: 'to make / do' },
+          { label: 'wohnen → wohn-',   de: 'ich wohne · du wohnst · er wohnt · wir wohnen · ihr wohnt · sie wohnen',  en: 'to live / reside' },
+          { label: 'spielen → spiel-', de: 'ich spiele · du spielst · er spielt · wir spielen · ihr spielt · sie spielen', en: 'to play' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Stem-change verbs (A2)',
+          text: 'Some verbs change their stem vowel in the du and er/sie/es forms only — e→ie (sehen: du siehst), e→i (sprechen: du sprichst), a→ä (fahren: du fährst). The wir and sie/Sie forms always stay at the infinitive stem.',
+        },
+      },
+      {
+        title: 'Trennbare Verben — Separable Verbs',
+        body:
+          'Separable verbs have a prefix that detaches in the main clause and moves to the end. ' +
+          'The conjugated verb stays in position 2; the prefix waits at the end of the clause. ' +
+          'In the infinitive, dictionary, and subordinate-clause forms the prefix reattaches.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich',       role: 'pos1' },
+              { text: 'mache',     role: 'verb', highlight: true },
+              { text: 'das Fenster', role: 'mittelfeld' },
+              { text: 'auf.',      role: 'verb-end', highlight: true },
+            ],
+            caption: 'aufmachen → mache … auf. Prefix detaches to end-position.',
+          },
+          {
+            slots: [
+              { text: 'Er',       role: 'pos1' },
+              { text: 'ruft',     role: 'verb', highlight: true },
+              { text: 'seine Mutter', role: 'mittelfeld' },
+              { text: 'an.',      role: 'verb-end', highlight: true },
+            ],
+            caption: 'anrufen → ruft … an.',
+          },
+        ],
+        exampleTable: [
+          { label: 'aufmachen',   de: 'Ich mache die Tür auf.',      en: 'I open the door.' },
+          { label: 'anrufen',     de: 'Sie ruft ihren Vater an.',    en: 'She calls her father.' },
+          { label: 'einladen',    de: 'Wir laden euch ein.',         en: 'We invite you.' },
+          { label: 'abfahren',    de: 'Der Zug fährt um 9 Uhr ab.', en: 'The train departs at 9.' },
+          { label: 'zurückkommen',de: 'Er kommt morgen zurück.',     en: 'He comes back tomorrow.' },
+          { label: 'mitnehmen',   de: 'Nimmst du mich mit?',        en: 'Will you take me along?' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Infinitive & subordinate clauses — prefix stays on',
+          text: 'Ich möchte die Tür aufmachen. · Ich weiß, dass er die Tür aufmacht. The prefix only detaches in a main clause with a simple conjugated verb.',
+        },
+      },
+    ],
 
     verbConjugations: [
       {
