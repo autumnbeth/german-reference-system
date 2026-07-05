@@ -135,6 +135,18 @@ export const gespraechMitLehrkraft: Situation = {
             en: 'You\'re welcome. Until the next parents\' evening.' },
         ],
       },
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Gespräch vorbereiten',
+        parts: [
+          { label: 'Vorstellung', de: 'Ich bin die Mutter / der Vater von [Name].', en: 'I am the mother / father of [Name].' },
+          { label: 'Frage 1', de: 'Wie läuft es in der Schule?', en: 'How is it going at school?' },
+          { label: 'Frage 2', de: 'Ist das gut?', en: 'Is that good?' },
+          { label: 'Hilfe', de: 'Können Sie das wiederholen?', en: 'Can you repeat that?' },
+          { label: 'Dank', de: 'Vielen Dank!', en: 'Thank you very much!' },
+        ],
+      },
       challenge:
         'Ask your child\'s teacher one question in German at the next parents\' evening — even just "Wie läuft es?" counts.',
     },
@@ -215,6 +227,17 @@ export const gespraechMitLehrkraft: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · nach Gespräch mit Lehrer',
+        parts: [
+          { label: 'Opener', de: 'Hallo! Ich war heute bei Lenas Lehrerin.', en: 'Hello! I was at Lena\'s teacher\'s today.' },
+          { label: 'Infos', de: 'Lena macht gute Fortschritte! Aber Mathe ist ein bisschen schwierig.', en: 'Lena is making good progress! But Maths is a little difficult.', highlight: 'Mathe ist ein bisschen schwierig' },
+          { label: 'Plan', de: 'Wir üben jetzt jeden Abend zwanzig Minuten Rechnen.', en: 'We are now practising arithmetic for twenty minutes every evening.' },
+          { label: 'Gruß', de: 'Bis bald! 😊', en: 'See you soon!' },
+        ],
+      },
     },
 
     B1: {
@@ -400,6 +423,32 @@ export const gespraechMitLehrkraft: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Nachfrage zum Förderplan',
+        to: 'weber@grundschule-beispiel.de',
+        subject: 'Rückfrage: Förderplan und Fortschrittsbericht für Sam',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Frau Weber,', en: 'Dear Mrs Weber,' },
+          { label: 'Bezug',
+            de: 'vielen Dank für unser Gespräch letzte Woche. Ich freue mich, dass wir gemeinsam einen Förderplan erarbeiten möchten.',
+            en: 'Many thanks for our conversation last week. I am pleased that we would like to develop a support plan together.' },
+          { label: 'Frage',
+            de: 'Ich wollte nachfragen, ob Sie schon eine Vorstellung haben, welche konkreten Maßnahmen für Sam sinnvoll wären, und ob wir monatliche Rückmeldungen vereinbaren könnten.',
+            en: 'I wanted to ask whether you already have an idea of which specific measures would be useful for Sam, and whether we could arrange monthly feedback.',
+            highlight: 'ob Sie schon eine Vorstellung haben, welche konkreten Maßnahmen' },
+          { label: 'Angebot', de: 'Ich bin gern bereit, zusätzlich zu Hause zu üben, wenn Sie mir mitteilen, worauf wir uns konzentrieren sollen.', en: 'I am happy to practise additionally at home if you let me know what we should focus on.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nMaria Schmidt', en: 'Kind regards, Maria Schmidt' },
+        ],
+        checklist: [
+          'References prior conversation (context)',
+          'ob + verb at end (two indirect questions)',
+          'welche + noun for specific asks',
+          'Offers collaboration — proactive parent tone',
+          'Formal greeting and closing',
+        ],
+      },
       challenge:
         'At the next teacher meeting, ask at least one follow-up question about the Förderplan — what the next step is and how you\'ll know if it\'s working.',
     },

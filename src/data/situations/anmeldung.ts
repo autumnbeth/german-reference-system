@@ -137,6 +137,18 @@ export const anmeldung: Situation = {
           { speaker: 'Anna', speakerGender: 'die', de: 'Ich wohne in der Hauptstraße 12 in Berlin.', en: 'I live at Hauptstraße 12 in Berlin.' },
         ],
       },
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Checkliste · Anmeldung vorbereiten',
+        parts: [
+          { label: 'Ausweis / Reisepass', de: 'der Ausweis / der Reisepass', en: 'ID card / passport' },
+          { label: 'Bestätigung', de: 'die Wohnungsgeberbestätigung', en: 'landlord tenancy confirmation' },
+          { label: 'Adresse', de: 'die neue Adresse (Straße, Hausnummer, PLZ)', en: 'new address (street, house number, postcode)' },
+          { label: 'Geburtstag', de: 'das Geburtsdatum', en: 'date of birth' },
+          { label: 'Termin', de: 'der Termin beim Bürgeramt', en: 'appointment at the Bürgeramt' },
+        ],
+      },
       challenge:
         'Before your appointment, practise saying your name, address, and date of birth in German out loud — that\'s 90% of A1 Anmeldung language.',
     },
@@ -230,6 +242,17 @@ export const anmeldung: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · an eine Freundin',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich bin jetzt offiziell in Berlin. 😊', en: 'Hey! I\'m now officially in Berlin.' },
+          { label: 'Infos', de: 'Ich war heute beim Bürgeramt. Ich musste meinen Reisepass und die Wohnungsgeberbestätigung mitbringen.', en: 'I was at the Bürgeramt today. I had to bring my passport and the landlord confirmation.', highlight: 'musste meinen Reisepass' },
+          { label: 'Tipp', de: 'Tipp: Mach vorher einen Termin online!', en: 'Tip: Book an appointment online first!' },
+          { label: 'Gruß', de: 'Bis bald! 👋', en: 'See you soon!' },
+        ],
+      },
     },
 
     B1: {
@@ -413,6 +436,33 @@ export const anmeldung: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Frage zu Familienanmeldung',
+        to: 'buergeramt@berlin.de',
+        subject: 'Frage zur gleichzeitigen Anmeldung mehrerer Familienmitglieder',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich ziehe am 1. August mit meiner Familie nach Berlin und möchte mich, meine Frau und unsere zwei Kinder anmelden. Da meine Frau einen nicht-europäischen Reisepass besitzt, frage ich mich, ob für sie ein separater Termin erforderlich ist.',
+            en: 'I am moving to Berlin on 1 August with my family and would like to register myself, my wife, and our two children. As my wife holds a non-European passport, I wonder whether a separate appointment is required for her.',
+            highlight: 'ob für sie ein separater Termin erforderlich ist' },
+          { label: 'Bitte',
+            de: 'Könnten Sie mir bitte mitteilen, welche Dokumente für nicht-EU-Staatsangehörige zusätzlich benötigt werden und ob eine gemeinsame Anmeldung möglich ist?',
+            en: 'Could you please inform me which additional documents are required for non-EU nationals and whether a joint registration is possible?',
+            highlight: 'Könnten Sie mir bitte mitteilen' },
+          { label: 'Dank', de: 'Für Ihre Auskunft danke ich Ihnen im Voraus.', en: 'I thank you in advance for your information.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nMartin Hoffmann', en: 'Kind regards, Martin Hoffmann' },
+        ],
+        checklist: [
+          'States specific situation with non-EU passport (ob-clause)',
+          'Asks two precise questions in one polite sentence',
+          'Konjunktiv II: würde / Könnten Sie implied register',
+          'ob + verb at end (indirect question)',
+          'Formal closing with full name',
+        ],
+      },
       challenge:
         'Look up whether your Bürgeramt offers online appointment booking. If you have a complex situation (family, non-EU passport, secondary address), list the questions you\'d need to ask — then translate them into German.',
     },

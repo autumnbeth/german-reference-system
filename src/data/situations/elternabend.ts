@@ -159,6 +159,18 @@ export const elternabend: Situation = {
             en: 'Thank you.' },
         ],
       },
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Elternabend vorbereiten',
+        parts: [
+          { label: 'Vorstellung', de: 'Ich bin die Mutter / der Vater von [Name].', en: 'I am the mother / father of [Name].' },
+          { label: 'Datum', de: 'Wann ist der Ausflug?', en: 'When is the class trip?' },
+          { label: 'Arbeit', de: 'Wann ist die Klassenarbeit?', en: 'When is the test?' },
+          { label: 'Hausaufgaben', de: 'Wie viele Hausaufgaben gibt es?', en: 'How much homework is there?' },
+          { label: 'Danke', de: 'Vielen Dank. Auf Wiedersehen!', en: 'Thank you very much. Goodbye!' },
+        ],
+      },
       challenge:
         'At the next parents\' evening, introduce yourself in German and ask one question — even just "Wann ist der Ausflug?"',
     },
@@ -230,6 +242,17 @@ export const elternabend: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · an andere Eltern',
+        parts: [
+          { label: 'Opener', de: 'Hallo! Der Elternabend war heute sehr informativ.', en: 'Hello! The parents\' evening was very informative today.' },
+          { label: 'Infos', de: 'Der Ausflug ist am 15. März. Die Kinder müssen 10 Euro mitbringen.', en: 'The class trip is on 15th March. The children need to bring 10 euros.', highlight: 'müssen 10 Euro mitbringen' },
+          { label: 'Tipp', de: 'Frau Müller empfiehlt: jeden Tag 15 Minuten lesen!', en: 'Mrs Müller recommends: read 15 minutes every day!' },
+          { label: 'Gruß', de: 'Bis bald! 😊', en: 'See you soon!' },
+        ],
+      },
     },
 
     B1: {
@@ -331,6 +354,31 @@ export const elternabend: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B1',
+        title: 'E-Mail · Sorge um Kind',
+        to: 'mueller@grundschule-beispiel.de',
+        subject: 'Rückfrage zum Wohlbefinden meines Kindes',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Frau Müller,', en: 'Dear Mrs Müller,' },
+          { label: 'Anliegen',
+            de: 'ich mache mir Sorgen, weil mein Kind Sam in letzter Zeit oft sagt, dass es in der Pause alleine ist.',
+            en: 'I am worried because my child Sam often says recently that they are alone at break.',
+            highlight: 'weil mein Kind Sam in letzter Zeit oft sagt' },
+          { label: 'Bitte',
+            de: 'Könnten Sie mir bitte kurz mitteilen, wie Sam sich in der Klasse verhält, und ob es etwas gibt, das wir gemeinsam tun können?',
+            en: 'Could you please briefly let me know how Sam behaves in class, and whether there is something we can do together?',
+            highlight: 'Könnten Sie mir bitte kurz mitteilen' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nMaria Schmidt', en: 'Kind regards, Maria Schmidt' },
+        ],
+        checklist: [
+          'States concern with weil (verb at end)',
+          'Polite request with Könnten Sie…',
+          'dass-clause (verb at end)',
+          'Collaborative tone — "gemeinsam tun"',
+        ],
+      },
       challenge:
         'Practise the B1 dialogue out loud, taking both parts. Then try raising one real concern with your child\'s teacher — you don\'t need perfect German, just "Ich mache mir Sorgen, weil …"',
     },

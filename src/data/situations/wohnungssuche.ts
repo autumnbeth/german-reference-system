@@ -132,6 +132,18 @@ export const wohnungssuche: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Wohnungsanforderungen',
+        parts: [
+          { label: 'Zimmer', de: 'Ich suche eine Wohnung mit … Zimmern.', en: 'I am looking for a flat with … rooms.' },
+          { label: 'Preis', de: 'Wie viel kostet die Wohnung?', en: 'How much does the flat cost?' },
+          { label: 'Balkon', de: 'Mit Balkon? Ja / Nein', en: 'With balcony? Yes / No' },
+          { label: 'Besichtigung', de: 'Kann ich die Wohnung sehen?', en: 'Can I see the flat?' },
+          { label: 'Verfügbar', de: 'Wann ist die Wohnung frei?', en: 'When is the flat available?' },
+        ],
+      },
       dialogue: {
         title: 'Dialog · Erste Anfrage',
         level: 'A1',
@@ -226,6 +238,17 @@ export const wohnungssuche: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · nach der Besichtigung',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich habe heute eine Wohnung besichtigt. 🏠', en: 'Hey! I viewed a flat today.' },
+          { label: 'Infos', de: 'Sie hat drei Zimmer, 68 Quadratmeter und einen Balkon. Die Miete ist 1050 Euro warm.', en: 'It has three rooms, 68 square metres and a balcony. The rent is €1,050 warm.', highlight: 'Sie hat drei Zimmer, 68 Quadratmeter' },
+          { label: 'Meinung', de: 'Sie ist sehr schön! Ich möchte die Wohnung nehmen.', en: 'It\'s very nice! I\'d like to take the flat.' },
+          { label: 'Gruß', de: 'Drück mir die Daumen! 🤞', en: 'Fingers crossed!' },
+        ],
+      },
     },
 
     B1: {

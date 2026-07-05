@@ -132,6 +132,18 @@ export const freundeTreffen: Situation = {
             en: 'Bye!' },
         ],
       },
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Treffen planen',
+        parts: [
+          { label: 'Einladung', de: 'Wollen wir …? (Kaffee / Kino / Park)', en: 'Do you want to …? (coffee / cinema / park)' },
+          { label: 'Zeit', de: 'Wann? (heute / morgen / Samstag um 15 Uhr)', en: 'When? (today / tomorrow / Saturday at 3)' },
+          { label: 'Ort', de: 'Wo? (Café / Park / bei mir)', en: 'Where? (café / park / at my place)' },
+          { label: 'Bestätigung', de: 'Ja, gerne! / Nein, leider nicht.', en: 'Yes, gladly! / No, unfortunately not.' },
+          { label: 'Tschüss', de: 'Bis dann! / Bis später!', en: 'See you then! / See you later!' },
+        ],
+      },
       challenge:
         'Send a real message to a German-speaking friend or language partner with a simple invitation using "Wollen wir …?"',
     },
@@ -388,6 +400,17 @@ export const freundeTreffen: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'B2',
+        title: 'Nachricht · Gruppenplanung',
+        parts: [
+          { label: 'Opener', de: 'Hey ihr! Ich würde gerne nächste Woche was unternehmen — wäre Samstag für alle okay?', en: 'Hey everyone! I\'d like to do something next week — would Saturday work for everyone?', highlight: 'wäre Samstag für alle okay' },
+          { label: 'Vorschlag', de: 'Ich würde eher etwas Ruhigeres vorschlagen — z.B. ein Picknick im Park oder Spieleabend bei mir.', en: 'I\'d suggest something more relaxed — e.g. a picnic in the park or a games evening at mine.', highlight: 'würde eher etwas Ruhigeres vorschlagen' },
+          { label: 'Abstimmung', de: 'Was meint ihr? Gebt kurz Bescheid, damit ich planen kann. 🙂', en: 'What do you think? Drop me a message so I can plan.' },
+          { label: 'Gruß', de: 'LG! 👋', en: 'Best!' },
+        ],
+      },
       challenge:
         'Coordinate a plan with a group of three or more. Write a message in German that proposes a time, asks everyone to confirm, and suggests what each person could bring.',
     },

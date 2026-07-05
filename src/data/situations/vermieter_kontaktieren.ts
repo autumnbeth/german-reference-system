@@ -130,6 +130,18 @@ export const vermieterKontaktieren: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Problem melden',
+        parts: [
+          { label: 'Heizung', de: 'Die Heizung ist kaputt.', en: 'The heating is broken.' },
+          { label: 'Wasser', de: 'Es gibt kein warmes Wasser.', en: 'There is no hot water.' },
+          { label: 'Wohnung', de: 'Wohnung Nummer …', en: 'Flat number …' },
+          { label: 'Seit', de: 'Seit heute. / Seit gestern.', en: 'Since today. / Since yesterday.' },
+          { label: 'Bitte', de: 'Können Sie bitte kommen?', en: 'Can you please come?' },
+        ],
+      },
       dialogue: {
         title: 'Dialog · Problem melden',
         level: 'A1',
@@ -211,6 +223,17 @@ export const vermieterKontaktieren: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · Heizung kaputt',
+        parts: [
+          { label: 'Opener', de: 'Hallo! Ich habe ein Problem in meiner Wohnung (Nummer 14).', en: 'Hello! I have a problem in my flat (number 14).' },
+          { label: 'Problem', de: 'Die Heizung ist seit heute Morgen kaputt. Es ist sehr kalt!', en: 'The heating has been broken since this morning. It is very cold!', highlight: 'seit heute Morgen kaputt' },
+          { label: 'Bitte', de: 'Können Sie bitte einen Handwerker schicken? Ich bin ab 14 Uhr zu Hause.', en: 'Can you please send a repair person? I will be home from 2 pm.' },
+          { label: 'Gruß', de: 'Danke! Thomas Fischer', en: 'Thank you! Thomas Fischer' },
+        ],
+      },
     },
 
     B1: {

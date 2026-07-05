@@ -132,6 +132,18 @@ export const oeffentlicheVerkehrsmittel: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Bahnhof-Wörter',
+        parts: [
+          { label: 'Gleis', de: 'das Gleis — Wo ist Gleis …?', en: 'platform — Where is platform …?' },
+          { label: 'Haltestelle', de: 'die Haltestelle — Wo ist die Haltestelle?', en: 'stop — Where is the stop?' },
+          { label: 'Automat', de: 'der Automat — eine Fahrkarte kaufen', en: 'ticket machine — to buy a ticket' },
+          { label: 'Ausgang', de: 'der Ausgang — Wo ist der Ausgang?', en: 'exit — Where is the exit?' },
+          { label: 'Fahrplan', de: 'der Fahrplan — Wann fährt der Zug?', en: 'timetable — When does the train leave?' },
+        ],
+      },
       dialogue: {
         title: 'Dialog · Den Weg fragen',
         level: 'A1',
@@ -228,6 +240,17 @@ export const oeffentlicheVerkehrsmittel: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · Ankunft melden',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich bin im Zug nach Hamburg. 🚆', en: 'Hey! I\'m on the train to Hamburg.' },
+          { label: 'Infos', de: 'Ich musste einmal in Hannover umsteigen. Die Fahrt dauert noch eine Stunde.', en: 'I had to change once in Hanover. The journey takes another hour.', highlight: 'musste einmal in Hannover umsteigen' },
+          { label: 'Ankunft', de: 'Ich bin voraussichtlich um 17 Uhr da. Kannst du mich abholen?', en: 'I\'m estimated to arrive at 5 pm. Can you pick me up?' },
+          { label: 'Gruß', de: 'Bis gleich! 😊', en: 'See you soon!' },
+        ],
+      },
     },
 
     B1: {
@@ -352,6 +375,33 @@ export const oeffentlicheVerkehrsmittel: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Entschädigungsantrag',
+        to: 'fahrgastrechte@bahn.de',
+        subject: 'Entschädigungsantrag — Verspätung über 60 Minuten, 3. Juli',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'am 3. Juli reiste ich mit dem ICE 597 von München nach Hamburg. Der Zug hatte eine Verspätung von 78 Minuten, weshalb ich meinen Anschluss in Hannover verpasste und erst um 21:30 Uhr statt planmäßig um 20:10 Uhr ankam.',
+            en: 'On 3 July I travelled on ICE 597 from Munich to Hamburg. The train was 78 minutes late, causing me to miss my connection in Hanover and arrive at 21:30 instead of the scheduled 20:10.',
+            highlight: 'weshalb ich meinen Anschluss in Hannover verpasste' },
+          { label: 'Antrag',
+            de: 'Gemäß den Fahrgastrechten beantrage ich hiermit eine Entschädigung in Höhe von 25 % des Fahrpreises. Ich füge die Fahrkarte sowie den Reservierungsbeleg bei.',
+            en: 'In accordance with passenger rights I hereby apply for compensation of 25% of the ticket price. I enclose the ticket and reservation slip.',
+            highlight: 'beantrage ich hiermit eine Entschädigung' },
+          { label: 'Bitte', de: 'Ich bitte um eine Rückmeldung innerhalb von 14 Tagen.', en: 'I request a response within 14 days.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nSandra Hoffmann', en: 'Kind regards, Sandra Hoffmann' },
+        ],
+        checklist: [
+          'Precise journey details (date, train number, route)',
+          'weshalb/da for causal link (verb at end)',
+          'Legal register: "gemäß", "hiermit", "beantrage"',
+          'States evidence attached (Fahrkarte, Beleg)',
+          'Sets a deadline for response',
+        ],
+      },
       challenge:
         'Your train is cancelled entirely ("fällt aus"). At the information desk, find out: (1) the next ' +
         'possible connection, (2) whether your existing ticket is valid, (3) whether you can get a refund ' +

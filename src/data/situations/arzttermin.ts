@@ -229,6 +229,18 @@ export const arzttermin: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Arzttermin vorbereiten',
+        parts: [
+          { label: 'Symptom', de: 'Ich habe Kopfschmerzen. / Ich habe Fieber.', en: 'I have a headache. / I have a fever.' },
+          { label: 'Krankenversicherungskarte', de: 'die Krankenversicherungskarte', en: 'health insurance card' },
+          { label: 'Ausweis', de: 'der Personalausweis / der Reisepass', en: 'ID card / passport' },
+          { label: 'Schmerz', de: 'Hier tut es weh. (Körperteil zeigen)', en: 'It hurts here. (point to body part)' },
+          { label: 'Frage', de: 'Was muss ich tun?', en: 'What do I have to do?' },
+        ],
+      },
     },
 
     A2: {
@@ -319,6 +331,17 @@ export const arzttermin: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · krank melden',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich bin leider krank. 😷', en: 'Hey! I\'m unfortunately sick.' },
+          { label: 'Infos', de: 'Ich habe seit drei Tagen Fieber und Halsschmerzen. Ich war heute beim Arzt.', en: 'I\'ve had a fever and sore throat for three days. I was at the doctor\'s today.', highlight: 'seit drei Tagen Fieber' },
+          { label: 'Plan', de: 'Der Arzt hat mir Tabletten gegeben. Ich brauche ein paar Tage Pause.', en: 'The doctor gave me tablets. I need a few days\' rest.' },
+          { label: 'Gruß', de: 'Bis bald! Danke für dein Verständnis. 🙏', en: 'See you soon! Thanks for your understanding.' },
+        ],
+      },
     },
 
     B1: {

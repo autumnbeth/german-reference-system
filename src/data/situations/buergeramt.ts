@@ -128,6 +128,18 @@ export const buergeramt: Situation = {
           { speaker: 'Tom', speakerGender: 'der', de: 'Ja, hier ist mein Ausweis.', en: 'Yes, here is my ID.' },
         ],
       },
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Checkliste · Bürgeramt',
+        parts: [
+          { label: 'Termin', de: 'Ich habe einen Termin um … Uhr.', en: 'I have an appointment at … o\'clock.' },
+          { label: 'Ausweis', de: 'der Ausweis / der Reisepass', en: 'ID card / passport' },
+          { label: 'Schalter', de: 'Wo ist Schalter …?', en: 'Where is counter …?' },
+          { label: 'Name', de: 'Mein Name ist …', en: 'My name is …' },
+          { label: 'Frage', de: 'Was muss ich jetzt tun?', en: 'What do I have to do now?' },
+        ],
+      },
       challenge:
         'Practise saying your appointment time and name out loud before your next Bürgeramt visit — arriving prepared makes everything calmer.',
     },
@@ -218,6 +230,17 @@ export const buergeramt: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · Termin bestätigen',
+        parts: [
+          { label: 'Opener', de: 'Hey! Kurze Info: Ich habe morgen einen Termin beim Bürgeramt um 10 Uhr.', en: 'Hey! Quick info: I have an appointment at the Bürgeramt tomorrow at 10.' },
+          { label: 'Unterlagen', de: 'Ich muss meinen Reisepass und das Formular mitbringen.', en: 'I have to bring my passport and the form.', highlight: 'muss meinen Reisepass' },
+          { label: 'Bitte', de: 'Kannst du mich erinnern, wenn ich es vergesse? 😅', en: 'Can you remind me if I forget? 😅' },
+          { label: 'Gruß', de: 'Danke! Bis später. 😊', en: 'Thanks! See you later.' },
+        ],
+      },
     },
 
     B1: {
@@ -327,6 +350,31 @@ export const buergeramt: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B1',
+        title: 'E-Mail · Terminanfrage',
+        to: 'buergeramt@musterstadt.de',
+        subject: 'Anfrage: Unterlagen für Ummeldung',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich möchte mich umzumelden, weil ich vor zwei Wochen in die Musterstraße 5 umgezogen bin.',
+            en: 'I would like to change my registered address because I moved to Musterstraße 5 two weeks ago.',
+            highlight: 'weil ich vor zwei Wochen in die Musterstraße 5 umgezogen bin' },
+          { label: 'Bitte',
+            de: 'Könnten Sie mir bitte mitteilen, welche Unterlagen ich für die Ummeldung benötige?',
+            en: 'Could you please let me know which documents I need for the change of address?',
+            highlight: 'Könnten Sie mir bitte mitteilen' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nKlaus Berger', en: 'Kind regards, Klaus Berger' },
+        ],
+        checklist: [
+          'States reason with weil (verb at end)',
+          'Polite request with Könnten Sie…',
+          'Concise and clear — one question only',
+          'Formal greeting and closing',
+        ],
+      },
       challenge:
         'Think of the one document you\'re most likely to forget — and practise saying in German that it\'s missing and asking what you can do. That one sentence could save your appointment.',
     },

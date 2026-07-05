@@ -148,6 +148,18 @@ export const restaurant: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Im Restaurant',
+        parts: [
+          { label: 'Bestellen', de: 'Ich nehme … / Ich hätte gern …', en: 'I\'ll have … / I would like …' },
+          { label: 'Trinken', de: 'ein Wasser / ein Bier / einen Kaffee', en: 'a water / a beer / a coffee' },
+          { label: 'Rechnung', de: 'Zahlen, bitte. / Die Rechnung, bitte.', en: 'The bill, please.' },
+          { label: 'Bezahlen', de: 'Mit Karte. / Bar.', en: 'By card. / Cash.' },
+          { label: 'Trinkgeld', de: 'Stimmt so. (= Trinkgeld behalten)', en: 'Keep the change. (= tip included)' },
+        ],
+      },
       dialogue: {
         title: 'Dialog · Einfach bestellen',
         level: 'A1',
@@ -384,6 +396,33 @@ export const restaurant: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Tischreservierung mit Sonderwunsch',
+        to: 'restaurant@beispiel-berlin.de',
+        subject: 'Tischreservierung für 4 Personen — Samstag, 15. März, 19:30 Uhr',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich möchte für Samstag, den 15. März, um 19:30 Uhr einen Tisch für vier Personen reservieren.',
+            en: 'I would like to reserve a table for four people on Saturday, 15 March, at 19:30.',
+            highlight: 'einen Tisch für vier Personen reservieren' },
+          { label: 'Sonderwunsch',
+            de: 'Eine Person in unserer Gruppe hat eine schwere Nussallergie. Ich würde mich sehr freuen, wenn Sie mir mitteilen könnten, welche Gerichte auf Ihrer aktuellen Speisekarte keine Nüsse oder Nussspuren enthalten.',
+            en: 'One person in our group has a severe nut allergy. I would be very grateful if you could let me know which dishes on your current menu contain no nuts or nut traces.',
+            highlight: 'welche Gerichte auf Ihrer aktuellen Speisekarte keine Nüsse oder Nussspuren enthalten' },
+          { label: 'Dank', de: 'Für Ihre Rückmeldung danke ich Ihnen im Voraus.', en: 'I thank you in advance for your response.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nKlara Fischer', en: 'Kind regards, Klara Fischer' },
+        ],
+        checklist: [
+          'Complete booking details (date, time, number of people)',
+          'Konjunktiv II: würde mich freuen / könnten',
+          'welche + subordinate clause (indirect question, verb at end)',
+          'Allergy flagged proactively and precisely',
+          'Formal greeting and closing',
+        ],
+      },
       challenge:
         'You have a severe tree-nut allergy. Order a three-course meal, ask the waiter to verify ingredients ' +
         'with the kitchen for each course, request one substitution, and handle the bill including a tip. ' +

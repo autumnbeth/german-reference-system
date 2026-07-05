@@ -125,6 +125,18 @@ export const terminVereinbaren: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Termin vorbereiten',
+        parts: [
+          { label: 'Anfrage', de: 'Ich brauche einen Termin.', en: 'I need an appointment.' },
+          { label: 'Name', de: 'Mein Name ist …', en: 'My name is …' },
+          { label: 'Datum', de: 'Wann? (Dienstag / Mittwoch um … Uhr)', en: 'When? (Tuesday / Wednesday at … o\'clock)' },
+          { label: 'Verstehen', de: 'Können Sie das wiederholen?', en: 'Can you repeat that?' },
+          { label: 'Bestätigung', de: 'Ja, das passt. Danke!', en: 'Yes, that works. Thank you!' },
+        ],
+      },
       challenge:
         'Call a service and say only "Guten Tag, ich brauche einen Termin, bitte." Then listen to what they say — even if you don\'t understand everything, you have started the conversation.',
     },
@@ -238,6 +250,17 @@ export const terminVereinbaren: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · Termin bestätigen',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich habe gerade einen Termin beim Arzt gemacht.', en: 'Hey! I just made a doctor\'s appointment.' },
+          { label: 'Infos', de: 'Der Termin ist am Dienstag, den 15. Juli um 14 Uhr.', en: 'The appointment is on Tuesday, 15 July at 2 pm.', highlight: 'Dienstag, den 15. Juli um 14 Uhr' },
+          { label: 'Bitte', de: 'Kannst du mich erinnern? Ich vergesse das immer. 😅', en: 'Can you remind me? I always forget. 😅' },
+          { label: 'Gruß', de: 'Danke! Bis dann. 😊', en: 'Thanks! See you then.' },
+        ],
+      },
       challenge:
         'Call a real appointment and use "Passt Ihnen …?" after you hear the first date offered — confirm it or ask for an alternative.',
     },

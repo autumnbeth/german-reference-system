@@ -230,6 +230,17 @@ export const supermarkt: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · Einkaufsliste',
+        parts: [
+          { label: 'Opener', de: 'Hey! Ich gehe gleich zum Supermarkt. Brauchst du noch etwas?', en: 'Hey! I\'m heading to the supermarket soon. Do you need anything?' },
+          { label: 'Liste', de: 'Ich kaufe: Milch, Brot, Eier und Tomaten. Ich schaue auch nach Angeboten.', en: 'I\'m buying: milk, bread, eggs and tomatoes. I\'ll also look for offers.', highlight: 'schaue auch nach Angeboten' },
+          { label: 'Frage', de: 'Soll ich auch Joghurt mitbringen?', en: 'Shall I bring yoghurt too?' },
+          { label: 'Gruß', de: 'Bis später! 🛒', en: 'See you later!' },
+        ],
+      },
     },
 
     B1: {
@@ -288,6 +299,31 @@ export const supermarkt: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B1',
+        title: 'E-Mail · Reklamation: falscher Preis',
+        to: 'kundenservice@beispiel-markt.de',
+        subject: 'Reklamation: Falscher Kassenpreis vom 3. Juli',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich war am 3. Juli in Ihrer Filiale und habe Gouda-Käse gekauft. Am Regal stand ein Preis von 2,79 €, an der Kasse wurden mir jedoch 3,99 € berechnet.',
+            en: 'I was in your branch on 3 July and bought Gouda cheese. The shelf showed a price of €2.79, but at the till I was charged €3.99.',
+            highlight: 'am Regal stand ein Preis von 2,79 €' },
+          { label: 'Bitte',
+            de: 'Könnten Sie mir bitte die Differenz von 1,20 € erstatten?',
+            en: 'Could you please refund me the difference of €1.20?',
+            highlight: 'Könnten Sie mir bitte die Differenz' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nHans Müller', en: 'Kind regards, Hans Müller' },
+        ],
+        checklist: [
+          'States date and item clearly',
+          'Gives both prices — shelf vs. receipt',
+          'Polite request with Könnten Sie…',
+          'Formal greeting and closing',
+        ],
+      },
     },
 
     B2: {
@@ -335,6 +371,36 @@ export const supermarkt: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Preisauszeichnungsgesetz',
+        to: 'kundenservice@beispiel-markt.de',
+        subject: 'Beschwerde: Preisdifferenz und fehlendes Angebot — Filiale Berlin-Mitte, 3. Juli',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich möchte auf zwei Preisunstimmigkeiten hinweisen, die ich am 3. Juli beim Einkauf in Ihrer Filiale in Berlin-Mitte festgestellt habe.',
+            en: 'I would like to draw attention to two pricing discrepancies I noticed on 3 July while shopping at your Berlin-Mitte branch.',
+            highlight: 'auf zwei Preisunstimmigkeiten hinweisen' },
+          { label: 'Vorfall',
+            de: 'Erstens wurde der Angebotspreis für Gouda-Käse (Regalschild: 2,79 €) nicht korrekt abgezogen — die Quittung weist 3,99 € aus. Zweitens war ein Sonderangebot für Salatdressing (laut Werbeanzeige 1,49 €) an der Kasse nicht hinterlegt.',
+            en: 'First, the offer price for Gouda cheese (shelf label: €2.79) was not correctly deducted — the receipt shows €3.99. Second, a special offer for salad dressing (€1.49 according to the advertisement) was not registered at the till.',
+            highlight: 'Sonderangebot für Salatdressing' },
+          { label: 'Bitte',
+            de: 'Ich bitte Sie, die Differenz von insgesamt 2,70 € zu erstatten und die Preisauszeichnung in Ihrer Filiale zu überprüfen.',
+            en: 'I request that you refund the total difference of €2.70 and check the price labelling in your branch.',
+            highlight: 'Ich bitte Sie, die Differenz' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nKatharina Berger', en: 'Kind regards, Katharina Berger' },
+        ],
+        checklist: [
+          'Precise branch and date reference',
+          'Two separate issues clearly distinguished (Erstens, Zweitens)',
+          'Legal register: "Preisauszeichnung", "ausweisen"',
+          'Calculates total refund amount',
+          'Formal complaint register throughout',
+        ],
+      },
       challenge:
         'You notice two pricing errors on your receipt after paying. Return to the service desk, ' +
         'explain both discrepancies clearly, reference what the shelf label showed, and ask for ' +

@@ -132,6 +132,18 @@ export const notfall: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notrufkarte · Notfall-Infos',
+        parts: [
+          { label: 'Notruf', de: '112 = Feuerwehr & Rettungswagen | 110 = Polizei', en: '112 = fire & ambulance | 110 = police' },
+          { label: 'Adresse', de: 'Meine Adresse: [Straße, Hausnummer, Ort]', en: 'My address: [street, number, city]' },
+          { label: 'Name', de: 'Mein Name: [Vorname Nachname]', en: 'My name: [first last]' },
+          { label: 'Allergie', de: 'Allergie: [z.B. Penicillin] / keine', en: 'Allergy: [e.g. penicillin] / none' },
+          { label: 'Kontakt', de: 'Kontaktperson: [Name] Tel: [Nummer]', en: 'Contact person: [name] Tel: [number]' },
+        ],
+      },
       dialogue: {
         title: 'Dialog · Notruf',
         level: 'A1',
@@ -228,6 +240,17 @@ export const notfall: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'message-informal',
+        level: 'A2',
+        title: 'Nachricht · nach einem Notfall',
+        parts: [
+          { label: 'Opener', de: 'Hey — ich war in einen kleinen Notfall verwickelt. Alles okay mit mir! 😅', en: 'Hey — I got caught up in a minor emergency. I\'m all fine!' },
+          { label: 'Was passiert ist', de: 'Eine Frau ist gestürzt. Ich habe die 112 angerufen.', en: 'A woman fell. I called 112.', highlight: 'Ich habe die 112 angerufen' },
+          { label: 'Jetzt', de: 'Der Krankenwagen ist schnell gekommen. Die Frau war ansprechbar.', en: 'The ambulance came quickly. The woman was conscious.' },
+          { label: 'Gruß', de: 'Erzähl ich dir alles später. Bis bald!', en: 'I\'ll tell you everything later. See you soon!' },
+        ],
+      },
     },
 
     B1: {
@@ -298,6 +321,32 @@ export const notfall: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B1',
+        title: 'E-Mail · Unfallbericht an Arbeitgeber',
+        to: 'hr@firma-beispiel.de',
+        subject: 'Krankmeldung und kurzer Unfallbericht',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich melde mich heute krank, weil ich bei einem Unfall am Bahnhof leicht verletzt wurde.',
+            en: 'I am calling in sick today because I was slightly injured in an accident at the train station.',
+            highlight: 'weil ich bei einem Unfall am Bahnhof leicht verletzt wurde' },
+          { label: 'Info', de: 'Ich war als erste Hilfsperson tätig und habe auf den Rettungswagen gewartet. Der Arzt hat mir heute Pause empfohlen.', en: 'I acted as first aider and waited for the ambulance. The doctor has recommended rest today.' },
+          { label: 'Bitte',
+            de: 'Könnten Sie mir bitte mitteilen, ob ich ein ärztliches Attest einreichen soll?',
+            en: 'Could you please let me know whether I should submit a medical certificate?',
+            highlight: 'Könnten Sie mir bitte mitteilen' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nKlaus Berger', en: 'Kind regards, Klaus Berger' },
+        ],
+        checklist: [
+          'States reason with weil (verb at end)',
+          'Clear factual account — Perfekt used correctly',
+          'Polite request with Könnten Sie…',
+          'ob + verb at end (indirect question)',
+        ],
+      },
     },
 
     B2: {
@@ -366,6 +415,33 @@ export const notfall: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Zeugenbericht nach Unfall',
+        to: 'polizei@musterstadt.de',
+        subject: 'Zeugenbericht — Verkehrsunfall Goethestraße, 3. Juli',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich war am 3. Juli gegen 14 Uhr Zeuge eines Verkehrsunfalls in der Goethestraße und möchte hiermit meinen Bericht abgeben.',
+            en: 'On 3 July at around 2 pm I witnessed a traffic accident in Goethestraße and would like to submit my account.',
+            highlight: 'möchte hiermit meinen Bericht abgeben' },
+          { label: 'Verlauf',
+            de: 'Ich beobachtete, wie ein dunkelblaues Fahrzeug die rote Ampel überquerte und einen Radfahrer touchierte. Der Radfahrer stürzte, war jedoch ansprechbar. Ich habe sofort die 112 alarmiert und bis zum Eintreffen des Rettungswagens Erste Hilfe geleistet.',
+            en: 'I observed how a dark blue vehicle ran a red light and clipped a cyclist. The cyclist fell but was conscious. I immediately called 112 and gave first aid until the ambulance arrived.',
+            highlight: 'Ich beobachtete, wie ein dunkelblaues Fahrzeug' },
+          { label: 'Bereitschaft', de: 'Ich stehe gerne als Zeugin zur Verfügung, falls Sie weitere Auskünfte benötigen.', en: 'I am happy to act as a witness should you need further information.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nSandra Hoffmann', en: 'Kind regards, Sandra Hoffmann' },
+        ],
+        checklist: [
+          'Precise time/place opener — journalistic style',
+          'Indirect speech: "Ich beobachtete, wie …" (verb at end)',
+          'Perfekt for completed actions (habe alarmiert, geleistet)',
+          'Offers availability as witness',
+          'Formal register throughout',
+        ],
+      },
       challenge:
         'Prepare your "emergency card" in German: your name, address, blood type if known, allergies, ' +
         'and one contact person. Say it aloud at normal speaking speed — in an emergency, ' +

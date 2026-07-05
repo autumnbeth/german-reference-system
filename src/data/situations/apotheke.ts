@@ -191,6 +191,18 @@ const apotheke: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'note',
+        level: 'A1',
+        title: 'Notiz · Apotheke vorbereiten',
+        parts: [
+          { label: 'Symptom', de: 'Husten / Halsschmerzen / Kopfschmerzen', en: 'cough / sore throat / headache' },
+          { label: 'Rezept', de: 'das Rezept (vom Arzt)', en: 'prescription (from the doctor)' },
+          { label: 'Krankenversicherungskarte', de: 'die Krankenversicherungskarte', en: 'health insurance card' },
+          { label: 'Frage', de: 'Wie nehme ich das? (Wie oft? Wie viel?)', en: 'How do I take this? (How often? How much?)' },
+          { label: 'Preis', de: 'Wie viel kostet das?', en: 'How much does that cost?' },
+        ],
+      },
     },
 
     A2: {
@@ -534,6 +546,33 @@ const apotheke: Situation = {
           ],
         },
       ],
+      writing: {
+        kind: 'email-formal',
+        level: 'B2',
+        title: 'E-Mail · Rückfrage zu Wechselwirkungen',
+        to: 'apotheke@muster-apotheke.de',
+        subject: 'Rückfrage: Wechselwirkungen zwischen zwei Medikamenten',
+        parts: [
+          { label: 'Anrede', de: 'Sehr geehrte Damen und Herren,', en: 'Dear Sir or Madam,' },
+          { label: 'Anliegen',
+            de: 'ich nehme seit einigen Wochen Lisinopril gegen Bluthochdruck und wurde nun von meinem Arzt zusätzlich Ibuprofen verschrieben, weil ich unter Rückenschmerzen leide.',
+            en: 'I have been taking lisinopril for high blood pressure for a few weeks and my doctor has now additionally prescribed ibuprofen because I suffer from back pain.',
+            highlight: 'weil ich unter Rückenschmerzen leide' },
+          { label: 'Frage',
+            de: 'Könnten Sie mir bitte mitteilen, ob zwischen diesen beiden Medikamenten Wechselwirkungen bekannt sind, und ob es gegebenenfalls eine verträglichere Alternative zu Ibuprofen gäbe?',
+            en: 'Could you please let me know whether any interactions are known between these two medicines, and whether there might be a more compatible alternative to ibuprofen?',
+            highlight: 'ob zwischen diesen beiden Medikamenten Wechselwirkungen bekannt sind' },
+          { label: 'Hinweis', de: 'Ich bin außerdem gegen Penicillin allergisch, falls das relevant sein sollte.', en: 'I am also allergic to penicillin, should that be relevant.' },
+          { label: 'Gruß', de: 'Mit freundlichen Grüßen\nAnna Weber', en: 'Kind regards, Anna Weber' },
+        ],
+        checklist: [
+          'Names both medications specifically',
+          'Uses weil for reason (verb at end)',
+          'ob + verb at end (indirect question)',
+          'Konjunktiv II: gäbe (polite conditional)',
+          'States allergy as additional context',
+        ],
+      },
       challenge:
         'You need medicine for a headache but are allergic to ibuprofen and need something that won\'t make ' +
         'you drowsy because you\'re driving later. Explain all constraints, compare two options the pharmacist ' +
