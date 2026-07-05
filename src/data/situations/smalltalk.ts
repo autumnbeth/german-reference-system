@@ -207,8 +207,8 @@ export const smalltalk: Situation = {
         title: 'Nachricht · Einladung',
         parts: [
           { label: 'Nachricht',
-            de: 'Hallo Lena! Wir grillen am Samstag im Park. Komm doch vorbei — die Kinder können ja zusammen spielen. Sag mal Bescheid! LG, Beth',
-            en: 'Hi Lena! We’re barbecuing in the park on Saturday. Do come by — the kids can play together. Let me know! Best, Beth' },
+            de: 'Hallo Lena! Wir grillen am Samstag im Park. Komm doch vorbei — die Kinder können ja zusammen spielen. Sag mal Bescheid! LG, Anna',
+            en: 'Hi Lena! We’re barbecuing in the park on Saturday. Do come by — the kids can play together. Let me know! Best, Anna' },
         ],
       },
     },
