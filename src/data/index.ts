@@ -21,6 +21,14 @@ import { gespraechMitLehrkraft } from './situations/gespraech_mit_lehrkraft';
 import { elternabend } from './situations/elternabend';
 import { anmeldung } from './situations/anmeldung';
 import { buergeramt } from './situations/buergeramt';
+import { jobcenter } from './situations/jobcenter';
+import { bankUndGeld } from './situations/bank_und_geld';
+import { vertragKuendigen } from './situations/vertrag_kuendigen';
+import { steuernUndVersicherungen } from './situations/steuern_und_versicherungen';
+import { facharztUeberweisung } from './situations/facharzt_ueberweisung';
+import { autoUndWerkstatt } from './situations/auto_und_werkstatt';
+import { kindKrankmelden } from './situations/kind_krankmelden';
+import { smalltalk } from './situations/smalltalk';
 
 export const situations: Situation[] = [
   apotheke,
@@ -39,6 +47,14 @@ export const situations: Situation[] = [
   elternabend,
   anmeldung,
   buergeramt,
+  facharztUeberweisung,
+  kindKrankmelden,
+  smalltalk,
+  jobcenter,
+  bankUndGeld,
+  vertragKuendigen,
+  steuernUndVersicherungen,
+  autoUndWerkstatt,
 ];
 
 export function getSituation(slug: string): Situation | undefined {

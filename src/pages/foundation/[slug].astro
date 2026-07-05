@@ -7,6 +7,7 @@ import DeclensionTableComponent from '../../components/DeclensionTable.astro';
 import VerbConjugationComponent from '../../components/VerbConjugation.astro';
 import SentenceFrameComponent from '../../components/SentenceFrame.astro';
 import ConnectorList from '../../components/ConnectorList.astro';
+import VocabCard from '../../components/VocabCard.astro';
 import FoundationSections from '../../components/FoundationSections.astro';
 import ProgressionTable from '../../components/ProgressionTable.astro';
 import Callout from '../../components/Callout.astro';
@@ -144,6 +145,18 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
     {/* Named sections */}
     {topic.sections && topic.sections.length > 0 && (
       <FoundationSections sections={topic.sections} />
+    )}
+
+    {/* Vocabulary groups */}
+    {topic.vocab && topic.vocab.length > 0 && (
+      <section class="spoke__section">
+        <h2 class="spoke__section-title">Vocabulary</h2>
+        <div class="spoke__vocab">
+          {topic.vocab.map((group) => (
+            <VocabCard group={group} />
+          ))}
+        </div>
+      </section>
     )}
 
     {/* Accordion for parent topics — renders each child's content inline */}
@@ -306,6 +319,13 @@ const siblings = parentTopic ? getTopicChildren(parentTopic.slug) : [];
     display: flex;
     flex-direction: column;
     gap: .75rem;
+  }
+
+  .spoke__vocab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0 2rem;
+    align-items: start;
   }
 
   .spoke__verbs {

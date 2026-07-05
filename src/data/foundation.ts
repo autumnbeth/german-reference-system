@@ -2034,6 +2034,161 @@ export const foundationTopics: FoundationTopic[] = [
       },
     ],
   },
+
+  // ──────────────────────────────────────────────────────────
+  // Akademische Redemittel (C1)
+  // ──────────────────────────────────────────────────────────
+  {
+    slug: 'redemittel',
+    title: 'Akademische Redemittel (C1)',
+    category: 'Building Blocks',
+    teaser: 'The formal phrases for essays, presentations, and exams — beyond the B2 textbook.',
+    relatedSituations: ['vorstellungsgespraech', 'jobcenter', 'steuern-und-versicherungen'],
+    intro:
+      'The Akademie Deutsch series stops at B2 — this page collects the C1-level ' +
+      'Redemittel that exams (telc, DSH, Goethe) and formal writing expect: stating a ' +
+      'thesis, weighing arguments, formal prepositions, and closing an argument cleanly. ' +
+      'Learn these as fixed chunks, not word by word.',
+
+    sections: [
+      {
+        title: 'Eine Position beziehen · Stating a thesis',
+        id: 'these',
+        body:
+          'C1 writing opens by naming a position — yours or someone else’s — in one ' +
+          'precise sentence. These frames do that work.',
+        exampleTable: [
+          { label: 'These aufstellen',
+            de: 'Ich vertrete die Auffassung, dass …',
+            en: 'I take the view that …' },
+          { label: 'These zuschreiben',
+            de: 'Der Autor vertritt die These, dass …',
+            en: 'The author advances the thesis that …' },
+          { label: 'Einschätzen',
+            de: 'Meines Erachtens ist dieser Ansatz problematisch.',
+            en: 'In my estimation this approach is problematic.' },
+          { label: 'Eingrenzen',
+            de: 'Im Folgenden beschränke ich mich auf zwei Aspekte.',
+            en: 'In what follows I confine myself to two aspects.' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'Meines Erachtens (m. E.) never takes „nach“ — it stands alone, unlike „meiner Meinung nach“.',
+        },
+      },
+      {
+        title: 'Argumente abwägen · Weighing arguments',
+        id: 'abwaegen',
+        body:
+          'The move from B2 to C1 is the move from listing arguments to weighing them ' +
+          'against each other — conceding, contrasting, and concluding.',
+        exampleTable: [
+          { label: 'Einräumen',
+            de: 'Zwar ist der Einwand berechtigt, doch überwiegen die Vorteile.',
+            en: 'Admittedly the objection is justified, yet the advantages prevail.' },
+          { label: 'Differenzieren',
+            de: 'Hier ist zu differenzieren zwischen kurzfristigen und langfristigen Folgen.',
+            en: 'Here one must distinguish between short-term and long-term consequences.' },
+          { label: 'Erörtern',
+            de: 'Diese Frage lässt sich nicht pauschal beantworten.',
+            en: 'This question cannot be answered in general terms.' },
+          { label: 'Folgern',
+            de: 'Daraus lässt sich schließen, dass …',
+            en: 'From this it can be concluded that …' },
+          { label: 'Beleg anführen',
+            de: 'Dies belegt die Studie eindrucksvoll.',
+            en: 'The study demonstrates this impressively.' },
+        ],
+      },
+      {
+        title: 'Formelle Präpositionen · The Nominalstil toolkit',
+        id: 'praepositionen',
+        body:
+          'Formal German compresses whole clauses into prepositional phrases. ' +
+          'These genitive prepositions are the signature of C1 register — recognize ' +
+          'them in Bescheide, use them in essays.',
+        exampleTable: [
+          { label: 'hinsichtlich + G',
+            de: 'Hinsichtlich der Kosten besteht noch Klärungsbedarf.',
+            en: 'With regard to the costs, clarification is still needed.' },
+          { label: 'in Anbetracht + G',
+            de: 'In Anbetracht der Lage wurde der Termin verschoben.',
+            en: 'In view of the situation, the appointment was postponed.' },
+          { label: 'gemäß + D',
+            de: 'Gemäß § 5 der Hausordnung ist das untersagt.',
+            en: 'Pursuant to §5 of the house rules, that is prohibited.' },
+          { label: 'infolge + G',
+            de: 'Infolge des Sturms fielen mehrere Züge aus.',
+            en: 'As a result of the storm, several trains were cancelled.' },
+          { label: 'mangels + G',
+            de: 'Mangels Beweisen wurde das Verfahren eingestellt.',
+            en: 'For lack of evidence, the proceedings were discontinued.' },
+          { label: 'zwecks + G',
+            de: 'Zwecks Terminvereinbarung wenden Sie sich an das Sekretariat.',
+            en: 'For the purpose of arranging an appointment, contact the office.' },
+        ],
+        callout: {
+          kind: 'challenge',
+          text: 'Find one of these six prepositions in the next official letter you receive — they are everywhere in Amtsdeutsch.',
+        },
+      },
+      {
+        title: 'Zusammenfassen & Schließen · Wrapping up',
+        id: 'schluss',
+        body:
+          'Exams award the ending: a compressed restatement, a measured judgement, ' +
+          'and — if asked — an outlook.',
+        exampleTable: [
+          { label: 'Zusammenfassen',
+            de: 'Zusammenfassend lässt sich festhalten, dass …',
+            en: 'In summary, it can be stated that …' },
+          { label: 'Bilanz ziehen',
+            de: 'Insgesamt überwiegen aus meiner Sicht die Argumente für …',
+            en: 'Overall, in my view, the arguments in favour of … prevail.' },
+          { label: 'Ausblick geben',
+            de: 'Es bleibt abzuwarten, wie sich die Lage entwickelt.',
+            en: 'It remains to be seen how the situation will develop.' },
+          { label: 'Konsequenz fordern',
+            de: 'Daher wäre es wünschenswert, dass …',
+            en: 'It would therefore be desirable that …' },
+        ],
+      },
+    ],
+
+    vocab: [
+      {
+        label: 'C1 · Verben des Argumentierens',
+        items: [
+          { gender: 'verb', word: 'erörtern', meaning: 'to discuss / examine (an issue)' },
+          { gender: 'verb', word: 'differenzieren', meaning: 'to differentiate' },
+          { gender: 'verb', word: 'eine Auffassung vertreten', meaning: 'to hold a view' },
+          { gender: 'verb', word: 'sich beziehen auf + A', meaning: 'to refer to' },
+          { gender: 'verb', word: 'etwas infrage stellen', meaning: 'to call something into question' },
+          { gender: 'verb', word: 'belegen', meaning: 'to substantiate / prove' },
+        ],
+      },
+      {
+        label: 'C1 · Verbindungswörter',
+        items: [
+          { gender: 'verb', word: 'infolgedessen', meaning: 'consequently' },
+          { gender: 'verb', word: 'demzufolge', meaning: 'accordingly' },
+          { gender: 'verb', word: 'gleichwohl', meaning: 'nevertheless (formal)' },
+          { gender: 'verb', word: 'insofern … als', meaning: 'insofar as' },
+          { gender: 'verb', word: 'sofern', meaning: 'provided that' },
+          { gender: 'verb', word: 'ungeachtet + G', meaning: 'notwithstanding' },
+        ],
+      },
+    ],
+
+    progression: [
+      { level: 'B1', canDo: 'Give and justify an opinion with weil/deshalb.',
+        example: 'Ich finde das gut, weil es allen hilft.' },
+      { level: 'B2', canDo: 'Structure pro and contra with connectors.',
+        example: 'Einerseits spart es Zeit, andererseits kostet es mehr.' },
+      { level: 'C1', canDo: 'Weigh arguments in formal register and draw a measured conclusion.',
+        example: 'Zwar ist der Einwand berechtigt, doch überwiegen meines Erachtens die Vorteile.' },
+    ],
+  },
 ];
 
 export function getFoundationTopic(slug: string): FoundationTopic | undefined {
@@ -2058,6 +2213,7 @@ const TOPIC_ORDER: Record<string, number> = {
   'connectors':     3,
   // Building Blocks
   'cases':          1,
+  'redemittel':     2,
 };
 
 export function getTopicChildren(parentSlug: string): FoundationTopic[] {
