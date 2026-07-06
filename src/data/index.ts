@@ -33,6 +33,9 @@ import { bewerbung } from './situations/bewerbung';
 import { beschwerde } from './situations/beschwerde';
 import { zahnarzt } from './situations/zahnarzt';
 import { familie } from './situations/familie';
+import { kleidungKaufen } from './situations/kleidung_kaufen';
+import { hobbys } from './situations/hobbys';
+import { wetter } from './situations/wetter';
 
 export const situations: Situation[] = [
   apotheke,
@@ -40,6 +43,8 @@ export const situations: Situation[] = [
   notfall,
   restaurant,
   supermarkt,
+  kleidungKaufen,
+  wetter,
   oeffentlicheVerkehrsmittel,
   wohnungssuche,
   vermieterKontaktieren,
@@ -56,6 +61,7 @@ export const situations: Situation[] = [
   kindKrankmelden,
   smalltalk,
   familie,
+  hobbys,
   jobcenter,
   bankUndGeld,
   vertragKuendigen,
