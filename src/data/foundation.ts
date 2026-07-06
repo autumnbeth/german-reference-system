@@ -2036,6 +2036,227 @@ export const foundationTopics: FoundationTopic[] = [
   },
 
   // ──────────────────────────────────────────────────────────
+  // Pronomen — the pronoun system
+  // ──────────────────────────────────────────────────────────
+  {
+    slug: 'pronomen',
+    title: 'Pronouns (Pronomen)',
+    category: 'Building Blocks',
+    teaser: 'Personal, possessive, and reflexive pronouns — the case system applied to its most frequent words.',
+    relatedSituations: ['freunde-treffen', 'arzttermin', 'gespraech-mit-lehrkraft'],
+    intro:
+      'Pronouns are where the case system becomes unavoidable: unlike nouns, which hide behind ' +
+      'their articles, pronouns change form themselves — mich, mir, dich, dir. ' +
+      'The good news: they follow exactly the same case logic you already know from der/den/dem. ' +
+      'Learn the forms once, then two word-order rules and the reflexive pattern cover almost ' +
+      'everything German does with pronouns.',
+
+    sections: [
+      {
+        title: 'Personalpronomen · all forms across the cases',
+        id: 'personalpronomen',
+        body:
+          'The same question test as for nouns applies: Wer? → Nominativ, Wen? → Akkusativ, ' +
+          'Wem? → Dativ. Genitiv pronouns (meiner, deiner) are practically extinct — you can ignore them.',
+        declensionTables: [
+          {
+            title: 'Personalpronomen',
+            note: 'Forms that differ from the Nominativ are the ones to drill.',
+            headers: ['', 'Nominativ', 'Akkusativ', 'Dativ'],
+            rows: [
+              { label: 'I',            cells: ['ich', 'mich ←', 'mir ←'] },
+              { label: 'you (du)',     cells: ['du',  'dich ←', 'dir ←'] },
+              { label: 'he',           cells: ['er',  'ihn ←',  'ihm ←'] },
+              { label: 'it',           cells: ['es',  'es',     'ihm ←'] },
+              { label: 'she',          cells: ['sie', 'sie',    'ihr ←'] },
+              { label: 'we',           cells: ['wir', 'uns ←',  'uns ←'] },
+              { label: 'you (ihr)',    cells: ['ihr', 'euch ←', 'euch ←'] },
+              { label: 'they',         cells: ['sie', 'sie',    'ihnen ←'] },
+              { label: 'you (formal)', cells: ['Sie', 'Sie',    'Ihnen ←'] },
+            ],
+          },
+        ],
+        exampleTable: [
+          { label: 'Akkusativ', de: 'Er sieht mich.',       en: 'He sees me.' },
+          { label: 'Dativ',     de: 'Ich helfe dir.',        en: 'I help you. (helfen takes Dativ)' },
+          { label: 'Dativ',     de: 'Wie geht es Ihnen?',    en: 'How are you? (formal)' },
+          { label: 'Akkusativ', de: 'Kennst du ihn?',        en: 'Do you know him?' },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'The lookalikes',
+          text: 'sie (she), sie (they), and Sie (formal you) are told apart by the verb and capitalisation: ' +
+                'sie kommt (she) · sie kommen (they) · Sie kommen (you, formal). ' +
+                'And ihr does triple duty: you-plural (ihr kommt), to-her (ich helfe ihr), and her-possessive (ihr Hund).',
+        },
+      },
+      {
+        title: 'Which case? — verbs and prepositions decide',
+        id: 'kasuswahl',
+        body:
+          'Most pronouns are Akkusativ objects. A fixed set of verbs takes Dativ instead — ' +
+          'these are worth memorising because the pronoun form makes the difference audible. ' +
+          'After prepositions, the preposition\'s case wins, exactly as with nouns.',
+        exampleTable: [
+          { label: 'Dativ verbs',      de: 'helfen · danken · gefallen · gehören · antworten · glauben · fehlen · passen',
+            en: 'Ich danke dir. · Das gefällt mir. · Der Schal gehört ihr.' },
+          { label: 'Akk. preposition', de: 'für mich · ohne dich · gegen ihn',
+            en: 'für/ohne/gegen/um/durch/bis + Akkusativ' },
+          { label: 'Dat. preposition', de: 'mit mir · zu dir · bei uns · von ihnen',
+            en: 'mit/zu/bei/von/nach/aus/seit + Dativ' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: '„Wie geht es dir?" — the es is the subject, dir is Dativ. That\'s why the answer is „Mir geht es gut", not „Ich gehe gut".',
+        },
+      },
+      {
+        title: 'Word order · pronouns push forward',
+        id: 'wortstellung',
+        body:
+          'Two rules govern where pronouns sit in the Mittelfeld. ' +
+          'Rule 1: a pronoun object comes before a noun object. ' +
+          'Rule 2: when BOTH objects are pronouns, Akkusativ comes before Dativ — ' +
+          'the reverse of the noun order.',
+        sentenceFrames: [
+          {
+            slots: [
+              { text: 'Ich', role: 'pos1' },
+              { text: 'gebe', role: 'verb', highlight: true },
+              { text: 'dem Mann', role: 'mittelfeld' },
+              { text: 'das Buch.', role: 'satzende' },
+            ],
+            caption: 'Two nouns: Dativ before Akkusativ — the default.',
+          },
+          {
+            slots: [
+              { text: 'Ich', role: 'pos1' },
+              { text: 'gebe', role: 'verb', highlight: true },
+              { text: 'es', role: 'mittelfeld' },
+              { text: 'dem Mann.', role: 'satzende' },
+            ],
+            caption: 'Pronoun + noun: the pronoun (es) jumps in front of the noun.',
+          },
+          {
+            slots: [
+              { text: 'Ich', role: 'pos1' },
+              { text: 'gebe', role: 'verb', highlight: true },
+              { text: 'es', role: 'mittelfeld' },
+              { text: 'ihm.', role: 'satzende' },
+            ],
+            caption: 'Two pronouns: Akkusativ (es) before Dativ (ihm) — reversed from the noun order.',
+          },
+        ],
+        callout: {
+          kind: 'tip',
+          label: 'Memory hook',
+          text: 'Nouns: person before thing (dem Mann das Buch). Pronouns: thing before person (es ihm). ' +
+                'If you remember one example — „Ich gebe es ihm" — you have the whole rule.',
+        },
+      },
+      {
+        title: 'Possessivpronomen · mein, dein, sein …',
+        id: 'possessiv',
+        body:
+          'Two independent choices: the STEM comes from the owner (sein- for er, ihr- for sie), ' +
+          'the ENDING comes from the owned noun\'s gender and case — using exactly the ein-word ' +
+          'endings you know from the indefinite article.',
+        declensionTables: [
+          {
+            title: 'The stems — chosen by the owner',
+            headers: ['', 'Stem', 'Example'],
+            rows: [
+              { label: 'ich',      cells: ['mein-',  'mein Hund'] },
+              { label: 'du',       cells: ['dein-',  'dein Hund'] },
+              { label: 'er / es',  cells: ['sein-',  'sein Hund'] },
+              { label: 'sie (she)',cells: ['ihr-',   'ihr Hund'] },
+              { label: 'wir',      cells: ['unser-', 'unser Hund'] },
+              { label: 'ihr',      cells: ['euer-',  'euer Hund (eure Katze!)'] },
+              { label: 'sie (they)', cells: ['ihr-', 'ihr Hund'] },
+              { label: 'Sie',      cells: ['Ihr-',   'Ihr Hund'] },
+            ],
+          },
+        ],
+        exampleTable: [
+          { label: 'The sein/ihr trap', de: 'Anna liebt ihren Hund. · Max liebt seinen Hund.',
+            en: 'The stem follows the OWNER (Anna → ihr, Max → sein); the -en ending follows Hund (mask. Akk).' },
+          { label: 'euer drops the e',  de: 'euer Auto → eure Autos · euren Wagen',
+            en: 'When an ending is added, euer → eur-.' },
+        ],
+        callout: {
+          kind: 'tip',
+          text: 'English speakers mix up sein/ihr because "his/her" feels like one choice. In German it\'s two: ' +
+                'owner picks the stem, owned noun picks the ending. Say the owner out loud first, then decline.',
+        },
+      },
+      {
+        title: 'Reflexivpronomen · mich or mir?',
+        id: 'reflexiv',
+        body:
+          'Reflexive pronouns look like the personal pronouns except in the third person, ' +
+          'where everything becomes sich. The Akkusativ/Dativ choice follows one rule: ' +
+          'the reflexive is Dativ only when the sentence has ANOTHER object.',
+        declensionTables: [
+          {
+            title: 'Reflexivpronomen',
+            note: 'Only ich and du distinguish Akkusativ from Dativ — and sich covers all third persons.',
+            headers: ['', 'Akkusativ', 'Dativ'],
+            rows: [
+              { label: 'ich',         cells: ['mich', 'mir ←'] },
+              { label: 'du',          cells: ['dich', 'dir ←'] },
+              { label: 'er/sie/es',   cells: ['sich', 'sich'] },
+              { label: 'wir',         cells: ['uns',  'uns'] },
+              { label: 'ihr',         cells: ['euch', 'euch'] },
+              { label: 'sie/Sie',     cells: ['sich', 'sich'] },
+            ],
+          },
+        ],
+        exampleTable: [
+          { label: 'No other object → Akk.',  de: 'Ich wasche mich.',            en: 'I wash (myself).' },
+          { label: 'Other object → Dativ',    de: 'Ich wasche mir die Hände.',   en: 'die Hände is the Akk. object, so the reflexive moves to Dativ.' },
+          { label: 'Common reflexive verbs',  de: 'sich freuen auf · sich interessieren für · sich erinnern an · sich anmelden',
+            en: 'many everyday verbs are reflexive in German but not in English' },
+          { label: 'Dativ-only pattern',      de: 'Ich kann mir das nicht vorstellen. · Ich sehe mir den Film an.',
+            en: 'vorstellen (imagine) and ansehen take a Dativ reflexive + Akk. object' },
+        ],
+      },
+      {
+        title: 'man & the spoken der/die/das',
+        id: 'man-demonstrativ',
+        body:
+          'Two pronouns textbooks under-teach: man (generic "one/you/people"), which always takes ' +
+          'a third-person-singular verb, and the demonstrative der/die/das — in spoken German, ' +
+          'fronting the article as a pronoun is the normal way to say "that one".',
+        exampleTable: [
+          { label: 'man',            de: 'Man darf hier nicht parken.',   en: 'You can\'t park here. (no one specific)' },
+          { label: 'man ≠ Mann',     de: 'Man sagt, dass …',              en: 'People say that … — one n, no article' },
+          { label: 'Demonstrative',  de: 'Den kenne ich! · Die habe ich schon gesehen.',
+            en: '"Him I know!" — the fronted article works as "that one" in speech' },
+          { label: 'es gibt',        de: 'Es gibt hier keinen Aufzug.',   en: 'es gibt + Akkusativ — fixed expression' },
+        ],
+        callout: {
+          kind: 'challenge',
+          text: 'Listen for demonstrative der/die/das in your next German conversation — once you notice ' +
+                '„Den nehme ich" at the bakery, you\'ll hear it everywhere.',
+        },
+      },
+    ],
+
+    progression: [
+      { level: 'A1', canDo: 'Use subject pronouns and mich/dich in simple sentences.',
+        example: 'Ich sehe dich morgen.' },
+      { level: 'A2', canDo: 'Choose mir/dir after Dativ verbs and prepositions, and use possessives.',
+        example: 'Kannst du mir helfen? Das ist mein Buch.' },
+      { level: 'B1', canDo: 'Order double objects correctly and handle reflexive verbs.',
+        example: 'Ich gebe es dir morgen. Ich freue mich auf das Wochenende.' },
+      { level: 'B2', canDo: 'Use mir/mich reflexive contrast and demonstratives naturally.',
+        example: 'Das kann ich mir gut vorstellen — den Film sehe ich mir an.' },
+      { level: 'C1', canDo: 'Handle pronoun-heavy formal register (derer, denen, dessen).',
+        example: 'Die Teilnehmer, denen wir gedankt haben, kommen wieder.' },
+    ],
+  },
+
+  // ──────────────────────────────────────────────────────────
   // Akademische Redemittel (C1)
   // ──────────────────────────────────────────────────────────
   {
@@ -2213,7 +2434,8 @@ const TOPIC_ORDER: Record<string, number> = {
   'connectors':     3,
   // Building Blocks
   'cases':          1,
-  'redemittel':     2,
+  'pronomen':       2,
+  'redemittel':     3,
 };
 
 export function getTopicChildren(parentSlug: string): FoundationTopic[] {
