@@ -16,7 +16,12 @@ function isActive(href: string): boolean {
 ---
 <nav class="site-nav" aria-label="Main navigation">
   <div class="site-nav__inner">
-    <a href={`${base}/`} class="site-nav__wordmark">German Reference</a>
+    <a href={`${base}/`} class="site-nav__wordmark">
+      <span class="site-nav__mark" aria-hidden="true">
+        <img src={`${base}/images/brand/goblin-white.png`} alt="" width="30" height="45" />
+      </span>
+      <span class="site-nav__name">Lingo <span class="site-nav__name-accent">Goblin</span></span>
+    </a>
     <ul class="site-nav__links" role="list">
       {links.map((link) => (
         <li>
@@ -53,14 +58,40 @@ function isActive(href: string): boolean {
   }
 
   .site-nav__wordmark {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: .9375rem;
-    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: .625rem;
     text-decoration: none;
     flex-shrink: 0;
   }
-  .site-nav__wordmark:hover { color: var(--accent-deep); }
+
+  .site-nav__mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--accent-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .site-nav__mark img {
+    width: 30px;
+    height: auto;
+    transform: translate(-2px, 1px);
+  }
+
+  .site-nav__name {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -.01em;
+    color: var(--ink);
+  }
+
+  .site-nav__name-accent { color: var(--accent-deep); }
+  .site-nav__wordmark:hover .site-nav__name { color: var(--accent-deep); }
 
   .site-nav__links {
     display: flex;
@@ -92,6 +123,8 @@ function isActive(href: string): boolean {
 
   @media (max-width: 768px) {
     .site-nav__inner { padding: 0 1rem; gap: 1rem; }
-    .site-nav__wordmark { font-size: .875rem; }
+    .site-nav__name { font-size: 1.0625rem; }
+    .site-nav__mark { width: 28px; height: 28px; border-radius: 8px; }
+    .site-nav__mark img { width: 25px; }
   }
 </style>
