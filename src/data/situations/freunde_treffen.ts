@@ -443,6 +443,7 @@ export const freundeTreffen: Situation = {
   ],
 
   hero: {
+    src: '/images/meeting-friends.png',
     caption: 'Freunde treffen — making plans and enjoying time together.',
     alt: 'A group of friends sitting at a café table, laughing',
   },

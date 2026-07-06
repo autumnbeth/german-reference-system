@@ -437,6 +437,7 @@ export const restaurant: Situation = {
   ],
 
   hero: {
+    src: '/images/restaurant.png',
     caption: 'From "ein Wasser bitte" to navigating allergens — restaurants covered.',
     alt: 'A table set for dinner in a German restaurant, with a menu card',
   },

@@ -415,6 +415,7 @@ export const supermarkt: Situation = {
   ],
 
   hero: {
+    src: '/images/shopping-einkaufen.png',
     caption: 'From Einkaufsliste to receipt disputes — every checkout covered.',
     alt: 'Inside a German supermarket aisle with products on shelves',
   },

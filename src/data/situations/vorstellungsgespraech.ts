@@ -518,6 +518,7 @@ export const vorstellungsgespraech: Situation = {
   ],
 
   hero: {
+    src: '/images/interview-vorstellung.png',
     caption: 'Das Vorstellungsgespräch — presenting yourself with confidence.',
     alt: 'Two people sitting across a desk in a professional interview setting',
   },

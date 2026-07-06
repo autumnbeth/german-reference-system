@@ -395,6 +395,7 @@ export const vermieterKontaktieren: Situation = {
   ],
 
   hero: {
+    src: '/images/complaint-beschwerde.png',
     caption: 'From "kaputt" to a formal Mängelanzeige — know your rights as a tenant.',
     alt: 'A radiator on a white wall in a German apartment',
   },

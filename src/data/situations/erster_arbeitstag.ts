@@ -466,6 +466,7 @@ export const ersterArbeitstag: Situation = {
   ],
 
   hero: {
+    src: '/images/work-arbeit.png',
     caption: 'Der erste Arbeitstag — finding your feet in a new workplace.',
     alt: 'A person at a new desk being greeted by a colleague',
   },

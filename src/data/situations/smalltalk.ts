@@ -340,6 +340,7 @@ export const smalltalk: Situation = {
   ],
 
   hero: {
+    src: '/images/weather-wetter.png',
     caption: 'Small Talk — the German between the textbook chapters.',
     alt: 'Two people chatting over coffee at a kitchen counter',
   },

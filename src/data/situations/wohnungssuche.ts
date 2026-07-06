@@ -405,6 +405,7 @@ export const wohnungssuche: Situation = {
   ],
 
   hero: {
+    src: '/images/apartment-wohnung.png',
     caption: 'From "Ich suche eine Wohnung" to a winning cover letter.',
     alt: 'A bright German apartment with large windows and wooden floors',
   },

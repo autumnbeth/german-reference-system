@@ -363,6 +363,7 @@ export const bankUndGeld: Situation = {
   ],
 
   hero: {
+    src: '/images/bank-geld.png',
     caption: 'Bank und Geld — from the Automat to the Dauerauftrag.',
     alt: 'A row of ATMs inside a German bank branch',
   },

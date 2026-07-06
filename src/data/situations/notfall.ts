@@ -456,6 +456,7 @@ export const notfall: Situation = {
   ],
 
   hero: {
+    src: '/images/emergency-notruf.png',
     caption: 'Notfall — calling for help and giving clear information under pressure.',
     alt: 'An emergency phone or ambulance, wide shot',
   },

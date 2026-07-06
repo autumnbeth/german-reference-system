@@ -416,6 +416,7 @@ export const oeffentlicheVerkehrsmittel: Situation = {
   ],
 
   hero: {
+    src: '/images/public-transit.png',
     caption: 'From finding Gleis 3 to surviving Verspätungen — public transport mastered.',
     alt: 'A German train station departure board showing various connections and platforms',
   },
