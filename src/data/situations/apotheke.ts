@@ -587,6 +587,7 @@ const apotheke: Situation = {
   ],
 
   hero: {
+    src: '/images/doctor-arzt.png',
     caption: 'In der Apotheke — asking for help at the counter.',
     alt: 'A pharmacy counter, wide shot',
   },

@@ -139,7 +139,7 @@ export interface Situation {
   }[];
 
   // optional media slots
-  hero?: { caption?: string; alt: string };    // 3:1 situation hero
+  hero?: { src?: string; caption?: string; alt: string };  // situation hero art (src relative to site base, e.g. "/images/doctor-arzt.png")
 }
 
 // ---------- Tense overview map ----------

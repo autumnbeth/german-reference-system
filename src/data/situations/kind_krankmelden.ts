@@ -358,6 +358,7 @@ export const kindKrankmelden: Situation = {
   ],
 
   hero: {
+    src: '/images/school-schule.png',
     caption: 'Kind krankmelden — the 7:45 call and the note that follows.',
     alt: 'A parent writing a note beside a school bag and a thermometer',
   },

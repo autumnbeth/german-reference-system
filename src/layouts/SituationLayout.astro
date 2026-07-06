@@ -72,6 +72,19 @@ const activeSlug = s.slug;
         <Callout kind="confidence" label="After this page…">
           {s.confidenceOutcome}
         </Callout>
+        {s.hero?.src && (
+          <figure class="situation__hero">
+            <img
+              src={`${base}${s.hero.src}`}
+              alt={s.hero.alt}
+              loading="lazy"
+              class="situation__hero-img"
+            />
+            {s.hero.caption && (
+              <figcaption class="situation__hero-caption gloss">{s.hero.caption}</figcaption>
+            )}
+          </figure>
+        )}
       </div>
 
       <!-- Vocabulary (tabbed by group) -->
@@ -382,6 +395,24 @@ const activeSlug = s.slug;
     color: var(--ink-body);
     line-height: 1.7;
     margin: .75rem 0 1rem;
+  }
+
+  .situation__hero {
+    margin: 1.5rem 0 0;
+  }
+
+  .situation__hero-img {
+    display: block;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .situation__hero-caption {
+    text-align: center;
+    margin-top: .5rem;
+    font-size: .875rem;
   }
 
   /* ── Sections ── */

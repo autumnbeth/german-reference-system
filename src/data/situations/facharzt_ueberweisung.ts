@@ -360,6 +360,7 @@ export const facharztUeberweisung: Situation = {
   ],
 
   hero: {
+    src: '/images/doctor-arzt.png',
     caption: 'Facharzt & Überweisung — the paper trail between doctors.',
     alt: 'A referral slip and health insurance card on a clinic reception counter',
   },

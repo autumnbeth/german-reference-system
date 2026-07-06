@@ -489,6 +489,7 @@ export const elternabend: Situation = {
   ],
 
   hero: {
+    src: '/images/school-schule.png',
     caption: 'Elternabend — understanding, asking, and advocating for your child.',
     alt: 'Parents sitting in a classroom at a parents\' evening, teacher at the front',
   },

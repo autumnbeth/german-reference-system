@@ -657,6 +657,7 @@ export const arzttermin: Situation = {
   ],
 
   hero: {
+    src: '/images/doctor-arzt.png',
     caption: 'Beim Arzt — describing symptoms and understanding advice.',
     alt: 'A doctor\'s consultation room, warm lighting',
   },

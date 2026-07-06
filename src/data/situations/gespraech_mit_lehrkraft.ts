@@ -478,6 +478,7 @@ export const gespraechMitLehrkraft: Situation = {
   ],
 
   hero: {
+    src: '/images/school-schule.png',
     caption: 'Gespräch mit der Lehrkraft — discussing your child\'s progress.',
     alt: 'A parent and teacher sitting across a desk in conversation',
   },
