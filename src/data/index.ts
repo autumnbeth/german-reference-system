@@ -32,6 +32,7 @@ import { smalltalk } from './situations/smalltalk';
 import { bewerbung } from './situations/bewerbung';
 import { beschwerde } from './situations/beschwerde';
 import { zahnarzt } from './situations/zahnarzt';
+import { familie } from './situations/familie';
 
 export const situations: Situation[] = [
   apotheke,
@@ -54,6 +55,7 @@ export const situations: Situation[] = [
   zahnarzt,
   kindKrankmelden,
   smalltalk,
+  familie,
   jobcenter,
   bankUndGeld,
   vertragKuendigen,
