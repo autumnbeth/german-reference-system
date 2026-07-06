@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://lingowizard.com',
+  site: 'https://lingogoblin.com',
   base: '/',
 });
