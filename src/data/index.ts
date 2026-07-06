@@ -29,6 +29,8 @@ import { facharztUeberweisung } from './situations/facharzt_ueberweisung';
 import { autoUndWerkstatt } from './situations/auto_und_werkstatt';
 import { kindKrankmelden } from './situations/kind_krankmelden';
 import { smalltalk } from './situations/smalltalk';
+import { bewerbung } from './situations/bewerbung';
+import { beschwerde } from './situations/beschwerde';
 
 export const situations: Situation[] = [
   apotheke,
@@ -55,6 +57,8 @@ export const situations: Situation[] = [
   vertragKuendigen,
   steuernUndVersicherungen,
   autoUndWerkstatt,
+  bewerbung,
+  beschwerde,
 ];
 
 export function getSituation(slug: string): Situation | undefined {
