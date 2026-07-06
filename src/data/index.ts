@@ -31,6 +31,7 @@ import { kindKrankmelden } from './situations/kind_krankmelden';
 import { smalltalk } from './situations/smalltalk';
 import { bewerbung } from './situations/bewerbung';
 import { beschwerde } from './situations/beschwerde';
+import { zahnarzt } from './situations/zahnarzt';
 
 export const situations: Situation[] = [
   apotheke,
@@ -50,6 +51,7 @@ export const situations: Situation[] = [
   anmeldung,
   buergeramt,
   facharztUeberweisung,
+  zahnarzt,
   kindKrankmelden,
   smalltalk,
   jobcenter,
